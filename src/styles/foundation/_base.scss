@@ -1,0 +1,54 @@
+// サイト全体の基本スタイルを書く
+// 例
+// body {
+//   font-family: $font-base;
+//   color: $color-text;
+//   line-height: 1.7;
+// }
+
+// a {
+//   color: inherit;
+//   text-decoration: none;
+// }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // =10px。remをpxに近い感覚で使えるように指定
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem; // 10pxを16pxに調整
+  //   font-feature-settings: "palt" 1; 必要に応じて
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: bottom;
+  object-fit: cover;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}

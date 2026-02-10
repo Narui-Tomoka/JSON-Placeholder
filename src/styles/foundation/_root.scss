@@ -1,0 +1,15 @@
+// サイト全体の「ルール」（このサイトではこうする）を:rootに置く
+// 一度きりの演出用ならセレクタに直書きでOKだが再利用する可能性があればCSS変数にしておく
+@use "./variables" as v;
+
+:root {
+  // 余白の書き出し
+  @each $key, $val in v.$spaces {
+    --sp-#{$key}: #{$val};
+  }
+
+  // フォントサイズの書き出し
+  @each $key, $val in v.$font-sizes {
+    --fs-#{$key}: #{$val};
+  }
+}

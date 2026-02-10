@@ -1,0 +1,62 @@
+// カラーコード 1は薄め2は濃いめ
+
+// ベースカラー：薄い青
+$base-color-1: #f5fafd;
+$base-color-2: #eaf6fb;
+
+// メインカラー：青
+$main-color-1: #8ec5e8;
+$main-color-2: #4fa3d1;
+
+// アクセントカラー：オレンジ
+$accent-color-1: #f4a261;
+$accent-color-2: #e76f51;
+
+// サブアクセント：緑
+$sub-accent-color-1: #8fbf9f;
+
+// テキスト：グレー
+$text-color-1: #6b7c85;
+$text-color-2: #2f3e46;
+
+// レビューの星カラー：黄色
+$star-color: #f2e900;
+
+// フォントサイズ
+$font-sizes: (
+  "10": 1rem,
+  // 最小（注釈など）
+  "12": 1.2rem,
+  // 補足テキスト
+  "14": 1.4rem,
+  // UIラベルなど
+  "16": 1.6rem,
+  // 基本（Base）
+  "20": 2rem,
+  // 小見出し
+  "24": 2.4rem,
+  // 中見出し（8の倍数）
+  "32": 3.2rem,
+  // 大見出し（8の倍数）
+  "40": 4rem, // ヒーローセクション（8の倍数）
+);
+
+// 余白
+$spaces: (
+  "4": 0.4rem,
+  "8": 0.8rem,
+  "16": 1.6rem,
+  "24": 2.4rem,
+  "32": 3.2rem,
+  "40": 4rem,
+  "48": 4.8rem,
+  "64": 6.4rem,
+  "80": 8rem,
+);
+
+// ブレイクポイント
+$breakpoints: (
+  "sm": "screen and (max-width: 576px)",
+  "md": "screen and (max-width: 768px)",
+  "lg": "screen and (max-width: 1024px)",
+);

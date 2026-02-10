@@ -1,0 +1,5 @@
+// ディレクトリ名を指定→各ディレクトリにある_index.scssを読み込む
+@use "./foundation/" as f;
+@use "./layout/" as l;
+@use "./object/" as o;
+@use "./pages/" as p;

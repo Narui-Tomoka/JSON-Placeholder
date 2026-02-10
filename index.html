@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>そらいろドライブ！ | 旅の思い出記録アプリ</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner inner">
+        <nav
+          class="header__nav header__nav--left"
+          aria-label="メインナビゲーション"
+        >
+          <ul class="header__list">
+            <li class="header__item">
+              <a href="#" class="header__link">検索</a>
+            </li>
+            <li class="header__item">
+              <a href="#" class="header__link">投稿</a>
+            </li>
+            <li class="header__item">
+              <a href="#" class="header__link header__link--dropdown"
+                >メニュー</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <h1 class="header__logo">
+          <img src="" alt="そらいろドライブ！" />
+        </h1>
+
+        <nav class="header__nav--right" aria-label="ユーザーメニュー">
+          <a href="#" class="c-button c-button--primary">新規登録</a>
+          <a href="#" class="c-button c-button--primary">ログイン</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__inner inner">
+          <h2 class="hero__title">旅の思い出を記録する</h2>
+          <p class="hero__text">
+            そらいろドライブ！は、あなたの旅の記憶を大切に保存し、<br />いつでも探し出せるWebアプリです。目的地や日付から簡単に検索。<br />思い出の風景や忘れられない愛車の姿をもう一度。
+          </p>
+          <div class="hero__actions">
+            <a href="#" class="c-button c-button--primary">検索</a>
+            <a href="#" class="c-button c-button--secondary">ログイン</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="search">
+        <div class="search__inner inner">
+          <h2 class="search__title">思い出を探そう</h2>
+          <p class="search__sub-title">
+            みんなの思い出を検索して、感動的な風景や愛車を眺めましょう
+          </p>
+          <form class="search-form">
+            <div class="search-form__item">
+              <label class="search-form__label" for="userId">ユーザーID</label>
+              <input
+                type="text"
+                class="search-form__input"
+                id="userId"
+                placeholder="例：1"
+              />
+              <p class="search-form__error">※半角数字で入力してください</p>
+            </div>
+            <div class="search-form__item">
+              <label class="search-form__label" for="postId"
+                >投稿ID<span>任意</span></label
+              >
+              <select class="search-form__select" id="postId">
+                <option value="">＜-- 全ユーザー --＞</option>
+                <option value="">ユーザー1</option>
+                <option value="">ユーザー2</option>
+                <option value="">ユーザー3</option>
+                <option value="">ユーザー4</option>
+                <option value="">ユーザー5</option>
+                <option value="">ユーザー6</option>
+                <option value="">ユーザー7</option>
+                <option value="">ユーザー8</option>
+                <option value="">ユーザー9</option>
+                <option value="">ユーザー10</option>
+              </select>
+            </div>
+            <div class="search-form__item">
+              <label class="search-form__label"
+                >タイトル<span>任意</span></label
+              >
+              <input
+                type="text"
+                class="search-form__input"
+                placeholder="例：箱根ラスク事件"
+              />
+              <p class="search-form__error">※10文字以内で入力してください</p>
+            </div>
+            <div class="search-form__item">
+              <label class="search-form__label" for="body"
+                >本文<span>任意</span></label
+              >
+              <textarea
+                id="body"
+                class="search-form__txtarea"
+                placeholder="例：雪で立ち往生"
+              ></textarea>
+              <p class="search-form__error">※50文字以内で入力してください</p>
+            </div>
+            <div class="search-form__submit">
+              <button type="submit" class="c-button c-button--primary">
+                検索
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="features__inner inner">
+          <p class="features__label">FEATURE</p>
+          <h2 class="features__title">旅の思い出を記録する</h2>
+          <p class="features__sub-title">
+            日付や場所から思い出を検索して、あの時の感動を何度でも味わおう
+          </p>
+
+          <div class="features__list">
+            <article class="feature-card">
+              <div class="feature-card__content">
+                <p class="feature-card__label">検索</p>
+                <h3 class="feature-card__title">目的地やタイトルで絞り込む</h3>
+                <p class="feature-card__text">
+                  行った場所や旅のテーマから、探している思い出を素早く見つける
+                </p>
+                <span class="feature-card__more">詳細</span>
+              </div>
+              <div class="feature-card__image">
+                <img src="" alt="思い出の写真" />
+              </div>
+            </article>
+
+            <article class="feature-card feature-card--small">
+              <div class="feature-card__content">
+                <p class="feature-card__label">記録</p>
+                <h3 class="feature-card__title">旅の記録を振り返る</h3>
+                <p class="feature-card__text">
+                  家族や友人と共有のアルバムを作って、一緒に思い出を振り返ることができます。
+                </p>
+                <span class="feature-card__more">始める</span>
+              </div>
+              <div class="feature-card__image">
+                <img src="" alt="思い出の写真" />
+              </div>
+            </article>
+
+            <article class="feature-card feature-card--small">
+              <div class="feature-card__content">
+                <p class="feature-card__label">共有</p>
+                <h3 class="feature-card__title">思い出を友人と共有</h3>
+                <p class="feature-card__text">
+                  大切な人たちと旅の思い出をシェアして、一緒に思い出を振り返る。
+                </p>
+                <span class="feature-card__more">シェア</span>
+              </div>
+              <div class="feature-card__image">
+                <img src="" alt="思い出の写真" />
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-banner">
+        <div class="cta-banner__inner inner">
+          <h2 class="cta-banner__title">今すぐ始めよう</h2>
+          <p class="cta-banner__text">
+            たった1分で、旅の思い出を記録・検索できるようになります。
+          </p>
+          <div class="cta-banner__actions">
+            <a href="#" class="c-button c-button--primary">新規登録</a>
+            <a href="#" class="c-button c-button--primary">ログイン</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="testimonials__inner inner">
+          <h2 class="testimonials__title">
+            こんなに楽しい旅行アプリは<br />見たことない！
+          </h2>
+          <p class="testimonials__sub-title">
+            感動のお声を多数いただいています！
+          </p>
+          <div class="testimonials__list">
+            <div class="testimonial-card">
+              <p class="testimonial-card__text">
+                「雪を甘く見て箱根に車で行き、立ち往生に巻き込まれました。僕の車はスタッドレス履いてたのに…。このアプリのおかげでそんな思い出も忘れません。」
+              </p>
+              <div class="testimonial-card__user">
+                <div class="testimonial-card__avatar">
+                  <img src="" alt="雪村 はると" />
+                </div>
+                <div class="testimonial-card__info">
+                  <span class="testimonial-card__name">雪村 はると</span>
+                  <span class="testimonial-card__position">自動車整備士</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-card__text">
+                「どう？私のアストンマーティン、素敵でしょ？
+                愛車と一緒に駆け抜けるワインディングロードは最高！先行車がいると嬉しくて追いかけてしまうわ！」
+              </p>
+              <div class="testimonial-card__user">
+                <div class="testimonial-card__avatar">
+                  <img src="" alt="八甲田 翠" />
+                </div>
+                <div class="testimonial-card__info">
+                  <span class="testimonial-card__name">八甲田 翠</span>
+                  <span class="testimonial-card__position"
+                    >チームHakkoda 専属ドライバー</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-card__text">
+                「定時で帰って見た藤の花はサイコーだったぜ！
+                ショーン先生との記念写真も載せたから見てくれよな！」
+              </p>
+              <div class="testimonial-card__user">
+                <div class="testimonial-card__avatar">
+                  <img src="" alt="定藤 カケル" />
+                </div>
+                <div class="testimonial-card__info">
+                  <span class="testimonial-card__name">定藤 カケル</span>
+                  <span class="testimonial-card__position"
+                    >Webデザイナー志望</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery">
+        <div class="gallery__inner inner">
+          <h2 class="gallery__title">旅のギャラリー</h2>
+          <p class="gallery__sub-title">ユーザーが投稿した写真をご紹介します</p>
+          <div class="gallery__grid">
+            <div class="gallery__item gallery__item--large">
+              <img src="" alt="投稿写真" />
+            </div>
+            <div class="gallery__item"><img src="" alt="投稿写真" /></div>
+            <div class="gallery__item"><img src="" alt="投稿写真" /></div>
+            <div class="gallery__item"><img src="" alt="投稿写真" /></div>
+            <div class="gallery__item"><img src="" alt="投稿写真" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq">
+        <div class="faq__inner inner">
+          <h2 class="faq__title">FAQ</h2>
+          <p class="faq__sub-title">
+            よくあるご質問にお答えします。ご不明な点はお気軽にお問い合わせください。
+          </p>
+          <div class="faq__list">
+            <details class="faq__item">
+              <summary class="faq__question">
+                使い方を教えてください
+                <span class="faq__btn js-btn">
+                  <!-- +マークを作るための2本線を2つのspanタグで実装 -->
+                  <span></span>
+                  <span></span>
+                </span>
+              </summary>
+              <div class="faq__answer">
+                アカウント作成し、旅の思い出を記録できます。目的地やタイトル、その時の気持ちを書き留めて、いつでも検索・閲覧できます。
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                投稿は後から編集できますか？
+                <span class="faq__btn js-btn">
+                  <!-- +マークを作るための2本線を2つのspanタグで実装 -->
+                  <span></span>
+                  <span></span>
+                </span>
+              </summary>
+              <div class="faq__answer">
+                はい、いつでも投稿を編集・削除できます。思い出を更新したいときは、投稿詳細ページから編集ボタンをクリックしてください。
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                アカウントについて教えてください
+                <span class="faq__btn js-btn">
+                  <!-- +マークを作るための2本線を2つのspanタグで実装 -->
+                  <span></span>
+                  <span></span>
+                </span>
+              </summary>
+              <div class="faq__answer">
+                アカウントはパスワードで管理されます。パスワードは安全に保管され、いつでも変更できます。プライバシーは厳格に保護されます。
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                投稿を削除できますか？
+                <span class="faq__btn js-btn">
+                  <!-- +マークを作るための2本線を2つのspanタグで実装 -->
+                  <span></span>
+                  <span></span>
+                </span>
+              </summary>
+              <div class="faq__answer">
+                はい、投稿はいつでも削除できます。削除後は復元できませんので、ご注意ください。
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                使い方を教えてください
+                <span class="faq__btn js-btn">
+                  <!-- +マークを作るための2本線を2つのspanタグで実装 -->
+                  <span></span>
+                  <span></span>
+                </span>
+              </summary>
+              <div class="faq__answer">
+                各自がアカウントを作成して利用できます。共有機能を使えば、家族や友人と思い出をシェアできます。
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact">
+        <div class="contact__inner inner">
+          <h2 class="contact__title">サポートチームへのお問い合わせ</h2>
+          <p class="contact__text">
+            FAQで解決しない場合はこちらからお問い合わせください。
+          </p>
+          <a href="#" class="c-button c-button--outline">お問い合わせ</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__cta">
+        <div class="footer__cta-body">
+          <h2 class="footer__cta-title">旅の思い出を共有しよう</h2>
+          <p class="footer__cta-text">
+            そらいろドライブ！で旅のストーリーをいつでも楽しもう
+          </p>
+        </div>
+        <div class="footer__cta-actions">
+          <a href="#" class="c-button c-button--primary">新規登録</a>
+          <a href="#" class="c-button c-button--primary">ログイン</a>
+        </div>
+      </div>
+
+      <hr class="footer__divider" />
+
+      <div class="footer__nav">
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">ナビゲーション</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ホーム</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">検索</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">投稿</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">プロフィール</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">設定</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">サポート</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ガイド</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">よくある質問</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">お問い合わせ</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">サイトマップ</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">コミュニティ</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">ブログ</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">イベント</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">フォーラム</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ギャラリー</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">法務</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">プライバシー</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">利用規約</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">クッキーポリシー</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">アクセシビリティ</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ソーシャル</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">Xで共有</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">Facebookで共有</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">SNS</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">YouTubeをフォロー</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">LinkedInをフォロー</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">リソース</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ドキュメント</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">APIリファレンス</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">開発者向けガイド</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">チュートリアル動画</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">テンプレート集</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">アカウント</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ログイン</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">サインアップ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__logo">
+          <img src="" alt="そらいろドライブ！" />
+        </div>
+        <div class="footer__sns">
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-x-twitter"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+
+      <hr class="footer__divider" />
+
+      <p class="footer__copyright">
+        © 2026 そらいろドライブ！　All Rights Reserved.
+      </p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

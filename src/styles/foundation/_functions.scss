@@ -1,0 +1,12 @@
+// フォントサイズと余白だけなら@use は必要ないが必要になった時のために念のため書いている↓
+@use "variables" as v;
+
+// フォントサイズ用
+@function fs($size) {
+  @return var(--fs-#{$size});
+}
+
+// 余白用
+@function sp($size) {
+  @return var(--sp-#{$size});
+}

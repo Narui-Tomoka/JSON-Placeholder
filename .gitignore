@@ -1,0 +1,47 @@
+# -------------------------
+# Node.js
+# -------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -------------------------
+# Build / Vite Output
+# -------------------------
+dist/
+build/
+*.local
+
+# -------------------------
+# Sass / CSS Cache
+# -------------------------
+.sass-cache/
+*.css.map
+
+# -------------------------
+# VSCode / IDE
+# -------------------------
+.vscode/
+.idea/
+
+# -------------------------
+# OS / Windows Specific
+# -------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -------------------------
+# Misc
+# -------------------------
+.DS_Store
+.env
+.env.*
+
+# -------------------------
+# others
+# -------------------------
+.pdf

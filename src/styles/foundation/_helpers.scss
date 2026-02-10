@@ -1,0 +1,8 @@
+// innerやfont-weightなどセクション関係なく使用する汎用的なクラス
+// ボタン等再利用する部品は別ファイルに
+
+.inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
