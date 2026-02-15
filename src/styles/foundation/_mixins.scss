@@ -1,24 +1,28 @@
 // 再利用するスタイルの“型”
 
 // 書くもの例
-// @mixin flex-center {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// @mixin hover {
-//   &:hover {
-//     @content;
-//   }
-// }
-
 // @mixin mq($size) {
 //   @media (max-width: $size) {
 //     @content;
 //   }
 // }
+
 @use "sass:map";
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// ↑使い方例
+// .head .head-sns_link a {
+//   @include hover {
+//     opacity: 0.7;
+//   }
+// }
 
 // ==========================================================================
 // メディアクエリ（ブレイクポイント用）

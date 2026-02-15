@@ -1,0 +1,98 @@
+@use "../foundation/" as f;
+
+// 他のページと交わらないようにスコープ内でスタイル定義
+.page-home {
+  // section hero
+  .hero {
+    // padding: f.sp(80) 0;
+    background: url(../../images/hero.jpg) no-repeat 50% 35% / cover;
+    position: relative;
+    z-index: 1;
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #000;
+      opacity: 0.3;
+      z-index: 2;
+    }
+  }
+  .hero__title {
+    color: f.$base-color-1;
+    font-size: f.fs(56);
+    padding-top: f.sp(200);
+    position: relative;
+    z-index: 3;
+  }
+  .hero__text {
+    color: f.$base-color-1;
+    font-size: f.fs(18);
+    margin-top: f.sp(24);
+    line-height: 1.5;
+    position: relative;
+    z-index: 3;
+  }
+  .hero__actions {
+    margin-top: f.sp(32);
+    padding-bottom: f.sp(160);
+    position: relative;
+    z-index: 3;
+    a:first-child {
+      margin-right: f.sp(16);
+    }
+  }
+
+  // section search
+  .search {
+    background-color: f.$base-color-2;
+    padding: f.sp(104) 0;
+  }
+  .search__title {
+    font-size: f.fs(48);
+  }
+  .search__sub-title {
+    font-size: f.fs(18);
+    margin-top: f.sp(24);
+  }
+  .search-form__item {
+    width: fit-content;
+    margin-top: f.sp(16);
+  }
+  .search-form__label {
+    display: block;
+    text-align: left;
+  }
+  .search-form__select,
+  .search-form__input {
+    width: 30rem;
+    height: 3.5rem;
+    margin-top: f.sp(4);
+    border: 1px solid #aaa;
+    border-radius: 6px;
+  }
+  .search-form__textarea {
+    width: 30rem;
+    height: 15.6rem;
+    margin-top: f.sp(4);
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    resize: none;
+  }
+  .search-form__optional {
+    display: inline-block;
+    padding: f.sp(4) f.sp(8);
+    color: f.$base-color-1;
+    background-color: f.$main-color-2;
+    margin-left: f.sp(8);
+    border-radius: 6px;
+  }
+  .c-button--submit {
+    font-size: f.fs(24);
+    margin-top: f.sp(16);
+    border-radius: 16px;
+  }
+}

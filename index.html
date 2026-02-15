@@ -3,11 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <title>そらいろドライブ！ | 旅の思い出記録アプリ</title>
   </head>
-  <body>
-    <header class="header">
-      <div class="header__inner inner">
+  <body class="page-home">
+    <header id="header" class="header">
+      <div class="header__inner l-inner">
         <nav
           class="header__nav header__nav--left"
           aria-label="メインナビゲーション"
@@ -28,38 +38,42 @@
         </nav>
 
         <h1 class="header__logo">
-          <img src="" alt="そらいろドライブ！" />
+          <a href="#">
+            <img src="src/images/logo.png" alt="そらいろドライブ！" />
+          </a>
         </h1>
 
         <nav class="header__nav--right" aria-label="ユーザーメニュー">
           <a href="#" class="c-button c-button--primary">新規登録</a>
-          <a href="#" class="c-button c-button--primary">ログイン</a>
+          <a href="#" class="c-button c-button--secondary">ログイン</a>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero__inner inner">
-          <h2 class="hero__title">旅の思い出を記録する</h2>
-          <p class="hero__text">
-            そらいろドライブ！は、あなたの旅の記憶を大切に保存し、<br />いつでも探し出せるWebアプリです。目的地や日付から簡単に検索。<br />思い出の風景や忘れられない愛車の姿をもう一度。
+      <section id="hero" class="hero">
+        <div class="hero__inner l-inner">
+          <h2 class="hero__title u-text-center zen-m">
+            旅を綴り、絆を深める。
+          </h2>
+          <p class="hero__text u-text-center">
+            写真や感想がスマホの中に埋もれていませんか。<br />大切な旅の思い出は、時間が経つほど色あせてしまうもの。<br />このWebアプリなら、旅の記録を見やすく残し、家族や友人と簡単に共有できます。<br />あの感動を、何度でも思い出せる場所に。
           </p>
-          <div class="hero__actions">
+          <div class="hero__actions u-text-center">
             <a href="#" class="c-button c-button--primary">検索</a>
             <a href="#" class="c-button c-button--secondary">ログイン</a>
           </div>
         </div>
       </section>
 
-      <section class="search">
-        <div class="search__inner inner">
-          <h2 class="search__title">思い出を探そう</h2>
-          <p class="search__sub-title">
+      <section id="search" class="search">
+        <div class="search__inner l-inner">
+          <h2 class="search__title u-text-center zen-b">思い出を探そう</h2>
+          <p class="search__sub-title u-text-center">
             みんなの思い出を検索して、感動的な風景や愛車を眺めましょう
           </p>
-          <form class="search-form">
-            <div class="search-form__item">
+          <form class="search-form u-text-center">
+            <div class="search-form__item u-center">
               <label class="search-form__label" for="userId">ユーザーID</label>
               <input
                 type="text"
@@ -69,9 +83,9 @@
               />
               <p class="search-form__error">※半角数字で入力してください</p>
             </div>
-            <div class="search-form__item">
+            <div class="search-form__item u-center">
               <label class="search-form__label" for="postId"
-                >投稿ID<span>任意</span></label
+                >投稿ID<span class="search-form__optional">任意</span></label
               >
               <select class="search-form__select" id="postId">
                 <option value="">＜-- 全ユーザー --＞</option>
@@ -87,9 +101,9 @@
                 <option value="">ユーザー10</option>
               </select>
             </div>
-            <div class="search-form__item">
+            <div class="search-form__item u-center">
               <label class="search-form__label"
-                >タイトル<span>任意</span></label
+                >タイトル<span class="search-form__optional">任意</span></label
               >
               <input
                 type="text"
@@ -98,19 +112,22 @@
               />
               <p class="search-form__error">※10文字以内で入力してください</p>
             </div>
-            <div class="search-form__item">
+            <div class="search-form__item u-center">
               <label class="search-form__label" for="body"
-                >本文<span>任意</span></label
+                >本文<span class="search-form__optional">任意</span></label
               >
               <textarea
                 id="body"
-                class="search-form__txtarea"
+                class="search-form__textarea"
                 placeholder="例：雪で立ち往生"
               ></textarea>
               <p class="search-form__error">※50文字以内で入力してください</p>
             </div>
             <div class="search-form__submit">
-              <button type="submit" class="c-button c-button--primary">
+              <button
+                type="submit"
+                class="c-button c-button--primary c-button--submit"
+              >
                 検索
               </button>
             </div>
@@ -118,10 +135,16 @@
         </div>
       </section>
 
-      <section class="features">
-        <div class="features__inner inner">
+      <section id="result" class="result">
+        <div class="result__inner l-inner">
+          <ul></ul>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <div class="features__inner l-inner">
           <p class="features__label">FEATURE</p>
-          <h2 class="features__title">旅の思い出を記録する</h2>
+          <h2 class="features__title zen-b">旅の思い出を記録する</h2>
           <p class="features__sub-title">
             日付や場所から思い出を検索して、あの時の感動を何度でも味わおう
           </p>
@@ -172,9 +195,9 @@
         </div>
       </section>
 
-      <section class="cta-banner">
-        <div class="cta-banner__inner inner">
-          <h2 class="cta-banner__title">今すぐ始めよう</h2>
+      <section id="cta-banner" class="cta-banner">
+        <div class="cta-banner__inner l-inner">
+          <h2 class="cta-banner__title zen-b">今すぐ始めよう</h2>
           <p class="cta-banner__text">
             たった1分で、旅の思い出を記録・検索できるようになります。
           </p>
@@ -185,8 +208,8 @@
         </div>
       </section>
 
-      <section class="testimonials">
-        <div class="testimonials__inner inner">
+      <section id="testimonials" class="testimonials">
+        <div class="testimonials__inner l-inner">
           <h2 class="testimonials__title">
             こんなに楽しい旅行アプリは<br />見たことない！
           </h2>
@@ -248,9 +271,9 @@
         </div>
       </section>
 
-      <section class="gallery">
-        <div class="gallery__inner inner">
-          <h2 class="gallery__title">旅のギャラリー</h2>
+      <section id="gallery" class="gallery">
+        <div class="gallery__inner l-inner">
+          <h2 class="gallery__title zen-b">旅のギャラリー</h2>
           <p class="gallery__sub-title">ユーザーが投稿した写真をご紹介します</p>
           <div class="gallery__grid">
             <div class="gallery__item gallery__item--large">
@@ -264,9 +287,9 @@
         </div>
       </section>
 
-      <section class="faq">
-        <div class="faq__inner inner">
-          <h2 class="faq__title">FAQ</h2>
+      <section id="faq" class="faq">
+        <div class="faq__inner l-inner">
+          <h2 class="faq__title zen-b">FAQ</h2>
           <p class="faq__sub-title">
             よくあるご質問にお答えします。ご不明な点はお気軽にお問い合わせください。
           </p>
@@ -344,9 +367,9 @@
         </div>
       </section>
 
-      <section class="contact">
-        <div class="contact__inner inner">
-          <h2 class="contact__title">サポートチームへのお問い合わせ</h2>
+      <section id="contact" class="contact">
+        <div class="contact__inner l-inner">
+          <h2 class="contact__title zen-b">サポートチームへのお問い合わせ</h2>
           <p class="contact__text">
             FAQで解決しない場合はこちらからお問い合わせください。
           </p>
@@ -355,7 +378,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <div class="footer__cta">
         <div class="footer__cta-body">
           <h2 class="footer__cta-title">旅の思い出を共有しよう</h2>

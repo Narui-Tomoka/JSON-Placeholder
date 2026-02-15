@@ -9,4 +9,5 @@
 // 余白用
 @function sp($size) {
   @return var(--sp-#{$size});
+  // rootにある余白の書き出しとつながる
 }

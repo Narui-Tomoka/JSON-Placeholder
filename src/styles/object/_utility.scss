@@ -1,2 +1,10 @@
 // 汎用的な補助に使う
 // 例：u-text-center, u-hiddenなど「u-」の接頭辞をつける
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-center {
+  margin: 0 auto;
+}

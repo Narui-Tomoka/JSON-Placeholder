@@ -1,0 +1,10 @@
+.l-inner {
+  max-width: 1280px;
+  margin-inline: auto; // 中央寄せ
+  padding-inline: 1.6rem; // スマホ時の最低余白（16px）
+
+  @media (min-width: 1312px) {
+    // 1280px + (16px * 2)
+    padding-inline: 0; // 画面幅に十分な余裕があればpaddingを消す
+  }
+}

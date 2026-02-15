@@ -1,0 +1,21 @@
+@use "../foundation/" as f;
+
+// ボタンデザイン
+
+// 共通のスタイルをc-buttonに書く
+.c-button {
+  padding: f.sp(12) f.sp(24);
+  border-radius: 6px;
+  display: inline-block;
+  font-size: f.fs(16);
+}
+
+.c-button--primary {
+  background-color: f.$main-color-2; // 濃いめの青
+  color: f.$base-color-1;
+}
+
+.c-button--secondary {
+  background-color: f.$base-color-1;
+  color: f.$text-color-2;
+}

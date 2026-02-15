@@ -1,0 +1,46 @@
+@use "../foundation/" as f;
+
+.header {
+  background-color: f.$main-color-1;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: f.sp(16);
+}
+
+.header__list {
+  display: flex;
+}
+
+.header__link {
+  color: f.$base-color-1;
+  margin-right: f.sp(32);
+  // foundation内の_functionsで作った関数により3.2rem（32px相当）になる
+}
+.header__item:last-child .header__link {
+  margin-right: 0;
+}
+
+.header__logo {
+  img {
+    width: 135px;
+    display: block;
+  }
+}
+
+.header__nav--right {
+  display: flex;
+  a {
+    margin-right: f.sp(16);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

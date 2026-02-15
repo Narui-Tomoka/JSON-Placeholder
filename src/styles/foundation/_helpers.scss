@@ -1,8 +1,37 @@
 // innerやfont-weightなどセクション関係なく使用する汎用的なクラス
 // ボタン等再利用する部品は別ファイルに
 
-.inner {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
+// .inner {
+//   max-width: 1280px;
+//   width: 100%;
+//   margin: 0 auto;
+// }
+
+// フォント関係
+// Noto Sans JP の font-weightは 100 から 900 で好きな太さにする
+.noto {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
+
+// 見出しなどで太めのフォントにするとやさしくかわいい印象に
+.zen-r {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-m {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.zen-b {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+// フォント関係ここまで
