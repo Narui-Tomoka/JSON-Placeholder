@@ -1,0 +1,9 @@
+@use "../foundation/" as f;
+
+.section__title {
+  font-size: f.fs(48);
+}
+.section__sub-title {
+  font-size: f.fs(18);
+  margin-top: f.sp(24);
+}
