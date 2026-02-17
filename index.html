@@ -57,7 +57,7 @@
             旅を綴り、絆を深める。
           </h2>
           <p class="hero__text u-text-center">
-            写真や感想がスマホの中に埋もれていませんか。<br />大切な旅の思い出は、時間が経つほど色あせてしまうもの。<br />このWebアプリなら、旅の記録を見やすく残し、家族や友人と簡単に共有できます。<br />あの感動を、何度でも思い出せる場所に。
+            大切な写真がスマホの中に埋もれていませんか。<br />楽しい旅の思い出は、時間が経つほど色あせてしまうもの。<br />このWebアプリなら、旅の記録を見やすく残し、家族や友人と簡単に共有できます。<br />あの感動を、何度でも思い出せる場所に。
           </p>
           <div class="hero__actions u-text-center">
             <a href="#" class="c-button c-button--primary">検索</a>
@@ -72,33 +72,43 @@
           <p class="section__sub-title u-text-center">
             みんなの思い出を検索して、感動的な風景や愛車を眺めましょう
           </p>
-          <form class="search-form u-text-center">
+
+          <form id="searchForm" class="search-form u-text-center">
+            <!-- ↓すべてのエラーをまとめて表示する用のdiv↓ -->
+            <div id="errSummary" class="search-form__error-summary"></div>
+
             <div class="search-form__item u-center">
-              <label class="search-form__label" for="userId">ユーザーID</label>
+              <label class="search-form__label" for="userId"
+                >ユーザーID<span class="search-form__optional"
+                  >任意</span
+                ></label
+              >
               <input
                 type="text"
-                class="search-form__input"
                 id="userId"
+                class="search-form__input"
                 placeholder="例：1"
               />
-              <p class="search-form__error">※半角数字で入力してください</p>
+              <div id="errUserId" class="search-form__error-msg"></div>
+              <p class="search-form__msg">※半角数字で入力してください</p>
             </div>
+
             <div class="search-form__item u-center">
               <label class="search-form__label" for="postId"
                 >投稿ID<span class="search-form__optional">任意</span></label
               >
               <select class="search-form__select" id="postId">
                 <option value="">＜-- 全ユーザー --＞</option>
-                <option value="">ユーザー1</option>
-                <option value="">ユーザー2</option>
-                <option value="">ユーザー3</option>
-                <option value="">ユーザー4</option>
-                <option value="">ユーザー5</option>
-                <option value="">ユーザー6</option>
-                <option value="">ユーザー7</option>
-                <option value="">ユーザー8</option>
-                <option value="">ユーザー9</option>
-                <option value="">ユーザー10</option>
+                <option value="1">ユーザー1</option>
+                <option value="2">ユーザー2</option>
+                <option value="3">ユーザー3</option>
+                <option value="4">ユーザー4</option>
+                <option value="5">ユーザー5</option>
+                <option value="6">ユーザー6</option>
+                <option value="7">ユーザー7</option>
+                <option value="8">ユーザー8</option>
+                <option value="9">ユーザー9</option>
+                <option value="10">ユーザー10</option>
               </select>
             </div>
             <div class="search-form__item u-center">
@@ -107,10 +117,12 @@
               >
               <input
                 type="text"
+                id="title"
                 class="search-form__input"
                 placeholder="例：箱根ラスク事件"
               />
-              <p class="search-form__error">※10文字以内で入力してください</p>
+              <div id="errTitle" class="search-form__error-msg"></div>
+              <p class="search-form__msg">※10文字以内で入力してください</p>
             </div>
             <div class="search-form__item u-center">
               <label class="search-form__label" for="body"
@@ -121,10 +133,12 @@
                 class="search-form__textarea"
                 placeholder="例：雪で立ち往生"
               ></textarea>
-              <p class="search-form__error">※50文字以内で入力してください</p>
+              <div id="errBody" class="search-form__error-msg"></div>
+              <p class="search-form__msg">※50文字以内で入力してください</p>
             </div>
             <div class="search-form__submit">
               <button
+                id="submitBtn"
                 type="submit"
                 class="c-button c-button--primary c-button--submit"
               >

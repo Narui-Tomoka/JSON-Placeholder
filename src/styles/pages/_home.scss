@@ -67,6 +67,7 @@
     margin-top: f.sp(4);
     border: 1px solid #aaa;
     border-radius: 6px;
+    padding-left: f.sp(8);
   }
   .search-form__textarea {
     width: 30rem;
@@ -75,6 +76,7 @@
     border: 1px solid #aaa;
     border-radius: 6px;
     resize: none;
+    padding: f.sp(8);
   }
   .search-form__optional {
     display: inline-block;
@@ -84,9 +86,17 @@
     margin-left: f.sp(8);
     border-radius: 6px;
   }
+  .search-form__msg {
+    font-size: f.fs(12);
+    margin-top: f.sp(4);
+    text-align: left;
+  }
   .c-button--submit {
     font-size: f.fs(24);
     margin-top: f.sp(16);
     border-radius: 16px;
+  }
+  #errSummary {
+    scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
   }
 }

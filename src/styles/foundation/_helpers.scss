@@ -35,3 +35,13 @@
   font-style: normal;
 }
 // フォント関係ここまで
+
+// 入力フォームエラー表示用クラス
+.is-error {
+  border: 2px solid #e76f51 !important;
+  background-color: #f4a261 !important;
+}
+
+.is-error-text {
+  color: #e76f51 !important;
+}
