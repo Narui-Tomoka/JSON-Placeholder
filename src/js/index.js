@@ -74,7 +74,7 @@ function validateForm() {
       // （他の要素が先に入ってtrueになっていなければ）
       // FirstErrorElementにこの要素が入り、フォーカスされる仕組み）
       if (!firstErrorElement) {
-        firstErrorElement = inputUserId;
+        firstErrorElement = inputPostId;
       }
     }
   }
@@ -141,4 +141,26 @@ form.addEventListener("submit", async (e) => {
   const postId = document.getElementById("postId").value.trim();
   const title = document.getElementById("title").value.trim();
   const body = document.getElementById("body").value.trim();
+
+  const params = new URLSearchParams();
+
+  if (userId !== "") {
+    params.append("userId", userId);
+  }
+
+  if (postId !== "") {
+    params.append("id", postId);
+  }
+
+  if (title !== "") {
+    params.append("title_like", title);
+  }
+
+  if (body !== "") {
+    params.append("body_like", body);
+  }
+
+  const queryString = params.toString();
+
+  console.log("生成されたクエリ", queryString);
 });
