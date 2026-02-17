@@ -83,21 +83,7 @@
                   >任意</span
                 ></label
               >
-              <input
-                type="text"
-                id="userId"
-                class="search-form__input"
-                placeholder="例：1"
-              />
-              <div id="errUserId" class="search-form__error-msg"></div>
-              <p class="search-form__msg">※半角数字で入力してください</p>
-            </div>
-
-            <div class="search-form__item u-center">
-              <label class="search-form__label" for="postId"
-                >投稿ID<span class="search-form__optional">任意</span></label
-              >
-              <select class="search-form__select" id="postId">
+              <select class="search-form__select" id="userId">
                 <option value="">＜-- 全ユーザー --＞</option>
                 <option value="1">ユーザー1</option>
                 <option value="2">ユーザー2</option>
@@ -111,6 +97,21 @@
                 <option value="10">ユーザー10</option>
               </select>
             </div>
+
+            <div class="search-form__item u-center">
+              <label class="search-form__label" for="postId"
+                >投稿ID<span class="search-form__optional">任意</span></label
+              >
+              <input
+                type="text"
+                id="postId"
+                class="search-form__input"
+                placeholder="例：1"
+              />
+              <div id="errPostId" class="search-form__error-msg"></div>
+              <p class="search-form__msg">※半角数字で入力してください</p>
+            </div>
+
             <div class="search-form__item u-center">
               <label class="search-form__label"
                 >タイトル<span class="search-form__optional">任意</span></label

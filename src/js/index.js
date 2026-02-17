@@ -7,10 +7,10 @@ function validateForm() {
   // =========================
   // 入力フォームの値を取得
   // =========================
-  // ユーザーID
-  const userId = document.getElementById("userId").value.trim();
-  // 投稿ID（プルダウンになっている場所。バリデーションはしないが値は必要なので取得している）
-  const postId = document.getElementById("postId").value;
+  // 投稿ID
+  const postId = document.getElementById("postId").value.trim();
+  // ユーザーID（プルダウンになっている場所。バリデーションはしないが値は必要なので取得している）
+  const userId = document.getElementById("userId").value;
   // タイトル
   const title = document.getElementById("title").value.trim();
   // 本文
@@ -24,20 +24,20 @@ function validateForm() {
   // =========================
   // エラー表示用にinput要素も取得（エラー時にis-errorクラスを付与するため）
   // =========================
-  const inputUserId = document.getElementById("userId");
+  const inputPostId = document.getElementById("postId");
   const inputTitle = document.getElementById("title");
   const inputBody = document.getElementById("body");
 
   // =========================
   // input要素のエラー表示をリセット（これが無いとエラー解消してもis-errorがついたままになってしまう）
   // =========================
-  inputUserId.classList.remove("is-error");
+  inputPostId.classList.remove("is-error");
   inputTitle.classList.remove("is-error");
   inputBody.classList.remove("is-error");
 
   // 各input要素下のエラーメッセージ表示用定数を作成
   const errSummary = document.getElementById("errSummary");
-  const errUserId = document.getElementById("errUserId");
+  const errPostId = document.getElementById("errPostId");
   const errTitle = document.getElementById("errTitle");
   const errBody = document.getElementById("errBody");
 
@@ -45,11 +45,11 @@ function validateForm() {
   // エラーメッセージのリセット
   // =========================
   errSummary.innerHTML = "";
-  errUserId.textContent = "";
+  errPostId.textContent = "";
   errTitle.textContent = "";
   errBody.textContent = "";
 
-  errUserId.classList.remove("is-error-text");
+  errPostId.classList.remove("is-error-text");
   errTitle.classList.remove("is-error-text");
   errBody.classList.remove("is-error-text");
 
@@ -59,17 +59,17 @@ function validateForm() {
   const errors = [];
 
   // =========================
-  // userId（任意・整数チェック）
+  // postId（任意・整数チェック）
   // =========================
-  if (userId !== "") {
-    const num = Number(userId);
+  if (postId !== "") {
+    const num = Number(postId);
 
     if (!Number.isInteger(num)) {
-      const msg = "ユーザーIDは整数で入力してください。";
-      errUserId.textContent = msg;
-      errUserId.classList.add("is-error-text");
+      const msg = "投稿IDは整数で入力してください。";
+      errPostId.textContent = msg;
+      errPostId.classList.add("is-error-text");
       errors.push(msg);
-      inputUserId.classList.add("is-error");
+      inputPostId.classList.add("is-error");
       // firstErrorElementがfalseなら
       // （他の要素が先に入ってtrueになっていなければ）
       // FirstErrorElementにこの要素が入り、フォーカスされる仕組み）
@@ -124,7 +124,7 @@ function validateForm() {
   return true;
 }
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   // =========================
   // HTMLに元々ついている機能を無効化
   // =========================
@@ -134,5 +134,11 @@ form.addEventListener("submit", (e) => {
     return; // エラーがあればAPI呼ばない
   }
 
-  console.log("バリデーションOK → API呼び出しへ");
+  // =========================
+  // ④ ここからクエリパラメータ生成
+  // =========================
+  const userId = document.getElementById("userId").value;
+  const postId = document.getElementById("postId").value.trim();
+  const title = document.getElementById("title").value.trim();
+  const body = document.getElementById("body").value.trim();
 });
