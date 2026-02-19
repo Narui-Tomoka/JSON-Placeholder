@@ -163,4 +163,92 @@ form.addEventListener("submit", async (e) => {
   const queryString = params.toString();
 
   console.log("生成されたクエリ", queryString);
+
+  // =========================
+  // ⑤ APIにリクエスト
+  // =========================
+
+  const url = `https://jsonplaceholder.typicode.com/posts?${queryString}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("ネットワークエラー");
+    }
+
+    const data = await response.json();
+
+    console.log("取得データ：", data);
+    // =========================
+    // ⑥ 取得データを使ってDOM生成
+    // =========================
+
+    const resultSection = document.getElementById("resultSection");
+    const resultList = document.getElementById("resultList");
+    const resultTitle = document.getElementById("resultSectionTitle");
+    const resultCaption = document.getElementById("resultSectionCaption");
+
+    // 前回の検索結果をクリア
+    resultList.innerHTML = "";
+
+    // =========================
+    // 検索結果が0件だった場合
+    // =========================
+    if (data.length === 0) {
+      // タイトル変更
+      resultTitle.textContent = "誰もいない道。あなたが最初のひとり。";
+
+      // キャプション変更（<br>があるのでinnerHTML）
+      resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
+    あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
+
+      const emptyItem = document.createElement("li");
+      emptyItem.classList.add("search-result__empty");
+      emptyItem.textContent = "前人未到のルートへ、ようこそ。";
+
+      resultList.appendChild(emptyItem);
+
+      resultSection.hidden = false;
+      return;
+    }
+
+    // =========================
+    // 検索結果が1件以上ある場合
+    // =========================
+
+    // タイトルを通常文に戻す（戻さないと再度の検索でヒットしても0件の文になってしまうバグになるため）
+    resultTitle.textContent = "あなたに届いた絶景たち";
+
+    resultCaption.innerHTML = `条件に合った投稿を一覧表示しています。<br />
+  気になる写真をクリックして、詳細をのぞいてみましょう。`;
+
+    data.forEach((post) => {
+      const li = document.createElement("li");
+      li.classList.add("search-result__item");
+
+      // ランダムな画像で装飾
+      const randomSeed = `${post.id}-${Math.floor(Math.random() * 10000)}`;
+      const imageUrl = `https://picsum.photos/seed/${randomSeed}/400/300`;
+
+      li.innerHTML = `
+    <a href="details.html?id=${post.id}" class="post-card">
+      <div class="image-wrapper">
+        <span class="post-card__id">投稿ID: ${post.id}</span>
+        <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
+      </div>
+      <div class="post-card__content">
+        <h3 class="post-card__title">${post.title}</h3>
+        <p class="post-card__user-id">ユーザー${post.userId}</p>
+        <p class="post-card__body">${post.body}</p>
+      </div>
+    </a>`;
+
+      resultList.appendChild(li);
+    });
+    // section表示
+    resultSection.hidden = false;
+  } catch (error) {
+    console.log("エラー発生", error);
+  }
 });

@@ -103,7 +103,7 @@
     border: 1px solid #aaa;
     border-radius: 30px;
     resize: none;
-    padding: f.sp(8);
+    padding: f.sp(12);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
     &:focus {
       border: 2px solid f.$text-color-1;
