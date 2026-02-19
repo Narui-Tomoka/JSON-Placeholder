@@ -60,23 +60,63 @@
     display: block;
     text-align: left;
   }
-  .search-form__select,
+  .search-form__select {
+    width: 30rem;
+    height: 3.5rem;
+    margin-top: f.sp(4);
+    border: 1px solid #aaa;
+    border-radius: 30px;
+    padding-left: f.sp(8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
+    &:focus {
+      border: 2px solid f.$text-color-1;
+      box-shadow:
+        0 16px 26px rgba(142, 197, 232, 0.2),
+        0 0 0 14px rgba(142, 197, 232, 0.1);
+    }
+  }
   .search-form__input {
     width: 30rem;
     height: 3.5rem;
     margin-top: f.sp(4);
     border: 1px solid #aaa;
-    border-radius: 6px;
+    border-radius: 30px;
     padding-left: f.sp(8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
+    &:focus {
+      border: 2px solid f.$text-color-1;
+      transform: scale(1.05);
+      box-shadow:
+        0 10px 20px rgba(142, 197, 232, 0.2),
+        0 0 0 8px rgba(142, 197, 232, 0.1);
+    }
+    &:focus.is-error {
+      box-shadow:
+        0 10px 20px rgba(244, 162, 97, 0.2),
+        0 0 0 8px rgba(244, 162, 97, 0.1);
+    }
   }
   .search-form__textarea {
     width: 30rem;
     height: 15.6rem;
     margin-top: f.sp(4);
     border: 1px solid #aaa;
-    border-radius: 6px;
+    border-radius: 30px;
     resize: none;
     padding: f.sp(8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
+    &:focus {
+      border: 2px solid f.$text-color-1;
+      transform: scale(1.05);
+      box-shadow:
+        0 10px 20px rgba(142, 197, 232, 0.2),
+        0 0 0 8px rgba(142, 197, 232, 0.1);
+    }
+    &:focus.is-error {
+      box-shadow:
+        0 10px 20px rgba(244, 162, 97, 0.2),
+        0 0 0 8px rgba(244, 162, 97, 0.1);
+    }
   }
   .search-form__optional {
     display: inline-block;
@@ -84,7 +124,7 @@
     color: f.$base-color-1;
     background-color: f.$main-color-2;
     margin-left: f.sp(8);
-    border-radius: 6px;
+    border-radius: 12px;
   }
   .search-form__msg {
     font-size: f.fs(12);
@@ -94,7 +134,7 @@
   .c-button--submit {
     font-size: f.fs(24);
     margin-top: f.sp(16);
-    border-radius: 16px;
+    border-radius: 20px;
   }
   #errSummary {
     scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
