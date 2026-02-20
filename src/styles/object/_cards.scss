@@ -1,0 +1,86 @@
+// section search-resultにあらかじめ用意してあるul要素
+// JSで作った要素をこの子要素として追加する
+.search-result__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+// JSで追加されるli要素
+.search-result__item {
+}
+
+// .search-result__itemの子要素のaタグ
+.post-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 15px 15px 30px 15px; /* 下を広めにしてチェキ風に */
+  box-shadow: 8px 8px 0px #4fa3d1; /* ぼかさないポップな影 */
+  border: 3px solid #2f3e46;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  &:hover {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+// img要素と投稿IDをまとめるdiv
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 正方形で統一 */
+  overflow: hidden;
+  border-radius: 12px;
+  border: 2px solid #2f3e46;
+  text-align: center;
+}
+
+// 画像
+.image-wrapper img {
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  object-fit: cover;
+}
+
+// .image-wrapperの子要素のspanタグ（投稿IDを表示）
+.post-card__id {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #4fa3d1;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: 2px solid #2f3e46;
+  z-index: 1;
+}
+
+// カードの活字部分をまとめる親要素
+.post-card__content {
+  margin-top: 15px;
+}
+
+// 投稿のタイトル
+.post-card__title {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #2f3e46;
+  /* 3行以上は省略する設定 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// 本文
+.post-card__body {
+  color: #2f3e46;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 8px;
+}

@@ -1,6 +1,16 @@
 const form = document.getElementById("searchForm");
 
 // =========================
+// 処理の流れ
+// =========================
+//submitイベント
+// ├ e.preventDefault()
+// ├ validateForm()
+// ├ クエリパラメータ生成
+// ├ fetch
+// └ renderPosts(data)
+
+// =========================
 // バリデーションのための関数
 // =========================
 function validateForm() {
@@ -124,6 +134,77 @@ function validateForm() {
   return true;
 }
 
+function renderPosts(data) {
+  // =========================
+  // ⑥ 取得データを使ってDOM生成
+  // =========================
+
+  const resultSection = document.getElementById("resultSection");
+  const resultList = document.getElementById("resultList");
+  const resultTitle = document.getElementById("resultSectionTitle");
+  const resultCaption = document.getElementById("resultSectionCaption");
+
+  // 前回の検索結果をクリア
+  resultList.innerHTML = "";
+
+  // =========================
+  // 検索結果が0件だった場合
+  // =========================
+  if (data.length === 0) {
+    // タイトル変更
+    resultTitle.textContent = "誰もいない道。あなたが最初のひとり。";
+
+    // キャプション変更（<br>があるのでinnerHTML）
+    resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
+    あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
+
+    const emptyItem = document.createElement("li");
+    emptyItem.classList.add("search-result__empty");
+    emptyItem.textContent = "前人未到のルートへ、ようこそ。";
+
+    resultList.appendChild(emptyItem);
+
+    resultSection.hidden = false;
+    return;
+  }
+
+  // =========================
+  // 検索結果が1件以上ある場合
+  // =========================
+
+  // タイトルを通常文に戻す（戻さないと再度の検索でヒットしても0件の文になってしまうバグになるため）
+  resultTitle.textContent = "あなたに届いた絶景たち";
+
+  resultCaption.innerHTML = `条件に合った投稿を一覧表示しています。<br />
+  気になる写真をクリックして、詳細をのぞいてみましょう。`;
+
+  data.forEach((post) => {
+    const li = document.createElement("li");
+    li.classList.add("search-result__item");
+
+    // ランダムな画像で装飾
+    const randomSeed = `${post.id}-${Math.floor(Math.random() * 10000)}`;
+    const imageUrl = `https://picsum.photos/seed/${randomSeed}/400/300`;
+
+    li.innerHTML = `
+    <a href="details.html?id=${post.id}" class="post-card">
+      <div class="image-wrapper">
+        <span class="post-card__id">投稿ID: ${post.id}</span>
+        <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
+      </div>
+      <div class="post-card__content">
+        <h3 class="post-card__title">${post.title}</h3>
+        <p class="post-card__user-id">ユーザー${post.userId}</p>
+        <p class="post-card__body">${post.body}</p>
+      </div>
+    </a>`;
+
+    resultList.appendChild(li);
+  });
+  // section表示
+  resultSection.hidden = false;
+}
+
 form.addEventListener("submit", async (e) => {
   // =========================
   // HTMLに元々ついている機能を無効化
@@ -178,77 +259,79 @@ form.addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-
-    console.log("取得データ：", data);
-    // =========================
-    // ⑥ 取得データを使ってDOM生成
-    // =========================
-
-    const resultSection = document.getElementById("resultSection");
-    const resultList = document.getElementById("resultList");
-    const resultTitle = document.getElementById("resultSectionTitle");
-    const resultCaption = document.getElementById("resultSectionCaption");
-
-    // 前回の検索結果をクリア
-    resultList.innerHTML = "";
-
-    // =========================
-    // 検索結果が0件だった場合
-    // =========================
-    if (data.length === 0) {
-      // タイトル変更
-      resultTitle.textContent = "誰もいない道。あなたが最初のひとり。";
-
-      // キャプション変更（<br>があるのでinnerHTML）
-      resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
-    あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
-
-      const emptyItem = document.createElement("li");
-      emptyItem.classList.add("search-result__empty");
-      emptyItem.textContent = "前人未到のルートへ、ようこそ。";
-
-      resultList.appendChild(emptyItem);
-
-      resultSection.hidden = false;
-      return;
-    }
-
-    // =========================
-    // 検索結果が1件以上ある場合
-    // =========================
-
-    // タイトルを通常文に戻す（戻さないと再度の検索でヒットしても0件の文になってしまうバグになるため）
-    resultTitle.textContent = "あなたに届いた絶景たち";
-
-    resultCaption.innerHTML = `条件に合った投稿を一覧表示しています。<br />
-  気になる写真をクリックして、詳細をのぞいてみましょう。`;
-
-    data.forEach((post) => {
-      const li = document.createElement("li");
-      li.classList.add("search-result__item");
-
-      // ランダムな画像で装飾
-      const randomSeed = `${post.id}-${Math.floor(Math.random() * 10000)}`;
-      const imageUrl = `https://picsum.photos/seed/${randomSeed}/400/300`;
-
-      li.innerHTML = `
-    <a href="details.html?id=${post.id}" class="post-card">
-      <div class="image-wrapper">
-        <span class="post-card__id">投稿ID: ${post.id}</span>
-        <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
-      </div>
-      <div class="post-card__content">
-        <h3 class="post-card__title">${post.title}</h3>
-        <p class="post-card__user-id">ユーザー${post.userId}</p>
-        <p class="post-card__body">${post.body}</p>
-      </div>
-    </a>`;
-
-      resultList.appendChild(li);
-    });
-    // section表示
-    resultSection.hidden = false;
+    renderPosts(data);
   } catch (error) {
     console.log("エラー発生", error);
   }
 });
+
+// =========================
+// 開発用ダミーデータ（スタイル調整用）
+// =========================
+const dummyData = [
+  {
+    id: 101,
+    title: "開発用ダミー投稿",
+    body: "スタイル調整のためのテキストです。",
+    userId: 1,
+  },
+  {
+    id: 102,
+    title: "保存しても消えない",
+    body: "これでカードのデザインが書きやすくなります。",
+    userId: 2,
+  },
+  {
+    id: 103,
+    title: "なんとも便利！",
+    body: "開発環境でのみ実行されるなんて！",
+    userId: 3,
+  },
+  {
+    id: 104,
+    title: "コードの理解は大変だけど",
+    body: "動くと楽しいね！",
+    userId: 4,
+  },
+  {
+    id: 105,
+    title: "一連の処理をひとつの関数にするのではなく",
+    body: "分離しておくとわかりやすくメンテしやすいです",
+    userId: 5,
+  },
+  {
+    id: 106,
+    title: "JSON Placeholderさんありがとう",
+    body: "Lorem Picsumさんにもありがとう",
+    userId: 6,
+  },
+  {
+    id: 103,
+    title: "Webデザイナー研修",
+    body: "こんなに面白いとは思いませんでした",
+    userId: 7,
+  },
+  {
+    id: 108,
+    title: "周りを大切にするために",
+    body: "まずは自分の心を満タンにしよう",
+    userId: 8,
+  },
+  {
+    id: 109,
+    title: "通勤の必需品",
+    body: "耳栓があるとストレスが減るのでおすすめです",
+    userId: 9,
+  },
+  {
+    id: 110,
+    title: "新しいキーボード",
+    body: "入力が楽で光るのが楽しいです",
+    userId: 10,
+  },
+];
+
+// 開発環境でのみ表示
+if (import.meta.env.DEV) {
+  renderPosts(dummyData);
+}
