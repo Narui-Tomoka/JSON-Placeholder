@@ -1,10 +1,11 @@
+@use "../foundation/" as f;
 // section search-resultにあらかじめ用意してあるul要素
 // JSで作った要素をこの子要素として追加する
 .search-result__list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
-  padding: 20px;
+  gap: 3rem;
+  padding: f.sp(18);
 }
 
 // JSで追加されるli要素
@@ -15,9 +16,9 @@
 .post-card {
   background: #fff;
   border-radius: 20px;
-  padding: 15px 15px 30px 15px; /* 下を広めにしてチェキ風に */
+  padding: f.fs(16) f.fs(16) f.fs(32) f.fs(16); /* 下を広めにしてチェキ風に */
   box-shadow: 8px 8px 0px #4fa3d1; /* ぼかさないポップな影 */
-  border: 3px solid #2f3e46;
+  border: 2px solid f.$text-color-2;
   transition: transform 0.2s ease;
   cursor: pointer;
   position: relative;
@@ -33,7 +34,7 @@
   aspect-ratio: 1 / 1; /* 正方形で統一 */
   overflow: hidden;
   border-radius: 12px;
-  border: 2px solid #2f3e46;
+  border: 2px solid f.$text-color-2;
   text-align: center;
 }
 
@@ -42,7 +43,6 @@
   width: 100%;
   max-width: 350px;
   height: 100%;
-  object-fit: cover;
 }
 
 // .image-wrapperの子要素のspanタグ（投稿IDを表示）
@@ -50,26 +50,26 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #4fa3d1;
-  color: white;
-  padding: 4px 12px;
+  background: f.$main-color-2;
+  color: f.$base-color-1;
+  padding: 0.4rem 1.2rem;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 0.8rem;
-  border: 2px solid #2f3e46;
+  font-size: f.fs(14);
+  border: 2px solid f.$text-color-2;
   z-index: 1;
 }
 
 // カードの活字部分をまとめる親要素
 .post-card__content {
-  margin-top: 15px;
+  margin-top: f.sp(16);
 }
 
 // 投稿のタイトル
 .post-card__title {
-  font-size: 1.1rem;
+  font-size: f.fs(18);
   line-height: 1.4;
-  color: #2f3e46;
+  color: f.$text-color-2;
   /* 3行以上は省略する設定 */
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -77,10 +77,14 @@
   overflow: hidden;
 }
 
+.post-card__user-id {
+  margin-top: f.sp(8);
+}
+
 // 本文
 .post-card__body {
-  color: #2f3e46;
-  font-size: 0.9rem;
+  color: f.$text-color-2;
+  font-size: f.fs(16);
   font-weight: bold;
-  margin-top: 8px;
+  margin-top: f.sp(8);
 }

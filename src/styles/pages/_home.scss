@@ -139,4 +139,10 @@
   #errSummary {
     scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
   }
+
+  // section search-result
+  .search-result {
+    background-color: f.$base-color-1;
+    padding: f.sp(104) 0;
+  }
 }

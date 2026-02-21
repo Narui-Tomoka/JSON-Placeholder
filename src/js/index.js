@@ -261,7 +261,26 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
     renderPosts(data);
   } catch (error) {
-    console.log("エラー発生", error);
+    console.error("一覧取得エラー", error);
+
+    const resultSection = document.getElementById("resultSection");
+    const resultList = document.getElementById("resultList");
+    const resultTitle = document.getElementById("resultSectionTitle");
+    const resultCaption = document.getElementById("resultSectionCaption");
+
+    resultList.innerHTML = "";
+
+    resultTitle.textContent = "申し訳ありません";
+    resultCaption.innerHTML =
+      "一覧の取得に失敗しました。<br />時間をおいて再度お試しください。";
+
+    const errorItem = document.createElement("li");
+    errorItem.classList.add("search-result__error");
+    errorItem.textContent = "ネットワークエラーが発生しました。";
+
+    resultList.appendChild(errorItem);
+
+    resultSection.hidden = false;
   }
 });
 
@@ -331,7 +350,10 @@ const dummyData = [
   },
 ];
 
-// 開発環境でのみ表示
+// =========================
+// 開発環境でのみ表示 npm run devの時のみ実行
+// =========================
+
 if (import.meta.env.DEV) {
   renderPosts(dummyData);
 }
