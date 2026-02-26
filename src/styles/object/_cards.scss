@@ -7,6 +7,13 @@
   gap: 3rem;
   padding: f.sp(18);
 }
+// 「 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));」について
+// repeat()の第一引数は繰り返す数
+//（auto-fillなので要素があるだけ入れていく）
+// 第二引数は要素の大きさ。
+// minmax(280px, 1fr)なので最小280pxを守りながら
+// 一行に入るだけ並べていく。
+// 入りきらなければ次の行に入れていく。
 
 // JSで追加されるli要素
 .search-result__item {
@@ -22,7 +29,7 @@
   transition: transform 0.2s ease;
   cursor: pointer;
   position: relative;
-  &:hover {
+  @include f.hover {
     transform: translateY(-5px) rotate(2deg);
   }
 }

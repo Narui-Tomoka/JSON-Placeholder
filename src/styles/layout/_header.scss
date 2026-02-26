@@ -36,6 +36,12 @@
   }
 }
 
+.header__nav--left {
+  @include f.mq(md) {
+    display: none;
+  }
+}
+
 .header__nav--right {
   display: flex;
   a {

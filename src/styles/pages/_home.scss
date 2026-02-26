@@ -240,6 +240,9 @@
     //   flex-direction: column;
     //   justify-content: space-between;
     // }
+    @include f.mq(sm) {
+      flex-direction: column;
+    }
     .features-card__text {
       width: 50%;
       @include f.mq(md) {
@@ -267,15 +270,24 @@
     @include f.mq(lg) {
       flex-direction: row;
     }
+    @include f.mq(sm) {
+      flex-direction: column;
+    }
     .features-card__text {
       width: 100%;
       @include f.mq(lg) {
         width: 50%;
       }
+      @include f.mq(sm) {
+        width: 100%;
+      }
     }
     .features-card__image {
       @include f.mq(lg) {
         width: 50%;
+      }
+      @include f.mq(sm) {
+        width: 100%;
       }
       img {
         width: 100%;

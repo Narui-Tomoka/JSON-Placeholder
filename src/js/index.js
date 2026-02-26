@@ -416,14 +416,14 @@ const dummyData = [
   },
   {
     id: 106,
-    title: "JSON Placeholderさんありがとう",
-    body: "Lorem Picsumさんにもありがとう",
+    title: "JSON Placeholder すごい！",
+    body: "Lorem Picsum の画像いいね！",
     userId: 6,
   },
   {
     id: 107,
     title: "Webデザイナー研修",
-    body: "こんなに面白いとは思いませんでした",
+    body: "めっちゃおもろいやん！",
     userId: 7,
   },
   {
