@@ -16,8 +16,8 @@
 .post-card {
   background: #fff;
   border-radius: 20px;
-  padding: f.fs(16) f.fs(16) f.fs(32) f.fs(16); /* 下を広めにしてチェキ風に */
-  box-shadow: 8px 8px 0px #4fa3d1; /* ぼかさないポップな影 */
+  padding: f.sp(16) f.sp(16) f.sp(32) f.sp(16); /* 下を広めにしてチェキ風に */
+  box-shadow: 8px 8px 0px f.$main-color-1; /* ぼかさないポップな影 */
   border: 2px solid f.$text-color-2;
   transition: transform 0.2s ease;
   cursor: pointer;
@@ -67,18 +67,20 @@
 
 // 投稿のタイトル
 .post-card__title {
+  margin-top: f.sp(8);
   font-size: f.fs(18);
   line-height: 1.4;
   color: f.$text-color-2;
   /* 3行以上は省略する設定 */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .post-card__user-id {
-  margin-top: f.sp(8);
 }
 
 // 本文
@@ -87,4 +89,10 @@
   font-size: f.fs(16);
   font-weight: bold;
   margin-top: f.sp(8);
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }

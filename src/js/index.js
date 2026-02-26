@@ -7,8 +7,28 @@ const form = document.getElementById("searchForm");
 // ├ e.preventDefault()
 // ├ validateForm()
 // ├ クエリパラメータ生成
-// ├ fetch
-// └ renderPosts(data)
+// ├ fetch → 条件に合うものを全件取得
+// ├ currentPage を管理
+// ├ 配列を slice して10件だけ渡す
+// └ renderPosts(現在のページ分)
+
+// 今回実装するのは「APIページネーションではなくクライアント側でのページネーション」
+// 「状態管理型ページネーション」というらしい
+const LIMIT = 10; // 10件まで表示
+let currentPage = 1; // 現在のページ
+let allPosts = []; // 全検索結果保存用
+
+// =========================
+// DOMキャッシュ（複数回使う要素はファイル上部にまとめて書くと毎回取得しなくていい）
+// =========================
+const resultSection = document.getElementById("resultSection");
+const resultList = document.getElementById("resultList");
+const resultTitle = document.getElementById("resultSectionTitle");
+const resultCaption = document.getElementById("resultSectionCaption");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const pageInfo = document.getElementById("pageInfo");
 
 // =========================
 // バリデーションのための関数
@@ -134,16 +154,80 @@ function validateForm() {
   return true;
 }
 
+function renderPage() {
+  const totalPosts = allPosts.length;
+  const totalPages = Math.ceil(totalPosts / LIMIT); // 小数点以下切り上げ
+
+  // =========================
+  // 検索結果0件
+  // =========================
+  if (totalPosts === 0) {
+    renderPosts([]); // renderPosts の中のif (data.length === 0)につながる
+    pageInfo.textContent = "0 / 0";
+
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+
+    return;
+  }
+
+  // =========================
+  // 現在のページのデータを切り出す
+  // =========================
+  const start = (currentPage - 1) * LIMIT;
+  const end = start + LIMIT;
+
+  const paginatedData = allPosts.slice(start, end);
+
+  renderPosts(paginatedData);
+
+  // =========================
+  // ページ情報更新
+  // =========================
+  pageInfo.textContent = `${currentPage} / ${totalPages}`;
+
+  // =========================
+  // ボタンの制御
+  // =========================
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
+}
+
+// =========================
+// 検索結果が0件だった場合
+// =========================
+function renderEmpty() {
+  resultList.innerHTML = "";
+
+  resultTitle.textContent = "誰もいない道。あなたが最初のひとり。";
+  // キャプション変更（<br>があるのでinnerHTML）
+  resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
+    あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
+  const emptyItem = document.createElement("li");
+  emptyItem.classList.add("search-result__empty");
+  emptyItem.textContent = "前人未到のルートへ、ようこそ。";
+
+  resultList.appendChild(emptyItem);
+
+  resultSection.hidden = false;
+}
+
+// =========================
+// renderPageのイメージ図
+// =========================
+// renderPage()
+//    ↓
+// renderPosts(data)
+
+// renderPosts()
+//   ├ data.length === 0 → renderEmpty()
+//   └ それ以外 → 通常描画
+
+// catch内
+//   └ renderError()
+// ＜＜イメージ図ここまで＞＞
+
 function renderPosts(data) {
-  // =========================
-  // ⑥ 取得データを使ってDOM生成
-  // =========================
-
-  const resultSection = document.getElementById("resultSection");
-  const resultList = document.getElementById("resultList");
-  const resultTitle = document.getElementById("resultSectionTitle");
-  const resultCaption = document.getElementById("resultSectionCaption");
-
   // 前回の検索結果をクリア
   resultList.innerHTML = "";
 
@@ -151,20 +235,7 @@ function renderPosts(data) {
   // 検索結果が0件だった場合
   // =========================
   if (data.length === 0) {
-    // タイトル変更
-    resultTitle.textContent = "誰もいない道。あなたが最初のひとり。";
-
-    // キャプション変更（<br>があるのでinnerHTML）
-    resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
-    あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
-
-    const emptyItem = document.createElement("li");
-    emptyItem.classList.add("search-result__empty");
-    emptyItem.textContent = "前人未到のルートへ、ようこそ。";
-
-    resultList.appendChild(emptyItem);
-
-    resultSection.hidden = false;
+    renderEmpty();
     return;
   }
 
@@ -173,7 +244,7 @@ function renderPosts(data) {
   // =========================
 
   // タイトルを通常文に戻す（戻さないと再度の検索でヒットしても0件の文になってしまうバグになるため）
-  resultTitle.textContent = "あなたに届いた絶景たち";
+  resultTitle.textContent = "あなたに届いた絶景の数々";
 
   resultCaption.innerHTML = `条件に合った投稿を一覧表示しています。<br />
   気になる写真をクリックして、詳細をのぞいてみましょう。`;
@@ -184,7 +255,7 @@ function renderPosts(data) {
 
     // ランダムな画像で装飾
     const randomSeed = `${post.id}-${Math.floor(Math.random() * 10000)}`;
-    const imageUrl = `https://picsum.photos/seed/${randomSeed}/400/300`;
+    const imageUrl = `https://picsum.photos/seed/${randomSeed}/1320`; // 画像が1列になる画面幅 * 2 を目安にしている
 
     li.innerHTML = `
     <a href="details.html?id=${post.id}" class="post-card">
@@ -193,8 +264,8 @@ function renderPosts(data) {
         <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
       </div>
       <div class="post-card__content">
-        <h3 class="post-card__title">${post.title}</h3>
         <p class="post-card__user-id">ユーザー${post.userId}</p>
+        <h3 class="post-card__title">${post.title}</h3>
         <p class="post-card__body">${post.body}</p>
       </div>
     </a>`;
@@ -203,6 +274,28 @@ function renderPosts(data) {
   });
   // section表示
   resultSection.hidden = false;
+}
+// =========================
+// submitの中のcatch部分を関数化
+// =========================
+function renderError() {
+  resultList.innerHTML = "";
+
+  resultTitle.textContent = "申し訳ありません";
+  resultCaption.innerHTML =
+    "一覧の取得に失敗しました。<br />時間をおいて再度お試しください。";
+
+  const errorItem = document.createElement("li");
+  errorItem.classList.add("search-result__error");
+  errorItem.textContent = "ネットワークエラーが発生しました。";
+
+  resultList.appendChild(errorItem);
+  resultSection.hidden = false;
+
+  // ページネーションも止める
+  prevBtn.disabled = true;
+  nextBtn.disabled = true;
+  pageInfo.textContent = "- / -";
 }
 
 form.addEventListener("submit", async (e) => {
@@ -259,28 +352,31 @@ form.addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-    renderPosts(data);
+    allPosts = data;
+    currentPage = 1;
+
+    renderPage();
   } catch (error) {
     console.error("一覧取得エラー", error);
+  }
+});
 
-    const resultSection = document.getElementById("resultSection");
-    const resultList = document.getElementById("resultList");
-    const resultTitle = document.getElementById("resultSectionTitle");
-    const resultCaption = document.getElementById("resultSectionCaption");
+// =========================
+// ボタンの動き
+// =========================
 
-    resultList.innerHTML = "";
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderPage();
+  }
+});
 
-    resultTitle.textContent = "申し訳ありません";
-    resultCaption.innerHTML =
-      "一覧の取得に失敗しました。<br />時間をおいて再度お試しください。";
-
-    const errorItem = document.createElement("li");
-    errorItem.classList.add("search-result__error");
-    errorItem.textContent = "ネットワークエラーが発生しました。";
-
-    resultList.appendChild(errorItem);
-
-    resultSection.hidden = false;
+nextBtn.addEventListener("click", () => {
+  const totalPages = Math.ceil(allPosts.length / LIMIT);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderPage();
   }
 });
 
@@ -325,7 +421,7 @@ const dummyData = [
     userId: 6,
   },
   {
-    id: 103,
+    id: 107,
     title: "Webデザイナー研修",
     body: "こんなに面白いとは思いませんでした",
     userId: 7,
@@ -348,6 +444,12 @@ const dummyData = [
     body: "入力が楽で光るのが楽しいです",
     userId: 10,
   },
+  {
+    id: 111,
+    title: "2ページ目",
+    body: "ちゃんと動いた！",
+    userId: 10,
+  },
 ];
 
 // =========================
@@ -355,5 +457,7 @@ const dummyData = [
 // =========================
 
 if (import.meta.env.DEV) {
-  renderPosts(dummyData);
+  allPosts = dummyData;
+  currentPage = 1;
+  renderPage();
 }

@@ -1,12 +1,5 @@
 // 再利用するスタイルの“型”
-
-// 書くもの例
-// @mixin mq($size) {
-//   @media (max-width: $size) {
-//     @content;
-//   }
-// }
-
+@use "../foundation/variables" as vars;
 @use "sass:map";
 
 @mixin hover {
@@ -16,7 +9,6 @@
     }
   }
 }
-
 // ↑使い方例
 // .head .head-sns_link a {
 //   @include hover {
@@ -27,3 +19,14 @@
 // ==========================================================================
 // メディアクエリ（ブレイクポイント用）
 // ==========================================================================
+
+@mixin mq($breakpoint) {
+  @media #{map.get(vars.$breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// 書き方 (セレクタ内に書く)
+//  @include mix.mq(tab) {
+// ここにスタイルを書く
+//   }

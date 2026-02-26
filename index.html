@@ -153,24 +153,29 @@
       </section>
 
       <section id="resultSection" class="search-result" hidden>
-        <div class="search-result__inner l-inner">
+        <div class="search-result__inner l-result-inner">
           <h2
             id="resultSectionTitle"
             class="section__title u-text-center zen-b"
           >
-            あなたに届いた絶景たち
+            あなたに届いた絶景の数々
           </h2>
           <p id="resultSectionCaption" class="section__sub-title u-text-center">
             条件に合った投稿を一覧表示しています。<br />
             気になる写真をクリックして、詳細をのぞいてみましょう。
           </p>
           <ul id="resultList" class="search-result__list"></ul>
+          <!-- ページネーション -->
+          <nav class="pagination u-text-center">
+            <button class="prev-btn" id="prevBtn">prev</button>
+            <span class="page-info" id="pageInfo"></span>
+            <button class="next-btn" id="nextBtn">next</button>
+          </nav>
         </div>
       </section>
 
       <section id="features" class="features">
         <div class="features__inner l-inner">
-          <p class="features__label">FEATURE</p>
           <h2 class="section__title u-text-center zen-b">
             走った軌跡が、宝物になる。
           </h2>
@@ -179,51 +184,61 @@
             写真とルートが連動するから、スマホをなぞるだけであの時の風が蘇ります。
           </p>
 
-          <div class="features__list">
-            <article class="feature-card">
-              <div class="feature-card__content">
-                <p class="feature-card__label">検索</p>
-                <h3 class="feature-card__title">
+          <div class="features__card-container">
+            <article class="features-card features-card--big">
+              <div class="features-card__text">
+                <p class="features-card__label">検索</p>
+                <h3 class="features-card__title">
                   ドライバー専用のスマート検索
                 </h3>
-                <p class="feature-card__text">
+                <p class="features-card__caption">
                   目的地だけじゃない。通ったルートや立ち寄ったSAまで。<br />
                   「あの景色のいい道」をピンポイントで引き出し、次のドライブの計画もスムーズに。
                 </p>
-                <span class="feature-card__more">詳細</span>
+                <a href="#" class="features-card__more">詳細</a>
               </div>
-              <div class="feature-card__image">
-                <img src="" alt="思い出の写真" />
+              <div class="features-card__image">
+                <img
+                  class="features-img1"
+                  src="src/images/sui3.png"
+                  alt="思い出の写真"
+                />
               </div>
             </article>
-
-            <article class="feature-card feature-card--small">
-              <div class="feature-card__content">
-                <p class="feature-card__label">記録</p>
-                <h3 class="feature-card__title">地図でつながる共有アルバム</h3>
-                <p class="feature-card__text">
+            <article class="features-card features-card--small itemB">
+              <div class="features-card__text">
+                <p class="features-card__label">記録</p>
+                <h3 class="features-card__title">地図でつながる共有アルバム</h3>
+                <p class="features-card__caption">
                   「ここ、楽しかったね！」がもっとリアルに。<br />
                   地図上にプロットされた写真が、あなたと大切な人の記憶を一本の道でつなぎます。
                 </p>
-                <span class="feature-card__more">始める</span>
+                <a href="#" class="features-card__more">始める</a>
               </div>
-              <div class="feature-card__image">
-                <img src="" alt="思い出の写真" />
+              <div class="features-card__image">
+                <img
+                  class="features-img2"
+                  src="src/images/kakeru3.png"
+                  alt="思い出の写真"
+                />
               </div>
             </article>
-
-            <article class="feature-card feature-card--small">
-              <div class="feature-card__content">
-                <p class="feature-card__label">共有</p>
-                <h3 class="feature-card__title">絆が深まる「共創レポ」</h3>
-                <p class="feature-card__text">
+            <article class="features-card features-card--small itemC">
+              <div class="features-card__text">
+                <p class="features-card__label">共有</p>
+                <h3 class="features-card__title">絆が深まる「共創レポ」</h3>
+                <p class="features-card__caption">
                   友人との合同ツーリングも、これ一つで。<br />
                   お互いの視点を一つの地図に集めて、世界に一つだけの「旅の軌跡」を完成させましょう。
                 </p>
-                <span class="feature-card__more">シェア</span>
+                <a href="#" class="features-card__more">シェア</a>
               </div>
-              <div class="feature-card__image">
-                <img src="" alt="思い出の写真" />
+              <div class="features-card__image">
+                <img
+                  class="features-img3"
+                  src="src/images/yuri5.png"
+                  alt="思い出の写真"
+                />
               </div>
             </article>
           </div>
@@ -243,7 +258,24 @@
           <div class="testimonials__list">
             <div class="testimonial-card">
               <p class="testimonial-card__text">
-                「雪を甘く見て箱根に車で行き、立ち往生に巻き込まれました。僕の車はスタッドレス履いてたのに…。このアプリのおかげでそんな思い出も忘れません。」
+                友達と榛名までドライブした時の写真をシェアしたら、みんなの反応が良くてなっから嬉しい！お気に入りのスポットを共有できるから、次の週末がもっと楽しみになるね。BRZの助手席に座っているみたいな臨場感で思い出を語れるのが最高。みんなも絶対使ってみて！
+              </p>
+              <div class="testimonial-card__user">
+                <div class="testimonial-card__avatar">
+                  <img src="" alt="水平 優里" />
+                </div>
+                <div class="testimonial-card__info">
+                  <span class="testimonial-card__name">水平 優里</span>
+                  <span class="testimonial-card__position"
+                    >ライフスタイル・デジタルクリエイター</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-card__text">
+                自分から誘うのは苦手ですが、アプリを通じて友人のドライブ記録を眺めるのが日課です。僕が整備した車が元気に走っている姿を見ると、裏方として救われる気持ちになります。言葉にしなくても『また行こう』と伝わる、僕にとって大切な居場所です。
               </p>
               <div class="testimonial-card__user">
                 <div class="testimonial-card__avatar">
@@ -258,8 +290,7 @@
 
             <div class="testimonial-card">
               <p class="testimonial-card__text">
-                「どう？私のアストンマーティン、素敵でしょ？
-                愛車と一緒に駆け抜けるワインディングロードは最高！先行車がいると嬉しくて追いかけてしまうわ！」
+                一人で走るのもいいけど、やっぱり美味しいバラ焼きはみんなと食べたいじゃない？このアプリのおかげで、走った後の合流がすごくスムーズになったの。思い出の写真を地図に残せるのもお気に入り。私の大切な仲間との『道』が形になる、素敵なアプリね！
               </p>
               <div class="testimonial-card__user">
                 <div class="testimonial-card__avatar">
@@ -268,7 +299,7 @@
                 <div class="testimonial-card__info">
                   <span class="testimonial-card__name">八甲田 翠</span>
                   <span class="testimonial-card__position"
-                    >チームHakkoda 専属ドライバー</span
+                    >Frost Jade エースドライバー</span
                   >
                 </div>
               </div>
@@ -276,8 +307,25 @@
 
             <div class="testimonial-card">
               <p class="testimonial-card__text">
-                「定時で帰って見た藤の花はサイコーだったぜ！
-                ショーン先生との記念写真も載せたから見てくれよな！」
+                走行ルートの共有機能は、チームの動態管理において極めて合理的だ。渋滞や路面状況を予測するコストが大幅に削減された。……まあ、八甲田の連中に不意打ちで囲まれるという脆弱性はあるが、ビジネスツールとしての完成度は認めざるを得ないな。
+              </p>
+              <div class="testimonial-card__user">
+                <div class="testimonial-card__avatar">
+                  <img src="" alt="三戸 豪" />
+                </div>
+                <div class="testimonial-card__info">
+                  <span class="testimonial-card__name">三戸 豪</span>
+                  <span class="testimonial-card__position"
+                    >三戸海運 二代目社長</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-card__text">
+                定時で帰って見た藤の花はサイコーだったぜ！
+                ショーン先生との記念写真も載せたから見てくれよな！
               </p>
               <div class="testimonial-card__user">
                 <div class="testimonial-card__avatar">

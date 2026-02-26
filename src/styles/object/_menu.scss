@@ -1,0 +1,31 @@
+@use "../foundation/" as f;
+
+.pagination {
+  margin-top: f.sp(32);
+}
+
+.prev-btn,
+.next-btn {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  border: f.$main-color-2 solid 1px;
+  border-radius: 50%;
+  color: f.$text-color-2;
+  background-color: f.$base-color-1;
+  transition: all 0.3s ease;
+  &:not(:disabled):hover {
+    color: f.$base-color-1;
+    background-color: f.$main-color-2;
+    border-color: f.$text-color-1;
+  }
+}
+.prev-btn:disabled,
+.next-btn:disabled {
+  color: #aaa;
+}
+
+.page-info {
+  margin-right: f.sp(4);
+  margin-left: f.sp(4);
+}
