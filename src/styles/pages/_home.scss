@@ -154,28 +154,97 @@
     background-color: f.$base-color-2;
     padding: f.sp(104) 0;
   }
+
   .features__card-container {
     margin-top: f.sp(32);
     display: flex;
     gap: f.sp(32);
+
     @include f.mq(lg) {
       flex-direction: column;
       flex: 1 0 auto;
     }
   }
+
+  // 全カード共通の基本設定
   .features-card {
     border: 1px solid f.$text-color-2;
     border-radius: 16px;
     background-color: f.$base-color-1;
     overflow: hidden;
+    display: flex; // 基本をフレックスに
+    justify-content: space-between;
+
+    // 【1024px以下】 大小どちらも横並びに統一
+    @include f.mq(lg) {
+      flex-direction: row;
+    }
+
+    // 【576px以下】 大小どちらも縦並びに統一
+    @include f.mq(sm) {
+      flex-direction: column;
+    }
   }
+
   .features-card__text {
     padding: f.sp(8);
     line-height: 1.5;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 50%; // デフォルトは半分
+
+    @include f.mq(sm) {
+      width: 100%;
+    }
   }
+
+  .features-card__image {
+    width: 50%; // デフォルトは半分
+
+    @include f.mq(sm) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 3 / 2;
+    }
+  }
+
+  // 個別スタイルの上書き
+  .features-card--big {
+  }
+
+  .features-card--small {
+    // 1025px以上のみ縦並びにする
+    flex-direction: column;
+
+    .features-card__text,
+    .features-card__image {
+      width: 100%; // 1025px以上では全幅
+    }
+
+    // 1024px以下になったら横並び（50%）に戻す
+    @include f.mq(lg) {
+      flex-direction: row;
+      .features-card__text,
+      .features-card__image {
+        width: 50%;
+      }
+    }
+
+    // 576px以下になったら再度縦並び（100%）
+    @include f.mq(sm) {
+      flex-direction: column;
+      .features-card__text,
+      .features-card__image {
+        width: 100%;
+      }
+    }
+  }
+
   .features-card__label {
     font-size: f.fs(16);
     line-height: 1.5;
@@ -221,79 +290,14 @@
       right: 0;
     }
   }
-  .features-img2 {
-    object-position: 50% 10%;
-  }
+
+  .features-img2,
   .features-img3 {
     object-position: 50% 10%;
   }
   .features-img1 {
     @include f.mq(lg) {
       object-position: 50% 5%;
-    }
-  }
-  // 大・小コンテナ固有のスタイル
-  .features-card--big {
-    display: flex;
-    justify-content: space-between;
-    // @include f.mq(md) {
-    //   flex-direction: column;
-    //   justify-content: space-between;
-    // }
-    @include f.mq(sm) {
-      flex-direction: column;
-    }
-    .features-card__text {
-      width: 50%;
-      @include f.mq(md) {
-        width: 100%;
-      }
-    }
-    .features-card__image {
-      width: 50%;
-      @include f.mq(md) {
-        width: 100%;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        @include f.mq(lg) {
-          aspect-ratio: 3 / 2;
-        }
-      }
-    }
-  }
-  .features-card--small {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    @include f.mq(lg) {
-      flex-direction: row;
-    }
-    @include f.mq(sm) {
-      flex-direction: column;
-    }
-    .features-card__text {
-      width: 100%;
-      @include f.mq(lg) {
-        width: 50%;
-      }
-      @include f.mq(sm) {
-        width: 100%;
-      }
-    }
-    .features-card__image {
-      @include f.mq(lg) {
-        width: 50%;
-      }
-      @include f.mq(sm) {
-        width: 100%;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 3 / 2;
-      }
     }
   }
 
