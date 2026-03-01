@@ -134,7 +134,7 @@
   .c-button--submit {
     font-size: f.fs(24);
     margin-top: f.sp(16);
-    border-radius: 20px;
+    border-radius: 35px;
   }
   #errSummary {
     scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
@@ -359,10 +359,12 @@
   }
   .testimonials-card__name {
     display: block;
+    font-size: f.fs(18);
   }
   .testimonials-card__position {
     display: block;
     margin-top: f.sp(8);
+    line-height: 1.2;
   }
 
   // section gallery
@@ -413,5 +415,17 @@
     .c-button--primary {
       margin-right: f.sp(16);
     }
+  }
+
+  // section faq
+  .faq {
+    background-color: f.$base-color-2;
+    padding: f.sp(104) 0;
+  }
+
+  // section contact
+  .contact {
+    background-color: f.$base-color-1;
+    padding: f.sp(104) 0;
   }
 }

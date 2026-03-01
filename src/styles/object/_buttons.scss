@@ -8,14 +8,26 @@
   border-radius: 30px;
   display: inline-block;
   font-size: f.fs(16);
+  transition: all 0.3s ease;
+  @include f.hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .c-button--primary {
   background-color: f.$main-color-2; // 濃いめの青
   color: f.$base-color-1;
+  transition: all 0.3s ease;
+  @include f.hover {
+    background-color: lighten(f.$main-color-2, 10%);
+  }
 }
 
 .c-button--secondary {
   background-color: f.$base-color-1;
   color: f.$text-color-2;
+  transition: all 0.3s ease;
+  @include f.hover {
+    background-color: darken(f.$base-color-1, 10%);
+  }
 }

@@ -48,7 +48,6 @@
 // 画像
 .image-wrapper img {
   width: 100%;
-  max-width: 350px;
   height: 100%;
 }
 
@@ -78,7 +77,7 @@
   font-size: f.fs(18);
   line-height: 1.4;
   color: f.$text-color-2;
-  /* 3行以上は省略する設定 */
+  /* 2行以上は省略する設定 */
   overflow: hidden;
   white-space: nowrap;
   overflow: hidden;
