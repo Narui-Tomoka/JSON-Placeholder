@@ -4,7 +4,6 @@
   background-color: f.$footer-bg;
   color: #fff;
   padding: f.sp(64) f.sp(40); // 左右の余白はデザインに合わせて調整
-  font-family: sans-serif;
 
   @include f.mq(md) {
     padding: f.sp(48) f.sp(24);
@@ -110,7 +109,7 @@
 
 .footer__logo img {
   height: auto;
-  width: 160px; // ロゴの視認性を確保
+  width: 16rem;
 }
 
 .footer__sns {
@@ -132,7 +131,6 @@
 .footer__divider {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 0;
 }
 
 .footer__copyright {
