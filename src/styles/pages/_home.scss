@@ -187,7 +187,7 @@
   }
 
   .features-card__text {
-    padding: f.sp(8);
+    padding: f.sp(12);
     line-height: 1.5;
     display: flex;
     flex-direction: column;
@@ -305,5 +305,113 @@
   .testimonials {
     background-color: f.$base-color-1;
     padding: f.sp(104) 0;
+  }
+  .testimonials__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    padding: f.sp(18);
+    margin-top: f.sp(32);
+  }
+  .testimonials-card {
+    display: flex;
+    flex: 0 1 40rem;
+    flex-direction: column;
+    background-color: #fff;
+    border: #aaa solid 1px;
+    border-radius: 12px;
+    padding: f.sp(16);
+    @include f.mq(lg) {
+      flex: 0 1 36rem;
+    }
+  }
+  .testimonials-card__stars {
+    display: block;
+    color: f.$star-color;
+    font-size: f.fs(18);
+  }
+  .testimonials-card__evaluation {
+    color: f.$text-color-2;
+    font-size: f.fs(18);
+    margin-left: f.sp(8);
+  }
+  .testimonials-card__title {
+    color: f.$text-color-2;
+    margin-top: f.sp(16);
+    font-size: f.fs(24);
+  }
+  .testimonials-card__text {
+    font-size: f.fs(16);
+    margin-top: f.sp(16);
+    padding-bottom: f.sp(16);
+    line-height: 1.5;
+  }
+  .testimonials-card__user {
+    display: flex;
+    align-items: center;
+    margin-top: f.sp(16);
+    margin-top: auto;
+  }
+  .testimonials-card__avatar img {
+    width: 10rem;
+    height: auto;
+    border-radius: 50%;
+  }
+  .testimonials-card__info {
+    margin-left: f.sp(24);
+  }
+  .testimonials-card__name {
+    display: block;
+  }
+  .testimonials-card__position {
+    display: block;
+    margin-top: f.sp(8);
+  }
+
+  // section gallery
+  .gallery {
+    background-color: f.$base-color-1;
+    padding: f.sp(104) 0;
+  }
+  .gallery__grid {
+    display: grid;
+    grid-template:
+      "areaA areaC areaD areaF areaH" 1fr
+      "..... areaC ..... ..... ....."
+      "areaB areaC areaE areaG areaI" 1fr
+      / 1fr 2fr 1fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-top: f.sp(32);
+  }
+  .gallery__grid img {
+    max-width: 100%;
+  }
+  .gallery__item1 {
+    grid-area: areaC;
+  }
+  .gallery__item2 {
+    grid-area: areaA;
+  }
+  .gallery__item3 {
+    grid-area: areaB;
+  }
+  .gallery__item4 {
+    grid-area: areaD;
+  }
+  .gallery__item5 {
+    grid-area: areaE;
+  }
+  .gallery__item6 {
+    grid-area: areaF;
+  }
+  .gallery__item7 {
+    grid-area: areaG;
+  }
+  .gallery__item8 {
+    grid-area: areaH;
+  }
+  .gallery__item9 {
+    grid-area: areaI;
   }
 }

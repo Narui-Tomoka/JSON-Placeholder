@@ -1,3 +1,4 @@
+@use "../foundation/mixins" as m;
 // innerやfont-weightなどセクション関係なく使用する汎用的なクラス
 // ボタン等再利用する部品は別ファイルに
 
@@ -51,4 +52,12 @@
 #errTitle.is-error-text,
 #errBody.is-error-text {
   color: #e76f51;
+}
+
+// 改行用クラス。lg,md,smで無くなる
+.md-off {
+  display: block;
+  @include m.mq(lg) {
+    display: none;
+  }
 }
