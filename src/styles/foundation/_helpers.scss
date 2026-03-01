@@ -61,3 +61,11 @@
     display: none;
   }
 }
+
+// 改行用クラス。lg以下で適用。
+.pc-off {
+  display: none;
+  @include m.mq(lg) {
+    display: block;
+  }
+}

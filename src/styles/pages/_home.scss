@@ -213,10 +213,6 @@
     }
   }
 
-  // 個別スタイルの上書き
-  .features-card--big {
-  }
-
   .features-card--small {
     // 1025px以上のみ縦並びにする
     flex-direction: column;
@@ -371,47 +367,51 @@
 
   // section gallery
   .gallery {
-    background-color: f.$base-color-1;
+    background-color: f.$base-color-2;
     padding: f.sp(104) 0;
   }
-  .gallery__grid {
+  .gallery--grid {
     display: grid;
-    grid-template:
-      "areaA areaC areaD areaF areaH" 1fr
-      "..... areaC ..... ..... ....."
-      "areaB areaC areaE areaG areaI" 1fr
-      / 1fr 2fr 1fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-top: f.sp(32);
+    // レスポンシブ: 画面幅に合わせて自動で列数を調整 (最小幅200px)
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-auto-rows: 20rem; // 行の高さを固定
+    grid-auto-flow: dense; // 隙間を自動で埋める設定
+    gap: f.sp(24); // 画像間の余白
+    padding: f.sp(24);
+    @include f.mq(sm) {
+      gap: f.sp(16); // 画像間の余白
+      padding: f.sp(16);
+    }
   }
-  .gallery__grid img {
-    max-width: 100%;
+  .gallery__item {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .top {
+      object-position: 50% 10%;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+    }
+
+    // 大サイズの設定 (縦横2マス分占有)
   }
-  .gallery__item1 {
-    grid-area: areaC;
+  .gallery__item--large {
+    grid-column: span 2;
+    grid-row: span 2;
   }
-  .gallery__item2 {
-    grid-area: areaA;
+
+  // section cta-banner
+  .cta-banner {
+    background-color: f.$main-color-1;
+    padding: f.sp(104) 0;
   }
-  .gallery__item3 {
-    grid-area: areaB;
-  }
-  .gallery__item4 {
-    grid-area: areaD;
-  }
-  .gallery__item5 {
-    grid-area: areaE;
-  }
-  .gallery__item6 {
-    grid-area: areaF;
-  }
-  .gallery__item7 {
-    grid-area: areaG;
-  }
-  .gallery__item8 {
-    grid-area: areaH;
-  }
-  .gallery__item9 {
-    grid-area: areaI;
+  .cta-banner__actions {
+    margin-top: f.sp(24);
+    .c-button--primary {
+      margin-right: f.sp(16);
+    }
   }
 }

@@ -199,13 +199,13 @@ function renderPage() {
 function renderEmpty() {
   resultList.innerHTML = "";
 
-  resultTitle.textContent = "誰もいない道。あなたが最初のひとり。";
+  resultTitle.textContent = "前人未到のルートへ、ようこそ。";
   // キャプション変更（<br>があるのでinnerHTML）
   resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
     あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
   const emptyItem = document.createElement("li");
   emptyItem.classList.add("search-result__empty");
-  emptyItem.textContent = "前人未到のルートへ、ようこそ。";
+  emptyItem.textContent = "";
 
   resultList.appendChild(emptyItem);
 
