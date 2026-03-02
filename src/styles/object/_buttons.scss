@@ -1,4 +1,5 @@
 @use "../foundation/" as f;
+@use "sass:color"; // color.adjust()を使うのに必須
 
 // ボタンデザイン
 
@@ -19,7 +20,8 @@
   color: f.$base-color-1;
   transition: all 0.3s ease;
   @include f.hover {
-    background-color: lighten(f.$main-color-2, 10%);
+    background-color: color.adjust(f.$main-color-2, $lightness: 10%);
+    // lighten(f.$main-color-2, 10%);は古い書き方。
   }
 }
 
@@ -28,6 +30,7 @@
   color: f.$text-color-2;
   transition: all 0.3s ease;
   @include f.hover {
-    background-color: darken(f.$base-color-1, 10%);
+    background-color: color.adjust(f.$base-color-1, $lightness: -10%);
+    // darken(f.$base-color-1, 10%);darkenではなく明るさをマイナスにするという考え方。
   }
 }
