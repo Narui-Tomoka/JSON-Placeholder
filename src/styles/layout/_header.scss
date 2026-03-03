@@ -7,7 +7,10 @@
   top: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  padding: f.sp(16);
+  padding: f.sp(16) 0;
+  @include f.mq(md) {
+    padding: f.sp(8) 0;
+  }
 }
 
 .header__inner {
@@ -40,17 +43,17 @@
   img {
     width: 135px;
     display: block;
+    @include f.mq(md) {
+      width: 100px;
+    }
   }
 }
 
 .header__nav {
   display: flex;
   align-items: center;
-}
-
-.header__buttons--wrap {
   @include f.mq(md) {
-    display: none;
+    display: none; // ハンバーガーメニューに切り替えるため
   }
 }
 
