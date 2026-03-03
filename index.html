@@ -18,34 +18,32 @@
   <body class="page-home">
     <header id="header" class="header">
       <div class="header__inner l-inner">
-        <nav
-          class="header__nav header__nav--left"
-          aria-label="メインナビゲーション"
-        >
-          <ul class="header__list">
-            <li class="header__item">
-              <a href="#" class="header__link">検索</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">投稿</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link header__link--dropdown"
-                >メニュー</a
-              >
-            </li>
-          </ul>
-        </nav>
-
-        <h1 class="header__logo">
+        <div class="header__logo">
           <a href="#">
             <img src="src/images/logo.png" alt="そらいろドライブ！" />
           </a>
-        </h1>
+        </div>
 
-        <nav class="header__nav--right" aria-label="ユーザーメニュー">
-          <a href="#" class="c-button c-button--primary">新規登録</a>
-          <a href="#" class="c-button c-button--secondary">ログイン</a>
+        <nav class="header__nav">
+          <div class="header__link--wrap">
+            <ul class="header__list">
+              <li class="header__item">
+                <a href="#" class="header__link">検索</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link">投稿</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link header__link--dropdown"
+                  >メニュー</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="header__buttons--wrap">
+            <a href="#" class="c-button c-button--primary">新規登録</a>
+            <a href="#" class="c-button c-button--secondary">ログイン</a>
+          </div>
         </nav>
       </div>
     </header>
@@ -53,9 +51,9 @@
     <main>
       <section id="hero" class="hero">
         <div class="hero__inner l-inner">
-          <h2 class="hero__title u-text-center zen-m">
+          <h1 class="hero__title u-text-center zen-m">
             旅を綴り、絆を深める。
-          </h2>
+          </h1>
           <p class="hero__text u-text-center">
             大切な写真がスマホの中に埋もれていませんか。<br />楽しい旅の思い出は、時間が経つほど色あせてしまうもの。<br />このWebアプリなら、旅の記録を見やすく残し、家族や友人と簡単に共有できます。<br />あの感動を、何度でも思い出せる場所に。
           </p>

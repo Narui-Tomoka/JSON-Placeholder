@@ -7,13 +7,20 @@
   top: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  padding: f.sp(16);
 }
 
 .header__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: f.sp(16);
+}
+
+.header__link--wrap {
+  margin-right: f.sp(32);
+  @include f.mq(lg) {
+    display: none;
+  }
 }
 
 .header__list {
@@ -36,13 +43,18 @@
   }
 }
 
-.header__nav--left {
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__buttons--wrap {
   @include f.mq(md) {
     display: none;
   }
 }
 
-.header__nav--right {
+.header__buttons--wrap {
   display: flex;
   a {
     margin-right: f.sp(16);

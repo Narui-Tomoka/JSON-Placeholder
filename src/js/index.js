@@ -79,9 +79,9 @@ function validateForm() {
   errTitle.textContent = "";
   errBody.textContent = "";
 
-  errPostId.classList.remove("is-error-text");
-  errTitle.classList.remove("is-error-text");
-  errBody.classList.remove("is-error-text");
+  errPostId.classList.remove("is-error-text", "search-form__error-text");
+  errTitle.classList.remove("is-error-text", "search-form__error-text");
+  errBody.classList.remove("is-error-text", "search-form__error-text");
 
   // =========================
   // 上部に出すエラーメッセージをまとめておくための定数
@@ -97,7 +97,7 @@ function validateForm() {
     if (!Number.isInteger(num)) {
       const msg = "投稿IDは整数で入力してください。";
       errPostId.textContent = msg;
-      errPostId.classList.add("is-error-text");
+      errPostId.classList.add("is-error-text", "search-form__error-text");
       errors.push(msg);
       inputPostId.classList.add("is-error");
       // firstErrorElementがfalseなら
@@ -115,7 +115,7 @@ function validateForm() {
   if (title !== "" && title.length > 10) {
     const msg = "タイトルは10文字以内で入力してください。";
     errTitle.textContent = msg;
-    errTitle.classList.add("is-error-text");
+    errTitle.classList.add("is-error-text", "search-form__error-text");
     errors.push(msg);
     inputTitle.classList.add("is-error");
     if (!firstErrorElement) {
@@ -128,7 +128,7 @@ function validateForm() {
   if (body !== "" && body.length > 50) {
     const msg = "本文は50文字以内で入力してください。";
     errBody.textContent = msg;
-    errBody.classList.add("is-error-text");
+    errBody.classList.add("is-error-text", "search-form__error-text");
     errors.push(msg);
     inputBody.classList.add("is-error");
     if (!firstErrorElement) {
@@ -140,8 +140,8 @@ function validateForm() {
   // 上部サマリー表示
   // =========================
   if (errors.length > 0) {
-    errSummary.innerHTML = `<p class="search-form__error-title is-error-text">入力に不備があります（${errors.length}件）</p>
-    <ul class="search-form__error-list">${errors.map((e) => `<li class="is-error-text">${e}</li>`).join("")}</ul>`;
+    errSummary.innerHTML = `<p class="search-form__error-text is-error-text">入力に不備があります（${errors.length}件）</p>
+    <ul class="search-form__error-list">${errors.map((e) => `<li class="search-form__error-text is-error-text">${e}</li>`).join("")}</ul>`;
 
     // フォーム上部にスクロール
     errSummary.scrollIntoView({ behavior: "smooth" });

@@ -4,7 +4,8 @@
 .page-home {
   // section hero
   .hero {
-    // padding: f.sp(80) 0;
+    padding-top: f.sp(200);
+    padding-bottom: f.sp(160);
     background: url(../../images/hero.jpg) no-repeat 50% 35% / cover;
     position: relative;
     z-index: 1;
@@ -24,7 +25,6 @@
   .hero__title {
     color: f.$base-color-1;
     font-size: f.fs(56);
-    padding-top: f.sp(200);
     position: relative;
     z-index: 3;
   }
@@ -38,7 +38,6 @@
   }
   .hero__actions {
     margin-top: f.sp(32);
-    padding-bottom: f.sp(160);
     position: relative;
     z-index: 3;
     a:first-child {
@@ -70,9 +69,6 @@
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
     &:focus {
       border: 2px solid f.$text-color-1;
-      box-shadow:
-        0 16px 26px rgba(142, 197, 232, 0.2),
-        0 0 0 14px rgba(142, 197, 232, 0.1);
     }
   }
   .search-form__input {
@@ -86,14 +82,6 @@
     &:focus {
       border: 2px solid f.$text-color-1;
       transform: scale(1.05);
-      box-shadow:
-        0 10px 20px rgba(142, 197, 232, 0.2),
-        0 0 0 8px rgba(142, 197, 232, 0.1);
-    }
-    &:focus.is-error {
-      box-shadow:
-        0 10px 20px rgba(244, 162, 97, 0.2),
-        0 0 0 8px rgba(244, 162, 97, 0.1);
     }
   }
   .search-form__textarea {
@@ -108,14 +96,6 @@
     &:focus {
       border: 2px solid f.$text-color-1;
       transform: scale(1.03);
-      box-shadow:
-        0 10px 20px rgba(142, 197, 232, 0.2),
-        0 0 0 8px rgba(142, 197, 232, 0.1);
-    }
-    &:focus.is-error {
-      box-shadow:
-        0 10px 20px rgba(244, 162, 97, 0.2),
-        0 0 0 8px rgba(244, 162, 97, 0.1);
     }
   }
   .search-form__optional {
@@ -138,6 +118,11 @@
   }
   #errSummary {
     scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
+  }
+
+  // バリデーションテキスト（エラー時のテキスト）
+  .search-form__error-text {
+    margin-top: f.sp(8);
   }
 
   // section search-result

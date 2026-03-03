@@ -50,16 +50,15 @@
   }
 }
 
-/* Navigation Grid */
 .footer__nav {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: f.sp(40);
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
   margin-top: f.sp(48);
   margin-bottom: f.sp(64);
 
   @include f.mq(md) {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: f.sp(32);
   }
 }
@@ -71,9 +70,7 @@
 }
 
 .footer__nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  min-width: 15rem; // クリックするスペース確保のため
 }
 
 .footer__nav-item {
@@ -81,6 +78,8 @@
 }
 
 .footer__nav-link {
+  width: 100%; // クリックするスペース確保のため
+  max-width: 20rem; // クリック領域がスマホなどで広くなりすぎない調整
   color: #fff;
   text-decoration: none;
   font-size: f.fs(14);
