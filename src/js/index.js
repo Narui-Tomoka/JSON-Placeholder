@@ -39,8 +39,6 @@ function validateForm() {
   // =========================
   // 投稿ID
   const postId = document.getElementById("postId").value.trim();
-  // ユーザーID（プルダウンになっている場所。バリデーションはしないが値は必要なので取得している）
-  const userId = document.getElementById("userId").value;
   // タイトル
   const title = document.getElementById("title").value.trim();
   // 本文
@@ -203,11 +201,6 @@ function renderEmpty() {
   // キャプション変更（<br>があるのでinnerHTML）
   resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
     あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
-  const emptyItem = document.createElement("li");
-  emptyItem.classList.add("search-result__empty");
-  emptyItem.textContent = "";
-
-  resultList.appendChild(emptyItem);
 
   resultSection.hidden = false;
 }
@@ -357,6 +350,7 @@ form.addEventListener("submit", async (e) => {
 
     renderPage();
   } catch (error) {
+    renderError();
     console.error("一覧取得エラー", error);
   }
 });
