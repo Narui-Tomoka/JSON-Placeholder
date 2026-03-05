@@ -393,7 +393,13 @@
 
   // section cta-banner
   .cta-banner {
-    background-color: f.$main-color-1;
+    background-color: rgba(142, 197, 232, 0.7);
+    // $main-color-1: #8ec5e8;をrgba()に直している
+    background-image: url(../../images/cta-bg2.png);
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+    background-size: cover;
+    background-blend-mode: hard-light;
     padding: f.sp(104) 0;
   }
   .cta-banner__actions {
@@ -416,7 +422,7 @@
   }
 
   .faq__item {
-    background-color: #fff; // 背景とコントラストを出すため白
+    background-color: #fff; // 背景とコントラストを出す
     border-radius: f.sp(8);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     overflow: hidden;
@@ -424,11 +430,6 @@
 
     &[open] .faq__btn span:nth-child(2) {
       transform: translate(-50%, -50%);
-    }
-
-    // ブラウザ標準の三角マークを消す
-    & summary::-webkit-details-marker {
-      display: none;
     }
   }
 
@@ -490,5 +491,9 @@
   .contact {
     background-color: f.$base-color-1;
     padding: f.sp(104) 0;
+  }
+
+  .contact__btn--wrap {
+    margin-top: f.sp(24);
   }
 }
