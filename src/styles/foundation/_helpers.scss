@@ -54,16 +54,30 @@
   color: #e76f51;
 }
 
+// $breakpoints: (
+//   "sm": "screen and (max-width: 576px)",
+//   "md": "screen and (max-width: 768px)",
+//   "lg": "screen and (max-width: 1024px)",
+// );
+
 // 改行用クラス。lg,md,smで無くなる
-.md-off {
-  display: block;
-  @include m.mq(lg) {
-    display: none;
+.br-sm-md {
+  display: none;
+  @include m.mq(md) {
+    display: block;
+  }
+}
+
+// 改行用クラス。smでのみ適用
+.br-sm {
+  display: none;
+  @include m.mq(sm) {
+    display: block;
   }
 }
 
 // 改行用クラス。lg以下で適用。
-.pc-off {
+.br-sm-md-lg {
   display: none;
   @include m.mq(lg) {
     display: block;

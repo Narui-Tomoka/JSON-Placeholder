@@ -27,6 +27,7 @@
     font-size: f.fs(56);
     position: relative;
     z-index: 3;
+    line-height: 1.2;
   }
   .hero__text {
     color: f.$base-color-1;
@@ -406,6 +407,83 @@
   .faq {
     background-color: f.$base-color-2;
     padding: f.sp(104) 0;
+  }
+  .faq__list {
+    margin-top: f.sp(48);
+    display: flex;
+    flex-direction: column;
+    gap: f.sp(16); // アイテム間の余白
+  }
+
+  .faq__item {
+    background-color: #fff; // 背景とコントラストを出すため白
+    border-radius: f.sp(8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+
+    &[open] .faq__btn span:nth-child(2) {
+      transform: translate(-50%, -50%);
+    }
+
+    // ブラウザ標準の三角マークを消す
+    & summary::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: f.sp(24) f.sp(32);
+    font-size: f.fs(18);
+    font-weight: bold;
+    color: f.$text-color-2;
+    cursor: pointer;
+    list-style: none; // 三角マーク消去（標準）
+    position: relative;
+    transition: color 0.3s ease;
+
+    @include f.mq(md) {
+      padding: f.sp(16) f.sp(24);
+    }
+
+    &:hover {
+      color: f.$main-color-2;
+    }
+  }
+
+  .faq__btn {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: f.$main-color-1;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+
+      &:nth-child(2) {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+    }
+  }
+
+  .faq__answer {
+    padding: f.sp(24) f.sp(32);
+    font-size: f.fs(18);
+    color: f.$text-color-2;
   }
 
   // section contact

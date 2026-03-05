@@ -109,6 +109,9 @@
 .footer__logo img {
   height: auto;
   width: 16rem;
+  @include f.mq(md) {
+    width: 10rem;
+  }
 }
 
 .footer__sns {

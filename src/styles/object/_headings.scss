@@ -2,6 +2,7 @@
 
 .section__title {
   font-size: f.fs(48);
+  line-height: 1.2; // スマホサイズで改行したときに見やすくなるように
 }
 .section__sub-title {
   font-size: f.fs(18);
