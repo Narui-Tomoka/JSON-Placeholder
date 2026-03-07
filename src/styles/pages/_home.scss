@@ -41,8 +41,12 @@
     margin-top: f.sp(32);
     position: relative;
     z-index: 3;
-    a:first-child {
-      margin-right: f.sp(16);
+    display: flex;
+    justify-content: center;
+    gap: f.sp(16);
+    @include f.mq(md) {
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -115,7 +119,11 @@
   .c-button--submit {
     font-size: f.fs(24);
     margin-top: f.sp(16);
+    width: 12rem;
     border-radius: 35px;
+    @include f.mq(md) {
+      width: 95%;
+    }
   }
   #errSummary {
     scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
@@ -404,8 +412,13 @@
   }
   .cta-banner__actions {
     margin-top: f.sp(24);
-    .c-button--primary {
-      margin-right: f.sp(16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: f.sp(16);
+
+    @include f.mq(md) {
+      flex-direction: column;
     }
   }
 
@@ -427,6 +440,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     transition: background-color 0.3s ease;
+    user-select: none;
 
     &[open] .faq__btn span:nth-child(2) {
       transform: translate(-50%, -50%);
@@ -445,13 +459,10 @@
     list-style: none; // 三角マーク消去（標準）
     position: relative;
     transition: color 0.3s ease;
+    line-height: 1.2;
 
     @include f.mq(md) {
       padding: f.sp(16) f.sp(24);
-    }
-
-    &:hover {
-      color: f.$main-color-2;
     }
   }
 
@@ -461,6 +472,7 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
+    margin-left: f.sp(12);
 
     span {
       position: absolute;
@@ -485,6 +497,10 @@
     padding: f.sp(24) f.sp(32);
     font-size: f.fs(18);
     color: f.$text-color-2;
+  }
+
+  .faq__content {
+    line-height: 1.6;
   }
 
   // section contact

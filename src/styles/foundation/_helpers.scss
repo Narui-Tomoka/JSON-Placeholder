@@ -83,3 +83,11 @@
     display: block;
   }
 }
+
+// 改行用クラス。スマホ（sm）だけは改行させない。
+.br-md-lg {
+  display: block;
+  @include m.mq(sm) {
+    display: none;
+  }
+}

@@ -5,13 +5,19 @@
 
 // 共通のスタイルをc-buttonに書く
 .c-button {
-  padding: f.sp(12) f.sp(24);
+  padding: f.sp(16) f.sp(24);
   border-radius: 30px;
   display: inline-block;
   font-size: f.fs(16);
   transition: all 0.3s ease;
+  min-width: 10rem;
+  max-width: 40rem;
+  user-select: none;
   @include f.hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  @include f.mq(md) {
+    width: 95%;
   }
 }
 
