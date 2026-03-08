@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <title>そらいろドライブ！ | 旅の思い出記録アプリ</title>
+  </head>
+  <body class="page-detail">
+    <header id="header" class="header">
+      <div class="header__inner l-inner">
+        <div class="header__logo">
+          <a href="#">
+            <img src="src/images/logo.png" alt="そらいろドライブ！" />
+          </a>
+        </div>
+
+        <!-- 768px以下で非表示にしハンバーガーメニューに -->
+        <nav class="header__nav">
+          <div class="header__link--wrap">
+            <ul class="header__list">
+              <li class="header__item">
+                <a href="#" class="header__link">検索</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link">投稿</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link header__link--dropdown"
+                  >メニュー</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="header__buttons--wrap">
+            <a href="#" class="c-button c-button--primary">新規登録</a>
+            <a href="#" class="c-button c-button--secondary">ログイン</a>
+          </div>
+        </nav>
+
+        <!-- ハンバーガーメニュー -->
+        <!-- 768px以下(md)で表示 -->
+        <nav class="hamburger">
+          <button id="js-hamburger" class="hamburger__btn">
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero__img"></div>
+      </section>
+      <section id="detail" class="detail">
+        <div class="detail__inner l-inner">
+          <h1 class="section__title u-text-center zen-b">
+            あの日を巡る、記憶の書。
+          </h1>
+          <p class="section__sub-title u-text-center">
+            ここは、あなたの「嬉しい・楽しい」を大切にしまっておく場所。<br />綴った物語をゆっくりと振り返り、今の気持ちに合わせて、自由に整えることができます。
+          </p>
+
+          <div id="detailMessage" class="detail__message"></div>
+
+          <p class="detail__id-text">
+            投稿ID: <span id="postId" class="detail__id-number"></span>
+          </p>
+
+          <div class="detail__field">
+            <label for="userId" class="detail__label">ユーザー</label>
+            <select id="userId" class="detail__select" required>
+              <option value="">選択してください</option>
+              <option value="1">ユーザー1</option>
+              <option value="2">ユーザー2</option>
+              <option value="3">ユーザー3</option>
+              <option value="4">ユーザー4</option>
+              <option value="5">ユーザー5</option>
+              <option value="6">ユーザー6</option>
+              <option value="7">ユーザー7</option>
+              <option value="8">ユーザー8</option>
+              <option value="9">ユーザー9</option>
+              <option value="10">ユーザー10</option>
+            </select>
+          </div>
+
+          <div class="detail__field">
+            <label for="title" class="detail__label">タイトル</label>
+            <input type="text" id="title" class="detail__input" required />
+          </div>
+
+          <div class="detail__field">
+            <label for="body" class="detail__label">本文</label>
+            <textarea
+              id="body"
+              class="detail__textarea"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <div class="detail__buttons">
+            <button
+              type="button"
+              id="updateBtn"
+              class="detail__btn detail__btn--update"
+            >
+              更新
+            </button>
+            <button
+              type="button"
+              id="deleteBtn"
+              class="detail__btn detail__btn--delete"
+            >
+              削除
+            </button>
+          </div>
+
+          <a href="index.html" class="detail__back-link">一覧へ戻る</a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer__cta">
+        <div class="footer__cta-body">
+          <h2 class="footer__cta-title">
+            あなたのドライブは、<br
+              class="br-sm-md-lg"
+            />地図を越えて物語になる。
+          </h2>
+          <p class="footer__cta-text">道は続く。思い出は、もっと遠くまで。</p>
+        </div>
+        <div class="footer__cta-actions u-text-center">
+          <a href="#" class="c-button c-button--primary">新規登録</a>
+          <a href="#" class="c-button c-button--secondary">ログイン</a>
+        </div>
+      </div>
+
+      <hr class="footer__divider" />
+
+      <div class="footer__nav">
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">ナビゲーション</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ホーム</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">検索</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">投稿</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">プロフィール</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">設定</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">サポート</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ガイド</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">よくある質問</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">お問い合わせ</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">サイトマップ</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">コミュニティ</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">利用規約</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">クッキーポリシー</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">アクセシビリティ</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ソーシャル</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">Xで共有</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">Facebookで共有</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-group">
+          <h3 class="footer__nav-title">開発者向けガイド</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">チュートリアル動画</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">テンプレート集</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">アカウント</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ログイン</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">サインアップ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__logo">
+          <img src="src/images/logo.png" alt="そらいろドライブ！" />
+        </div>
+        <div class="footer__sns">
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-x-twitter"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="#" class="footer__sns-link"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+
+      <hr class="footer__divider" />
+
+      <p class="footer__copyright">
+        © 2026 そらいろドライブ！　All Rights Reserved.
+      </p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/js/detail.js"></script>
+  </body>
+</html>

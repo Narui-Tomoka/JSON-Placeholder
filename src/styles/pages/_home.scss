@@ -403,19 +403,22 @@
   .cta-banner {
     background-color: rgba(142, 197, 232, 0.7);
     // $main-color-1: #8ec5e8;をrgba()に直している
-    background-image: url(../../images/cta-bg2.png);
+    background-image: url(../../images/cta.JPG);
     background-repeat: no-repeat;
-    background-position: 50% 20%;
+    background-position: 65% 0%;
     background-size: cover;
-    background-blend-mode: hard-light;
-    padding: f.sp(104) 0;
+    background-attachment: fixed;
+    padding: f.sp(160) 0;
+  }
+  .cta-banner__line {
+    background-color: rgba(255, 255, 255, 0.7);
   }
   .cta-banner__actions {
     margin-top: f.sp(24);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: f.sp(16);
+    gap: f.sp(32);
 
     @include f.mq(md) {
       flex-direction: column;

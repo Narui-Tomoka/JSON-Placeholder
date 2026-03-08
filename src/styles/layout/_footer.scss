@@ -55,14 +55,24 @@
 
 .footer__nav {
   display: flex;
-  justify-content: space-between;
-  max-width: 1000px;
+  justify-content: center;
+  gap: f.sp(32);
   margin-top: f.sp(48);
   margin-bottom: f.sp(64);
 
   @include f.mq(md) {
     flex-direction: column;
     gap: f.sp(32);
+  }
+}
+
+.footer__nav-group {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  &:last-child {
+    border-right: none;
+  }
+  @include f.mq(md) {
+    border-right: none;
   }
 }
 
@@ -142,7 +152,6 @@
   text-align: center;
   font-size: f.fs(12);
   margin-top: f.sp(24);
-  opacity: 0.6;
 
   @include f.mq(md) {
     text-align: left;

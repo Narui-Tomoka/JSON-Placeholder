@@ -1,0 +1,10 @@
+@use "../foundation/" as f;
+
+.page-detail {
+  // section hero
+  .hero {
+    width: 100%;
+    height: 40vh;
+    background: url(../../images/detail-hero.JPG) no-repeat 50% 35% / cover;
+  }
+}
