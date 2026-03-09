@@ -13,4 +13,55 @@
       height: 30vh;
     }
   }
+
+  // section detail
+  .detail {
+    background-color: f.$base-color-1;
+    padding: f.sp(104) 0;
+  }
+
+  .detail__id-text {
+    width: 30rem;
+    height: 3.5rem;
+    margin-top: f.sp(16);
+    text-align: left;
+  }
+  .detail-form__item {
+    @include f.form-item;
+  }
+  .detail-form__label {
+    @include f.form-label;
+  }
+  .detail-form__select {
+    @include f.select;
+  }
+  .detail-form__input {
+    @include f.input;
+  }
+  .detail-form__textarea {
+    @include f.textarea;
+  }
+
+  .detail__buttons {
+    margin-top: f.sp(24);
+    display: flex;
+    gap: f.sp(24);
+    justify-content: center;
+    @include f.mq(md) {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .detail__back-link {
+    color: f.$text-color-2;
+    margin-top: f.sp(40);
+    font-size: f.fs(18);
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    @include f.hover {
+      color: f.$main-color-2;
+    }
+  }
 }

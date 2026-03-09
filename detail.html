@@ -67,21 +67,27 @@
       <section id="detail" class="detail">
         <div class="detail__inner l-inner">
           <h1 class="section__title u-text-center zen-b">
-            あの日を巡る、記憶の書。
+            あの日を巡る、<br class="br-sm">記憶の書。
           </h1>
           <p class="section__sub-title u-text-center">
-            ここは、あなたの「嬉しい・楽しい」を大切にしまっておく場所。<br />綴った物語をゆっくりと振り返り、今の気持ちに合わせて、自由に整えることができます。
+            ここは、あなたの「嬉しい・楽しい」を<br class="br-sm">大切にしまっておく場所。<br />綴った物語を振り返り、今の気持ちに合わせて<br class="br-sm">自由に整えることができます。
           </p>
 
-          <div id="detailMessage" class="detail__message"></div>
+          <form id="detailForm" class="detail-form u-text-center">
+          <!-- エラー表示用のメッセージエリアを想定↓ -->
+          <div id="detailError" class="detail-form__error-summary"></div>
 
-          <p class="detail__id-text">
-            投稿ID: <span id="postId" class="detail__id-number"></span>
-          </p>
+          <!-- 【投稿ID】表示するだけ -->
+          <div class="detail-form__item u-center">
+            <p class="detail__id-text">
+              投稿ID: <span id="postId" class="detail__id-number"></span>
+            </p>
+          </div>
 
-          <div class="detail__field">
-            <label for="userId" class="detail__label">ユーザー</label>
-            <select id="userId" class="detail__select" required>
+          <!-- 【ユーザーID】変更可能 -->
+          <div class="detail-form__item u-center">
+            <label for="userId" class="detail-form__label">ユーザー</label>
+            <select id="userId" class="detail-form__select">
               <option value="">選択してください</option>
               <option value="1">ユーザー1</option>
               <option value="2">ユーザー2</option>
@@ -96,18 +102,17 @@
             </select>
           </div>
 
-          <div class="detail__field">
-            <label for="title" class="detail__label">タイトル</label>
-            <input type="text" id="title" class="detail__input" required />
+          <div class="detail-form__item u-center">
+            <label for="title" class="detail-form__label">タイトル</label>
+            <input type="text" id="title" class="detail-form__input" />
           </div>
 
-          <div class="detail__field">
-            <label for="body" class="detail__label">本文</label>
+          <div class="detail-form__item u-center">
+            <label for="body" class="detail-form__label">本文</label>
             <textarea
               id="body"
-              class="detail__textarea"
+              class="detail-form__textarea"
               rows="6"
-              required
             ></textarea>
           </div>
 
@@ -115,21 +120,22 @@
             <button
               type="button"
               id="updateBtn"
-              class="detail__btn detail__btn--update"
+              class="c-button c-button--primary c-button--submit"
             >
               更新
             </button>
             <button
               type="button"
               id="deleteBtn"
-              class="detail__btn detail__btn--delete"
+              class="c-button c-button--delete"
             >
               削除
             </button>
           </div>
 
-          <a href="index.html" class="detail__back-link">一覧へ戻る</a>
+          <a href="index.html" class="detail__back-link">一覧画面へ戻る</a>
         </div>
+        </form>
       </section>
     </main>
 

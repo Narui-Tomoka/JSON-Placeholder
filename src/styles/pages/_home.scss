@@ -56,13 +56,12 @@
     padding: f.sp(104) 0;
   }
 
+  // 詳細画面で流用することを想定し@mixin化
   .search-form__item {
-    width: fit-content;
-    margin-top: f.sp(16);
+    @include f.form-item;
   }
   .search-form__label {
-    display: block;
-    text-align: left;
+    @include f.form-label;
   }
   .search-form__select {
     @include f.select;
@@ -78,6 +77,9 @@
   }
   .search-form__msg {
     @include f.form-msg;
+  }
+  .search-form__submit {
+    margin-top: f.sp(24);
   }
 
   #errSummary {

@@ -2,6 +2,7 @@
 @use "./variables" as vars;
 @use "./functions" as func;
 @use "sass:map";
+@use "sass:color"; // color.adjust()を使うのに必須
 
 @mixin hover {
   @media (hover: hover) {
@@ -35,6 +36,17 @@
 // ==========================================================================
 // フォームの各要素
 // ==========================================================================
+
+// フォームの枠
+@mixin form-item {
+  width: fit-content;
+  margin-top: func.sp(16);
+}
+
+@mixin form-label {
+  display: block;
+  text-align: left;
+}
 
 // select要素
 @mixin select($width: 30rem, $height: 3.5rem) {
@@ -111,5 +123,23 @@
   border-radius: 35px;
   @include mq(md) {
     width: 95%;
+    margin-top: 0;
+  }
+}
+
+// detailの削除ボタン
+@mixin form-delete {
+  background-color: vars.$accent-color-2; // 濃いめのオレンジ
+  color: vars.$base-color-1;
+  font-size: func.fs(24);
+  margin-top: func.sp(16);
+  width: 12rem;
+  border-radius: 35px;
+  @include hover {
+    background-color: color.adjust(vars.$accent-color-2, $lightness: -10%);
+  }
+  @include mq(md) {
+    width: 95%;
+    margin-top: 0;
   }
 }

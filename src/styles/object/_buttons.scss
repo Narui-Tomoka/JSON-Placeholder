@@ -45,3 +45,8 @@
 .c-button--submit {
   @include f.form-submit;
 }
+
+// detailの削除ボタン
+.c-button--delete {
+  @include f.form-delete;
+}
