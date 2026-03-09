@@ -1,5 +1,6 @@
 // 再利用するスタイルの“型”
-@use "../foundation/variables" as vars;
+@use "./variables" as vars;
+@use "./functions" as func;
 @use "sass:map";
 
 @mixin hover {
@@ -30,3 +31,85 @@
 //  @include mix.mq(tab) {
 // ここにスタイルを書く
 //   }
+
+// ==========================================================================
+// フォームの各要素
+// ==========================================================================
+
+// select要素
+@mixin select($width: 30rem, $height: 3.5rem) {
+  width: $width;
+  height: $height;
+  margin-top: func.sp(4);
+  border: 1px solid #aaa;
+  border-radius: 30px;
+  padding-left: func.sp(8);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
+  &:focus {
+    border: 2px solid vars.$text-color-1;
+  }
+}
+
+// 呼び出し方（引数の省略）メモ
+// @include select; → 両方初期値（30rem, 3.5rem）が適用されます。
+// @include select(50rem); → $width だけ変更されます。
+// @include select($height: 5rem); → キーワード引数を使えば、$height だけを指定して $width は初期値のままにできます。
+
+// input要素
+@mixin input($width: 30rem, $height: 3.5rem) {
+  width: $width;
+  height: $height;
+  margin-top: func.sp(4);
+  border: 1px solid #aaa;
+  border-radius: 30px;
+  padding-left: func.sp(8);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
+  &:focus {
+    border: 2px solid vars.$text-color-1;
+    transform: scale(1.05);
+  }
+}
+
+// textarea要素
+@mixin textarea($width: 30rem, $height: 15.6rem) {
+  width: $width;
+  height: $height;
+  margin-top: func.sp(4);
+  border: 1px solid #aaa;
+  border-radius: 30px;
+  resize: none;
+  padding: func.sp(12);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
+  &:focus {
+    border: 2px solid vars.$text-color-1;
+    transform: scale(1.03);
+  }
+}
+
+// フォームラベル右側の「任意」
+@mixin form-optional {
+  display: inline-block;
+  padding: func.sp(4) func.sp(8);
+  color: vars.$base-color-1;
+  background-color: vars.$main-color-2;
+  margin-left: func.sp(8);
+  border-radius: 12px;
+}
+
+// 「※半角数字で～」などのフォーム入力条件
+@mixin form-msg {
+  font-size: func.fs(12);
+  margin-top: func.sp(4);
+  text-align: left;
+}
+
+// 検索ボタン
+@mixin form-submit {
+  font-size: func.fs(24);
+  margin-top: func.sp(16);
+  width: 12rem;
+  border-radius: 35px;
+  @include mq(md) {
+    width: 95%;
+  }
+}

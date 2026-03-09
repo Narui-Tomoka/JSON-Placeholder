@@ -40,3 +40,8 @@
     // darken(f.$base-color-1, 10%);darkenではなく明るさをマイナスにするという考え方。
   }
 }
+
+// index.htmlに設置したフォームの「検索」ボタンスタイル
+.c-button--submit {
+  @include f.form-submit;
+}

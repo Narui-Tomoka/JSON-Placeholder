@@ -200,7 +200,7 @@ function renderEmpty() {
   resultTitle.textContent = "前人未到のルートへ、ようこそ。";
   // キャプション変更（<br>があるのでinnerHTML）
   resultCaption.innerHTML = `その道に、まだ「そらいろ」の記録はありません。<br />
-    あなたが最初のドライバーになって、新しい物語を地図に刻んでみませんか？`;
+    あなたが最初のドライバーになって、<br class="br-sm" />新しい物語を地図に刻んでみませんか？`;
 
   resultSection.hidden = false;
 }

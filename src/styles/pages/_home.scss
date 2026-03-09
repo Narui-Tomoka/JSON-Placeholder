@@ -43,7 +43,7 @@
     z-index: 3;
     display: flex;
     justify-content: center;
-    gap: f.sp(16);
+    gap: f.sp(24);
     @include f.mq(md) {
       flex-direction: column;
       align-items: center;
@@ -65,66 +65,21 @@
     text-align: left;
   }
   .search-form__select {
-    width: 30rem;
-    height: 3.5rem;
-    margin-top: f.sp(4);
-    border: 1px solid #aaa;
-    border-radius: 30px;
-    padding-left: f.sp(8);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
-    &:focus {
-      border: 2px solid f.$text-color-1;
-    }
+    @include f.select;
   }
   .search-form__input {
-    width: 30rem;
-    height: 3.5rem;
-    margin-top: f.sp(4);
-    border: 1px solid #aaa;
-    border-radius: 30px;
-    padding-left: f.sp(8);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
-    &:focus {
-      border: 2px solid f.$text-color-1;
-      transform: scale(1.05);
-    }
+    @include f.input;
   }
   .search-form__textarea {
-    width: 30rem;
-    height: 15.6rem;
-    margin-top: f.sp(4);
-    border: 1px solid #aaa;
-    border-radius: 30px;
-    resize: none;
-    padding: f.sp(12);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 少し跳ねるような動き */
-    &:focus {
-      border: 2px solid f.$text-color-1;
-      transform: scale(1.03);
-    }
+    @include f.textarea;
   }
   .search-form__optional {
-    display: inline-block;
-    padding: f.sp(4) f.sp(8);
-    color: f.$base-color-1;
-    background-color: f.$main-color-2;
-    margin-left: f.sp(8);
-    border-radius: 12px;
+    @include f.form-optional;
   }
   .search-form__msg {
-    font-size: f.fs(12);
-    margin-top: f.sp(4);
-    text-align: left;
+    @include f.form-msg;
   }
-  .c-button--submit {
-    font-size: f.fs(24);
-    margin-top: f.sp(16);
-    width: 12rem;
-    border-radius: 35px;
-    @include f.mq(md) {
-      width: 95%;
-    }
-  }
+
   #errSummary {
     scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
   }

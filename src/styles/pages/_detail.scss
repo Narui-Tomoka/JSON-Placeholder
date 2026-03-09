@@ -5,6 +5,12 @@
   .hero {
     width: 100%;
     height: 40vh;
-    background: url(../../images/detail-hero.JPG) no-repeat 50% 35% / cover;
+    background-image: url(../../images/detail-kv.jpg);
+    background-repeat: no-repeat;
+    background-position: 30% 60%;
+    background-size: cover;
+    @include f.mq(sm) {
+      height: 30vh;
+    }
   }
 }
