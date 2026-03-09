@@ -274,15 +274,9 @@ function renderPosts(data) {
 function renderError() {
   resultList.innerHTML = "";
 
-  resultTitle.textContent = "申し訳ありません";
+  resultTitle.textContent = "申し訳ありません。";
   resultCaption.innerHTML =
-    "一覧の取得に失敗しました。<br />時間をおいて再度お試しください。";
-
-  const errorItem = document.createElement("li");
-  errorItem.classList.add("search-result__error");
-  errorItem.textContent = "ネットワークエラーが発生しました。";
-
-  resultList.appendChild(errorItem);
+    "ネットワークエラーが発生しました。<br />時間をおいて再度お試しください。";
   resultSection.hidden = false;
 
   // ページネーションも止める

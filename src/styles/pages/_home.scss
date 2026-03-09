@@ -440,15 +440,21 @@
       }
     }
   }
+  .faq__item[open] .faq__btn span:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 
   .faq__answer {
-    padding: f.sp(24) f.sp(32);
+    overflow: hidden;
+    height: 0;
     font-size: f.fs(18);
     color: f.$text-color-2;
+    transition: height 0.35s ease;
   }
 
   .faq__content {
     line-height: 1.6;
+    padding: f.sp(24) f.sp(32);
   }
 
   // section contact
