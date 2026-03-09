@@ -5,7 +5,7 @@
   // section hero
   .hero {
     padding-top: f.sp(200);
-    padding-bottom: f.sp(160);
+    padding-bottom: f.sp(200);
     background: url(../../images/hero.jpg) no-repeat 50% 35% / cover;
     position: relative;
     z-index: 1;
@@ -36,18 +36,6 @@
     line-height: 1.5;
     position: relative;
     z-index: 3;
-  }
-  .hero__actions {
-    margin-top: f.sp(32);
-    position: relative;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    gap: f.sp(24);
-    @include f.mq(md) {
-      flex-direction: column;
-      align-items: center;
-    }
   }
 
   // section search

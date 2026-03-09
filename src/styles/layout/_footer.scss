@@ -41,18 +41,6 @@
   opacity: 0.8;
 }
 
-.footer__cta-actions {
-  display: flex;
-  gap: f.sp(16);
-  justify-content: flex-end;
-
-  @include f.mq(md) {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-}
-
 .footer__nav {
   display: flex;
   justify-content: center;

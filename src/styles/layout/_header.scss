@@ -28,15 +28,7 @@
 
 .header__list {
   display: flex;
-}
-
-.header__link {
-  color: f.$base-color-1;
   margin-right: f.sp(32);
-  // foundation内の_functionsで作った関数により3.2rem（32px相当）になる
-}
-.header__item:last-child .header__link {
-  margin-right: 0;
 }
 
 .header__logo {
