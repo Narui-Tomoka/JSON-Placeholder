@@ -64,6 +64,10 @@
   transition: transform 0.3s ease;
 }
 
+#header.is-active .drawer__menu {
+  transform: translateX(0);
+}
+
 // 黒い背景
 .overlay__bg {
   position: fixed;
@@ -80,8 +84,5 @@
     visibility: visible;
 
     // その中にあるメニュー本体をスライドインさせる
-    .drawer__menu {
-      transform: translateX(0);
-    }
   }
 }
