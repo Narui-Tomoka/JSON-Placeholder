@@ -6,7 +6,6 @@
   width: 100%;
   top: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   padding: f.sp(16) 0;
   @include f.mq(md) {
     padding: f.sp(8) 0;
@@ -17,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .header__link--wrap {
@@ -42,15 +42,22 @@
 }
 
 .header__nav {
+  position: absolute;
+  z-index: 1100; // ハンバーガーメニューがいるので一番上に配置
+  top: f.sp(8); // 新規登録・ログインのボタン配置
+  right: f.sp(16);
   display: flex;
   align-items: center;
   @include f.mq(md) {
-    display: none; // ハンバーガーメニューに切り替えるため
+    top: f.sp(4); // ハンバーガーメニューの配置調整
   }
 }
 
 .header__buttons--wrap {
   display: flex;
+  @include f.mq(md) {
+    display: none; // ハンバーガーメニューに切り替えるため
+  }
   a {
     margin-right: f.sp(16);
     &:last-child {

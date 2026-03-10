@@ -13,8 +13,6 @@
   .hero__title {
     color: f.$base-color-1;
     font-size: f.fs(56);
-    position: relative;
-    z-index: 3;
     line-height: 1.2;
   }
   .hero__text {
@@ -22,8 +20,6 @@
     font-size: f.fs(18);
     margin-top: f.sp(24);
     line-height: 1.5;
-    position: relative;
-    z-index: 3;
   }
 
   // section search

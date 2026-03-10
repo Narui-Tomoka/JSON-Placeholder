@@ -1,38 +1,19 @@
 @use "../foundation/" as f;
 @use "sass:color"; // color.adjust()を使うのに必須
 
-.hamburger {
-  display: none; // PCファーストで作成したので基本は非表示
-  @include f.mq(md) {
-    display: block; // 768px以下で表示
-  }
-}
-
 .hamburger__btn {
   position: relative;
   width: 48px;
   height: 48px;
   cursor: pointer;
   background: none;
-  @include f.hover {
-    .hamburger__line {
-      background-color: color.adjust(f.$main-color-1, $lightness: 10%);
-    }
-  }
-  &.is-active .hamburger__line:nth-child(1) {
-    top: 24px;
-    transform: rotate(45deg);
-  }
-  &.is-active .hamburger__line:nth-child(2) {
-    opacity: 0;
-  }
-  &.is-active .hamburger__line:nth-child(3) {
-    top: 24px;
-    transform: rotate(-45deg);
+  display: none; // PCファーストで作成したので基本は非表示
+  @include f.mq(md) {
+    display: block; // 768px以下で表示
   }
 }
 
-.hamburger__line {
+#js-hamburger .hamburger__line {
   position: absolute;
   left: 0;
   display: block;
@@ -51,27 +32,56 @@
   }
 }
 
+// headerにis-activeがついた時
+// ボタンの線のアニメーション
+#header.is-active {
+  .hamburger__line {
+    background-color: f.$main-color-1;
+    &:nth-child(1) {
+      transform: rotate(45deg);
+      top: 24px;
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 24px;
+    }
+  }
+}
 // メニュー本体。JSでclassつけ外してCSSアニメーション
 .drawer__menu {
   background-color: f.$base-color-1;
   position: fixed;
+  z-index: 1001;
   right: 0; // スタイル調整用。普段は100%にして右側に隠しておく
-  width: 88vw;
-  top: 6.766rem;
-  z-index: 100;
-  height: calc(100vh - 6.5rem);
-  padding: f.sp(16);
+  width: 66vw;
+  top: 0;
+  height: 100dvh;
+  padding: 7.2rem f.sp(16) f.sp(16) f.sp(16);
   transform: translateX(100%);
+  transition: transform 0.3s ease;
 }
 
 // 黒い背景
-.drawer__bg {
-  display: none; // jsでdisplay: blockに変更
+.overlay__bg {
   position: fixed;
-  z-index: 99;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 6.766rem;
+  z-index: 1000;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
   background: rgba(60, 60, 60, 0.8);
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+
+    // その中にあるメニュー本体をスライドインさせる
+    .drawer__menu {
+      transform: translateX(0);
+    }
+  }
 }
