@@ -35,15 +35,44 @@
 
         <!-- ハンバーガーメニュー -->
         <!-- 768px以下(md)で表示 -->
-        <nav class="hamburger">
+        <div class="hamburger">
           <button id="js-hamburger" class="hamburger__btn">
             <span class="hamburger__line"></span>
             <span class="hamburger__line"></span>
             <span class="hamburger__line"></span>
           </button>
-        </nav>
+        </div>
       </div>
+      <nav class="drawer__menu">
+        <!-- ↓メニュー本体 -->
+        <ul class="drawer__list">
+          <li class="drawer__item">
+            <a href="#" class="c-button c-button--primary">新規登録</a>
+          </li>
+          <li class="drawer__item">
+            <a href="#" class="c-button c-button--secondary">ログイン</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">利用ガイド</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">よくある質問</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">お問い合わせ</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">サイトマップ</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">コミュニティ</a>
+          </li>
+        </ul>
+      </nav>
     </header>
+
+    <!-- ↓ハンバーガーメニューの黒い背景 -->
+    <div class="overlay__bg"></div>
 
     <main>
       <section id="hero" class="hero">

@@ -16,7 +16,7 @@
   background: none;
   @include f.hover {
     .hamburger__line {
-      background-color: color.adjust(f.$text-color-1, $lightness: 10%);
+      background-color: color.adjust(f.$main-color-1, $lightness: 10%);
     }
   }
   &.is-active .hamburger__line:nth-child(1) {
@@ -49,4 +49,29 @@
   &:nth-child(3) {
     top: 34px;
   }
+}
+
+// メニュー本体。JSでclassつけ外してCSSアニメーション
+.drawer__menu {
+  background-color: f.$base-color-1;
+  position: fixed;
+  right: 0; // スタイル調整用。普段は100%にして右側に隠しておく
+  width: 88vw;
+  top: 6.766rem;
+  z-index: 100;
+  height: calc(100vh - 6.5rem);
+  padding: f.sp(16);
+  transform: translateX(100%);
+}
+
+// 黒い背景
+.drawer__bg {
+  display: none; // jsでdisplay: blockに変更
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 6.766rem;
+  background: rgba(60, 60, 60, 0.8);
 }
