@@ -64,6 +64,13 @@
   transition: transform 0.3s ease;
 }
 
+.drawer__link {
+  color: f.$text-color-2;
+  font-size: f.fs(24);
+  padding: f.sp(16);
+  border-bottom: 1px solid f.$main-color-2;
+}
+
 #header.is-active .drawer__menu {
   transform: translateX(0);
 }
@@ -75,7 +82,7 @@
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  background: rgba(60, 60, 60, 0.8);
+  background: rgba(0, 0, 0, 0.35);
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
