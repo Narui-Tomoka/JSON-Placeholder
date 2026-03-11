@@ -144,31 +144,6 @@
     margin-top: f.sp(8);
     padding-right: f.sp(24);
     text-align: right;
-    position: relative;
-    &::before {
-      content: "";
-      display: block;
-      width: 8px;
-      height: 1px;
-      rotate: 40deg;
-      background-color: f.$text-color-2;
-      margin-right: f.sp(8);
-      position: absolute;
-      top: 42%;
-      right: 0;
-    }
-    &::after {
-      content: "";
-      display: block;
-      width: 8px;
-      height: 1px;
-      rotate: 140deg;
-      background-color: f.$text-color-2;
-      margin-right: f.sp(8);
-      position: absolute;
-      top: 60%;
-      right: 0;
-    }
   }
 
   .features-img2,
@@ -350,7 +325,6 @@
     color: f.$text-color-2;
     cursor: pointer;
     list-style: none; // 三角マーク消去（標準）
-    position: relative;
     transition: color 0.3s ease;
     line-height: 1.2;
 

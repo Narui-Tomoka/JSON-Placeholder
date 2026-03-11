@@ -252,16 +252,18 @@ function renderPosts(data) {
 
     li.innerHTML = `
     <a href="details.html?id=${post.id}" class="post-card">
-      <div class="image-wrapper">
-        <span class="post-card__id">投稿ID: ${post.id}</span>
-        <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
-      </div>
-      <div class="post-card__content">
-        <p class="post-card__user-id">ユーザー${post.userId}</p>
-        <h3 class="post-card__title">${post.title}</h3>
-        <p class="post-card__body">${post.body}</p>
-      </div>
-    </a>`;
+  <div class="image-wrapper">
+    <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
+  </div>
+  <div class="post-card__content">
+    <div class="post-card__meta">
+      <p class="post-card__user-id">ユーザー${post.userId}</p>
+      <span class="post-card__id">投稿ID: ${post.id}</span>
+    </div>
+    <h3 class="post-card__title">${post.title}</h3>
+    <p class="post-card__body">${post.body}</p>
+  </div>
+</a>`;
 
     resultList.appendChild(li);
   });

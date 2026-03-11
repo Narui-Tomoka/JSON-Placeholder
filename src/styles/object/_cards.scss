@@ -21,72 +21,74 @@
 
 // .search-result__itemの子要素のaタグ
 .post-card {
+  display: block; // aタグなのでブロック要素化
+  text-decoration: none; // リンクの下線を消す
   background: #fff;
   border-radius: 20px;
-  padding: f.sp(16) f.sp(16) f.sp(32) f.sp(16); /* 下を広めにしてチェキ風に */
-  box-shadow: 8px 8px 0px f.$main-color-1; /* ぼかさないポップな影 */
+  padding: f.sp(16) f.sp(16) f.sp(32) f.sp(16);
+  box-shadow: 8px 8px 0px f.$main-color-1;
   border: 2px solid f.$text-color-2;
-  transition: transform 0.2s ease;
   cursor: pointer;
-  position: relative;
-  @include f.hover {
-    transform: translateY(-5px) rotate(2deg);
-  }
+  // position: relative; // 重ね合わせが必要なければ削除可能
 }
 
-// img要素と投稿IDをまとめるdiv
+// img要素をまとめるdiv
 .image-wrapper {
-  position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1; /* 正方形で統一 */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 12px;
   border: 2px solid f.$text-color-2;
-  text-align: center;
 }
 
-// 画像
 .image-wrapper img {
   width: 100%;
   height: 100%;
+  object-fit: cover; // 画像の比率を維持して埋める
+  display: block;
 }
 
-// .image-wrapperの子要素のspanタグ（投稿IDを表示）
-.post-card__id {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: f.$main-color-2;
-  color: f.$base-color-1;
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: f.fs(14);
-  border: 2px solid f.$text-color-2;
-  z-index: 1;
-}
-
-// カードの活字部分をまとめる親要素
+// カードのテキスト部分
 .post-card__content {
   margin-top: f.sp(16);
 }
 
-// 投稿のタイトル
-.post-card__title {
-  margin-top: f.sp(8);
-  font-size: f.fs(18);
-  line-height: 1.4;
-  color: f.$text-color-2;
-  /* 2行以上は省略する設定 */
-  overflow: hidden;
-  white-space: nowrap;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
+// ユーザー名と投稿IDを横並びにする
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // 両端に散らす
+  gap: 8px;
+  margin-bottom: f.sp(8);
 }
 
 .post-card__user-id {
+  color: f.$text-color-2;
+  font-size: f.fs(14);
+  margin: 0;
+}
+
+// 投稿ID（移動後：バッジ風のデザインを維持）
+.post-card__id {
+  background: f.$main-color-2;
+  color: f.$base-color-1;
+  padding: 0.2rem 0.8rem; // 少しコンパクトに調整
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: f.fs(12);
+  border: 2px solid f.$text-color-2;
+  white-space: nowrap;
+}
+
+// 投稿のタイトル
+.post-card__title {
+  font-size: f.fs(18);
+  line-height: 1.4;
+  color: f.$text-color-2;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // 本文
@@ -95,10 +97,8 @@
   font-size: f.fs(16);
   font-weight: bold;
   margin-top: f.sp(8);
+  margin-bottom: 0;
   overflow: hidden;
-  white-space: nowrap;
-  overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
-  width: 100%;
+  white-space: nowrap;
 }
