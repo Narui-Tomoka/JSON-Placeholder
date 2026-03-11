@@ -86,10 +86,11 @@
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-  &.is-active {
-    opacity: 1;
-    visibility: visible;
 
-    // その中にあるメニュー本体をスライドインさせる
-  }
+  // その中にあるメニュー本体をスライドインさせる
+}
+
+#header.is-active .overlay__bg {
+  opacity: 1;
+  visibility: visible;
 }
