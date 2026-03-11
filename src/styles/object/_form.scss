@@ -6,6 +6,10 @@
   padding: f.sp(104) 0;
 }
 
+.search-form {
+  margin: 0 auto;
+}
+
 // 詳細画面で流用することを想定し@mixin化
 .search-form__item {
   @include f.form-item;

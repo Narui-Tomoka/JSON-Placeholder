@@ -40,7 +40,7 @@
 // フォームの枠
 @mixin form-item {
   width: fit-content;
-  margin-top: func.sp(16);
+  margin: func.sp(16) auto 0;
 }
 
 @mixin form-label {
