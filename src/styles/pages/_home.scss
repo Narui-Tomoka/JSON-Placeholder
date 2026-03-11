@@ -22,46 +22,7 @@
     line-height: 1.5;
   }
 
-  // section search
-  .search {
-    background-color: f.$base-color-2;
-    padding: f.sp(104) 0;
-  }
-
-  // 詳細画面で流用することを想定し@mixin化
-  .search-form__item {
-    @include f.form-item;
-  }
-  .search-form__label {
-    @include f.form-label;
-  }
-  .search-form__select {
-    @include f.select;
-  }
-  .search-form__input {
-    @include f.input;
-  }
-  .search-form__textarea {
-    @include f.textarea;
-  }
-  .search-form__optional {
-    @include f.form-optional;
-  }
-  .search-form__msg {
-    @include f.form-msg;
-  }
-  .search-form__submit {
-    margin-top: f.sp(24);
-  }
-
-  #errSummary {
-    scroll-margin-top: 200px; //エラー表示でフォーカスする場所の調整
-  }
-
-  // バリデーションテキスト（エラー時のテキスト）
-  .search-form__error-text {
-    margin-top: f.sp(8);
-  }
+  // section searchは_form.scssに記載
 
   // section search-result
   .search-result {

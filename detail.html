@@ -17,7 +17,7 @@
     <title>そらいろドライブ！ | 旅の思い出記録アプリ</title>
   </head>
   <body class="page-detail">
-    <header id="header" class="header">
+        <header id="header" class="header">
       <div class="header__inner l-inner">
         <div class="header__logo">
           <a href="#">
@@ -25,32 +25,14 @@
           </a>
         </div>
 
-        <!-- 768px以下で非表示にしハンバーガーメニューに -->
         <nav class="header__nav">
-          <div class="header__link--wrap">
-            <ul class="header__list">
-              <li class="header__item">
-                <a href="#" class="header__link">検索</a>
-              </li>
-              <li class="header__item">
-                <a href="#" class="header__link">投稿</a>
-              </li>
-              <li class="header__item">
-                <a href="#" class="header__link header__link--dropdown"
-                  >メニュー</a
-                >
-              </li>
-            </ul>
-          </div>
+          <!-- 768px以下で非表示にしハンバーガーメニューに -->
           <div class="header__buttons--wrap">
             <a href="#" class="c-button c-button--primary">新規登録</a>
             <a href="#" class="c-button c-button--secondary">ログイン</a>
           </div>
-        </nav>
-
-        <!-- ハンバーガーメニュー -->
-        <!-- 768px以下(md)で表示 -->
-        <nav class="hamburger">
+          <!-- ハンバーガーメニュー -->
+          <!-- 768px以下(md)で表示 -->
           <button id="js-hamburger" class="hamburger__btn">
             <span class="hamburger__line"></span>
             <span class="hamburger__line"></span>
@@ -58,7 +40,38 @@
           </button>
         </nav>
       </div>
+
+      <!-- ↓ハンバーガーメニューの黒い背景 -->
+      <div class="overlay__bg" id="js-drawer-overlay"></div>
+
+      <!-- ↓横からスライドしてくるメニュー本体 -->
+      <nav class="drawer__menu">
+        <ul class="drawer__list">
+          <li class="drawer__item">
+            <a href="#" class="drawer__link">新規登録</a>
+          </li>
+          <li class="drawer__item">
+            <a href="#" class="drawer__link">ログイン</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">利用ガイド</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">よくある質問</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">お問い合わせ</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">サイトマップ</a>
+          </li>
+          <li class="drawer__item">
+            <a class="drawer__link" href="#">コミュニティ</a>
+          </li>
+        </ul>
+      </nav>
     </header>
+
 
     <main>
       <section id="hero" class="hero">
@@ -75,13 +88,15 @@
 
           <form id="detailForm" class="detail-form u-text-center">
           <!-- エラー表示用のメッセージエリアを想定↓ -->
-          <div id="detailError" class="detail-form__error-summary"></div>
+          <div id="errSummary" class="detail-form__error-summary"></div>
 
           <!-- 【投稿ID】表示するだけ -->
           <div class="detail-form__item u-center">
             <p class="detail__id-text">
               投稿ID: <span id="postId" class="detail__id-number"></span>
             </p>
+            <!-- ↓IDが不正な時を想定 -->
+              <div id="errPostId" class="search-form__error-msg"></div>
           </div>
 
           <!-- 【ユーザーID】変更可能 -->
@@ -105,6 +120,8 @@
           <div class="detail-form__item u-center">
             <label for="title" class="detail-form__label">タイトル</label>
             <input type="text" id="title" class="detail-form__input" />
+              <div id="errTitle" class="search-form__error-msg"></div>
+              <p class="search-form__msg">※10文字以内で入力してください</p>
           </div>
 
           <div class="detail-form__item u-center">
@@ -114,6 +131,8 @@
               class="detail-form__textarea"
               rows="6"
             ></textarea>
+            <div id="errBody" class="search-form__error-msg"></div>
+              <p class="search-form__msg">※50文字以内で入力してください</p>
           </div>
 
           <div class="detail__buttons">
@@ -148,10 +167,6 @@
             />地図を越えて物語になる。
           </h2>
           <p class="footer__cta-text">道は続く。思い出は、もっと遠くまで。</p>
-        </div>
-        <div class="footer__cta-actions u-text-center">
-          <a href="#" class="c-button c-button--primary">新規登録</a>
-          <a href="#" class="c-button c-button--secondary">ログイン</a>
         </div>
       </div>
 
