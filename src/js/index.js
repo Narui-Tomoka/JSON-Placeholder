@@ -251,7 +251,7 @@ function renderPosts(data) {
     const imageUrl = `https://picsum.photos/seed/${randomSeed}/1320`; // 画像が1列になる画面幅 * 2 を目安にしている
 
     li.innerHTML = `
-    <a href="details.html?id=${post.id}" class="post-card">
+    <a href="detail.html?id=${post.id}" class="post-card">
   <div class="image-wrapper">
     <img src="${imageUrl}" alt="投稿ID ${post.id} のイメージ画像">
   </div>
