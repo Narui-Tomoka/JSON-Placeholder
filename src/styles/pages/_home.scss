@@ -144,6 +144,31 @@
     margin-top: f.sp(8);
     padding-right: f.sp(24);
     text-align: right;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 1px;
+      rotate: 40deg;
+      background-color: f.$text-color-2;
+      margin-right: f.sp(8);
+      position: absolute;
+      top: 42%;
+      right: 0;
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 1px;
+      rotate: 140deg;
+      background-color: f.$text-color-2;
+      margin-right: f.sp(8);
+      position: absolute;
+      top: 60%;
+      right: 0;
+    }
   }
 
   .features-img2,
