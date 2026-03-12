@@ -90,7 +90,7 @@
   // その中にあるメニュー本体をスライドインさせる
 }
 
-#js-drawer-overlay.is-active {
+#header.is-active .overlay__bg {
   opacity: 1;
   visibility: visible;
 }
