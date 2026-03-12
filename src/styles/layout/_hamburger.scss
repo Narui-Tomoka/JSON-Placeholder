@@ -54,7 +54,7 @@
 .drawer__menu {
   background-color: f.$base-color-1;
   position: fixed;
-  z-index: 1001;
+  z-index: 1150;
   right: 0; // スタイル調整用。普段は100%にして右側に隠しておく
   width: 66vw;
   top: 0;
@@ -78,7 +78,7 @@
 // 黒い背景
 .overlay__bg {
   position: fixed;
-  z-index: 1000;
+  z-index: 999;
   inset: 0;
   opacity: 0;
   visibility: hidden;
@@ -90,7 +90,7 @@
   // その中にあるメニュー本体をスライドインさせる
 }
 
-#header.is-active .overlay__bg {
+#js-drawer-overlay.is-active {
   opacity: 1;
   visibility: visible;
 }
