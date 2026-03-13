@@ -9,8 +9,11 @@
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
-
 console.log("取得したID：", postId);
+
+// 更新＆削除ボタン
+const updateBtn = document.querySelector("#updateBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
 
 // IDチェックして問題なければfetchPost()実行してAPI通信
 if (!postId || isNaN(Number(postId))) {
@@ -19,7 +22,11 @@ if (!postId || isNaN(Number(postId))) {
   fetchPost();
 }
 
-// API通信で投稿データを取得してコンソールに表示
+// 更新処理（PUT）＆削除処理（DELETE）
+updateBtn.addEventListener("click", updatePost);
+deleteBtn.addEventListener("click", deletePost);
+
+// API通信で投稿データを取得してコンソールに表示する関数
 async function fetchPost() {
   try {
     const response = await fetch(
@@ -47,5 +54,60 @@ async function fetchPost() {
     bodyEl.value = data.body;
   } catch (error) {
     console.error(error);
+  }
+}
+
+// 更新処理（PUT）のための関数
+async function updatePost() {
+  const userId = document.querySelector("#userId").value;
+  const title = document.querySelector("#title").value;
+  const body = document.querySelector("#body").value;
+
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: postId,
+          userId: userId,
+          title: title,
+          body: body,
+        }),
+      },
+    );
+
+    const data = await response.json();
+
+    console.log("更新結果：", data);
+    alert("更新成功！");
+  } catch (error) {
+    console.error("更新失敗：", error);
+  }
+}
+
+// 投稿削除（DELETE）関数
+async function deletePost() {
+  if (!confirm("本当に投稿を削除してもよろしいですか？")) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`,
+      {
+        method: "DELETE",
+      },
+    );
+
+    console.log("削除成功");
+    alert("削除しました！");
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error("削除失敗：", error);
+    alert("削除に失敗しました");
   }
 }
