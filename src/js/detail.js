@@ -5,82 +5,110 @@
 // ④ 更新処理（PUT / PATCH）
 // ⑤ 削除処理（DELETE）
 
-// ページを開いたときにURLからidを取得してコンソールで確認。
-
+// =====================
+// URLからID取得
+// =====================
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
 console.log("取得したID：", postId);
 
-// 更新＆削除ボタン
-const updateBtn = document.querySelector("#updateBtn");
-const deleteBtn = document.querySelector("#deleteBtn");
+// =====================
+// DOM取得
+// =====================
+const postIdEl = document.getElementById("postId");
+const userIdEl = document.getElementById("userId");
+const titleEl = document.getElementById("title");
+const bodyEl = document.getElementById("body");
 
-// IDチェックして問題なければfetchPost()実行してAPI通信
-if (!postId || isNaN(Number(postId))) {
-  console.log("IDが不正です");
-} else {
+const updateBtn = document.getElementById("updateBtn");
+const deleteBtn = document.getElementById("deleteBtn");
+
+// =====================
+// 初期処理をinit()内にまとめる（データ取得から表示までの初期表示をつくる部分）
+// =====================
+init();
+
+function init() {
+  // IDチェックして問題なければfetchPost()実行してAPI通信
+  if (!postId || isNaN(Number(postId))) {
+    console.log("IDが不正です");
+    return;
+  }
+
   fetchPost();
+
+  // 更新処理（PUT）＆削除処理（DELETE）の準備
+  updateBtn.addEventListener("click", updatePost);
+  deleteBtn.addEventListener("click", deletePost);
 }
 
-// 更新処理（PUT）＆削除処理（DELETE）
-updateBtn.addEventListener("click", updatePost);
-deleteBtn.addEventListener("click", deletePost);
+// =====================
+// fetch
+// =====================
+async function fetchJson(url, options = {}) {
+  const response = await fetch(url, options);
 
-// API通信で投稿データを取得してコンソールに表示する関数
+  if (!response.ok) {
+    throw new Error(`HTTPエラー：${response.status}`);
+  }
+
+  return response.json();
+}
+
+// =====================
+// 投稿取得
+// =====================
 async function fetchPost() {
   try {
-    const response = await fetch(
+    const data = await fetchJson(
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
     );
 
-    if (!response.ok) {
-      throw new Error("投稿の取得に失敗しました");
-    }
-
-    const data = await response.json();
-
     console.log("取得した投稿：", data);
 
-    // ここからフォームの要素取得
-    const postIdEl = document.getElementById("postId");
-    const userIdEl = document.getElementById("userId");
-    const titleEl = document.getElementById("title");
-    const bodyEl = document.getElementById("body");
+    // ここからはデータをフォームにセットするrenderPost()関数にバトンタッチ
 
-    // データをフォームにセット
-    postIdEl.textContent = data.id;
-    userIdEl.value = data.userId;
-    titleEl.value = data.title;
-    bodyEl.value = data.body;
+    renderPost(data);
   } catch (error) {
     console.error(error);
   }
 }
 
-// 更新処理（PUT）のための関数
+// =====================
+// 投稿表示
+// =====================
+function renderPost(post) {
+  postIdEl.textContent = post.id;
+  userIdEl.value = post.userId;
+  titleEl.value = post.title;
+  bodyEl.value = post.body;
+}
+
+// =====================
+// 更新処理
+// =====================
 async function updatePost() {
-  const userId = document.querySelector("#userId").value;
-  const title = document.querySelector("#title").value;
-  const body = document.querySelector("#body").value;
+  if (!confirm("大切な記録を書き換えてもよろしいですか？")) {
+    return;
+  }
+  const body = {
+    id: postId,
+    userId: userIdEl.value,
+    title: titleEl.value,
+    body: bodyEl.value,
+  };
 
   try {
-    const response = await fetch(
+    const data = await fetchJson(
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          id: postId,
-          userId: userId,
-          title: title,
-          body: body,
-        }),
+        body: JSON.stringify(body),
       },
     );
-
-    const data = await response.json();
 
     console.log("更新結果：", data);
     alert("更新成功！");
@@ -89,22 +117,21 @@ async function updatePost() {
   }
 }
 
-// 投稿削除（DELETE）関数
+// =====================
+// 削除処理
+// =====================
 async function deletePost() {
-  if (!confirm("本当に投稿を削除してもよろしいですか？")) {
+  if (!confirm("この大切な記憶を、地図から消してしまっても大丈夫ですか？")) {
     return;
   }
 
   try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${postId}`,
-      {
-        method: "DELETE",
-      },
-    );
+    await fetchJson(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+      method: "DELETE",
+    });
 
-    console.log("削除成功");
-    alert("削除しました！");
+    alert("削除しました");
+
     window.location.href = "index.html";
   } catch (error) {
     console.error("削除失敗：", error);
