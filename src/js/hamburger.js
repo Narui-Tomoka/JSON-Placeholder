@@ -1,5 +1,3 @@
-"use strict";
-
 const hamburger = document.getElementById("js-hamburger");
 const header = document.getElementById("header");
 const overlay = document.getElementById("js-drawer-overlay"); // 追加

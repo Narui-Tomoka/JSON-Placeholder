@@ -100,9 +100,9 @@
 
           <!-- 【ユーザーID】変更可能 -->
           <div class="detail-form__item u-center">
-            <label for="userId" class="detail-form__label">ユーザー</label>
+            <label for="userId" class="detail-form__label">ユーザー<span class="search-form__required">必須</span></label>
             <select id="userId" class="detail-form__select">
-              <option value="">選択してください</option>
+              <option value="" disabled>選択してください</option>
               <option value="1">ユーザー1</option>
               <option value="2">ユーザー2</option>
               <option value="3">ユーザー3</option>
@@ -117,21 +117,21 @@
           </div>
 
           <div class="detail-form__item u-center">
-            <label for="title" class="detail-form__label">タイトル</label>
+            <label for="title" class="detail-form__label">タイトル<span class="search-form__required">必須</span></label>
             <input type="text" id="title" class="detail-form__input" />
-              <div id="errTitle" class="search-form__error-msg"></div>
-              <p class="search-form__msg">※10文字以内で入力してください</p>
+              <div id="errTitle" class="search-form__error-msg is-error-text"></div>
+              <!-- <p class="search-form__msg">※10文字以内で入力してください</p> -->
           </div>
 
           <div class="detail-form__item u-center">
-            <label for="body" class="detail-form__label">本文</label>
+            <label for="body" class="detail-form__label">本文<span class="search-form__required">必須</span></label>
             <textarea
               id="body"
               class="detail-form__textarea"
               rows="6"
             ></textarea>
-            <div id="errBody" class="search-form__error-msg"></div>
-              <p class="search-form__msg">※50文字以内で入力してください</p>
+            <div id="errBody" class="search-form__error-msg is-error-text"></div>
+              <!-- <p class="search-form__msg">※50文字以内で入力してください</p> -->
           </div>
 
           <div class="detail__buttons">

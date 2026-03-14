@@ -20,26 +20,33 @@
     padding: f.sp(104) 0;
   }
 
+  // 詳細画面のフォーム。一覧と違って長いタイトルや本文があるので
+  // 見切れないようにwidthを上書きして幅を広げている
   .detail__id-text {
-    width: 30rem;
+    width: 33rem;
     height: 3.5rem;
     margin-top: f.sp(16);
     text-align: left;
   }
   .detail-form__item {
     @include f.form-item;
+    width: 33rem;
   }
   .detail-form__label {
     @include f.form-label;
+    width: 33rem;
   }
   .detail-form__select {
     @include f.select;
+    width: 33rem;
   }
   .detail-form__input {
     @include f.input;
+    width: 33rem;
   }
   .detail-form__textarea {
     @include f.textarea;
+    width: 33rem;
   }
 
   .detail__buttons {

@@ -15,10 +15,6 @@
 // 一行に入るだけ並べていく。
 // 入りきらなければ次の行に入れていく。
 
-// JSで追加されるli要素
-.search-result__item {
-}
-
 // .search-result__itemの子要素のaタグ
 .post-card {
   background: #fff;
@@ -84,9 +80,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 100%;
-}
-
-.post-card__user-id {
 }
 
 // 本文

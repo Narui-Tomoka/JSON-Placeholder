@@ -108,6 +108,15 @@
   border-radius: 12px;
 }
 
+// フォームラベル右側の「必須」
+@mixin form-required {
+  display: inline-block;
+  padding: func.sp(4) func.sp(8);
+  color: vars.$base-color-1;
+  background-color: vars.$accent-color-2;
+  margin-left: func.sp(8);
+  border-radius: 12px;
+}
 // 「※半角数字で～」などのフォーム入力条件
 @mixin form-msg {
   font-size: func.fs(12);

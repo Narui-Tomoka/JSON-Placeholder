@@ -29,6 +29,9 @@
 .search-form__optional {
   @include f.form-optional;
 }
+.search-form__required {
+  @include f.form-required;
+}
 .search-form__msg {
   @include f.form-msg;
 }

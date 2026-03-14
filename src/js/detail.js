@@ -23,6 +23,98 @@ const bodyEl = document.getElementById("body");
 const updateBtn = document.getElementById("updateBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 
+// =========================
+// バリデーション
+// =========================
+function validateDetailForm() {
+  const userId = userIdEl.value;
+  const title = titleEl.value.trim();
+  const body = bodyEl.value.trim();
+
+  const errSummary = document.querySelector("#errSummary");
+  const errTitle = document.querySelector("#errTitle");
+  const errBody = document.querySelector("#errBody");
+
+  let firstErrorElement = null;
+  const errors = [];
+
+  // =========================
+  // エラー表示リセット
+  // =========================
+  errSummary.innerHTML = "";
+  errTitle.textContent = "";
+  errBody.textContent = "";
+
+  titleEl.classList.remove("is-error");
+  bodyEl.classList.remove("is-error");
+
+  // =========================
+  // userId 必須
+  // =========================
+  if (userId === "") {
+    const msg = "ユーザーを選択してください。";
+    errors.push(msg);
+
+    if (!firstErrorElement) {
+      firstErrorElement = userIdEl;
+    }
+  }
+
+  // =========================
+  // title 必須
+  // =========================
+  if (title === "") {
+    const msg = "タイトルを入力してください。";
+    errTitle.textContent = msg;
+    errors.push(msg);
+
+    titleEl.classList.add("is-error");
+
+    if (!firstErrorElement) {
+      firstErrorElement = titleEl;
+    }
+  }
+
+  // =========================
+  // body 必須
+  // =========================
+  if (body === "") {
+    const msg = "本文を入力してください。";
+    errBody.textContent = msg;
+    errors.push(msg);
+
+    bodyEl.classList.add("is-error");
+
+    if (!firstErrorElement) {
+      firstErrorElement = bodyEl;
+    }
+  }
+
+  // =========================
+  // エラーまとめ表示
+  // =========================
+  if (errors.length > 0) {
+    errSummary.innerHTML = `
+      <p class="detail-form__error-text is-error-text">
+        入力に不備があります（${errors.length}件）
+      </p>
+      <ul class="detail-form__error-list">
+        ${errors.map((e) => `<li class="is-error-text">${e}</li>`).join("")}
+      </ul>
+    `;
+
+    errSummary.scrollIntoView({ behavior: "smooth" });
+
+    if (firstErrorElement) {
+      firstErrorElement.focus();
+    }
+
+    return false;
+  }
+
+  return true;
+}
+
 // =====================
 // 初期処理をinit()内にまとめる（データ取得から表示までの初期表示をつくる部分）
 // =====================
@@ -88,6 +180,10 @@ function renderPost(post) {
 // 更新処理
 // =====================
 async function updatePost() {
+  if (!validateDetailForm()) {
+    return;
+  }
+
   if (!confirm("大切な記録を書き換えてもよろしいですか？")) {
     return;
   }
@@ -111,7 +207,6 @@ async function updatePost() {
     );
 
     console.log("更新結果：", data);
-    alert("更新成功！");
   } catch (error) {
     console.error("更新失敗：", error);
   }
@@ -129,8 +224,6 @@ async function deletePost() {
     await fetchJson(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
       method: "DELETE",
     });
-
-    alert("削除しました");
 
     window.location.href = "index.html";
   } catch (error) {
