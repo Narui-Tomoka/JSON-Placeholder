@@ -1,3 +1,7 @@
+// =========================
+// detail page controller
+// =========================
+
 import "../../styles/style.scss";
 import { initHamburger } from "../modules/hamburger";
 import { initPageTop } from "../modules/pagetop";

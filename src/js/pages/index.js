@@ -1,3 +1,7 @@
+// =========================
+// index page controller
+// =========================
+
 import "../../styles/style.scss";
 import { initAccordion } from "../modules/accordion";
 import { initHamburger } from "../modules/hamburger";
