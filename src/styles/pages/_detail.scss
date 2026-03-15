@@ -37,16 +37,17 @@
     width: 33rem;
   }
   .detail-form__select {
-    @include f.select;
-    width: 33rem;
+    @include f.select($width: 33rem);
   }
   .detail-form__input {
-    @include f.input;
-    width: 33rem;
+    @include f.textarea($width: 33rem);
+    font-size: f.fs(16);
+    height: auto; // 中の要素の大きさに応じて変化
+    // タイトル部分。見切れ防止でtextarea要素に変更
   }
   .detail-form__textarea {
-    @include f.textarea;
-    width: 33rem;
+    @include f.textarea($width: 33rem, $height: 17.2rem);
+    font-size: f.fs(16);
   }
 
   .detail__buttons {

@@ -293,15 +293,26 @@
   .cta-banner {
     background-color: rgba(142, 197, 232, 0.7);
     // $main-color-1: #8ec5e8;をrgba()に直している
-    background-image: url(../../images/cta.JPG);
+    background-image: url(../../images/cta.jpg);
     background-repeat: no-repeat;
     background-position: 65% 0%;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: scroll;
     padding: f.sp(160) 0;
   }
+  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+    .cta-banner {
+      background-attachment: fixed;
+      background-position: 65% 0%;
+    }
+  }
+  // ↑iOSの固定背景表示バグ対策。
+  // ユーザーエージェントで追うと複雑化するためスマホではfixedに統一。
+  // @media (hover: hover) and (pointer: fine) →マウス操作ができてホバーできるデバイス（PC)を想定
+
   .cta-banner__line {
     background-color: rgba(255, 255, 255, 0.7);
+    padding: f.sp(8);
   }
   .cta-banner__actions {
     margin-top: f.sp(24);
