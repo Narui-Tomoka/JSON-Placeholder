@@ -17,10 +17,10 @@
     <title>そらいろドライブ！ | 旅の思い出記録アプリ</title>
   </head>
   <body class="page-detail">
-        <header id="header" class="header">
+    <header id="header" class="header">
       <div class="header__inner l-inner">
         <div class="header__logo">
-          <a href="#">
+          <a href="index.html">
             <img src="src/images/logo.png" alt="そらいろドライブ！" />
           </a>
         </div>
@@ -79,80 +79,95 @@
       <section id="detail" class="detail">
         <div class="detail__inner l-inner">
           <h1 class="section__title u-text-center zen-b">
-            あの日を巡る、<br class="br-sm">記憶の書。
+            あの日を巡る、<br class="br-sm" />記憶の書。
           </h1>
           <p class="section__sub-title u-text-center">
-            ここは、あなたの「嬉しい・楽しい」を<br class="br-sm">大切にしまっておく場所。<br />綴った物語を振り返り、今の気持ちに合わせて<br class="br-sm">自由に整えることができます。
+            ここは、あなたの「嬉しい・楽しい」を<br
+              class="br-sm"
+            />大切にしまっておく場所。<br />
+            綴った物語を振り返り、今の気持ちに合わせて<br
+              class="br-sm"
+            />自由に整えることができます。
           </p>
 
           <form id="detailForm" class="detail-form u-text-center">
-          <!-- エラー表示用のメッセージエリアを想定↓ -->
-          <div id="errSummary" class="detail-form__error-summary"></div>
+            <!-- 画面上のメッセージ表示領域 -->
+            <div id="errSummary" class="detail-form__error-summary"></div>
 
-          <!-- 【投稿ID】表示するだけ -->
-          <div class="detail-form__item u-center">
-            <p class="detail__id-text">
-              投稿ID: <span id="postId" class="detail__id-number"></span>
-            </p>
-            <!-- ↓IDが不正な時を想定 -->
-              <div id="errPostId" class="search-form__error-msg"></div>
-          </div>
+            <!-- 【投稿ID】表示するだけ -->
+            <div class="detail-form__item u-center">
+              <p class="detail__id-text">
+                投稿ID: <span id="postId" class="detail__id-number"></span>
+              </p>
+              <div id="errPostId" class="search-form__error-text"></div>
+            </div>
 
-          <!-- 【ユーザーID】変更可能 -->
-          <div class="detail-form__item u-center">
-            <label for="userId" class="detail-form__label">ユーザー<span class="search-form__required">必須</span></label>
-            <select id="userId" class="detail-form__select">
-              <option value="" disabled>選択してください</option>
-              <option value="1">ユーザー1</option>
-              <option value="2">ユーザー2</option>
-              <option value="3">ユーザー3</option>
-              <option value="4">ユーザー4</option>
-              <option value="5">ユーザー5</option>
-              <option value="6">ユーザー6</option>
-              <option value="7">ユーザー7</option>
-              <option value="8">ユーザー8</option>
-              <option value="9">ユーザー9</option>
-              <option value="10">ユーザー10</option>
-            </select>
-          </div>
+            <!-- 【ユーザーID】変更可能 -->
+            <div class="detail-form__item u-center">
+              <label for="userId" class="detail-form__label">
+                ユーザー<span class="search-form__required">必須</span>
+              </label>
+              <select id="userId" class="detail-form__select">
+                <option value="" disabled>選択してください</option>
+                <option value="1">ユーザー1</option>
+                <option value="2">ユーザー2</option>
+                <option value="3">ユーザー3</option>
+                <option value="4">ユーザー4</option>
+                <option value="5">ユーザー5</option>
+                <option value="6">ユーザー6</option>
+                <option value="7">ユーザー7</option>
+                <option value="8">ユーザー8</option>
+                <option value="9">ユーザー9</option>
+                <option value="10">ユーザー10</option>
+              </select>
+            </div>
 
-          <div class="detail-form__item u-center">
-            <label for="title" class="detail-form__label">タイトル<span class="search-form__required">必須</span></label>
-            <textarea name="" id="title" class="detail-form__input"></textarea>
-              <div id="errTitle" class="search-form__error-msg is-error-text"></div>
-              <!-- <p class="search-form__msg">※10文字以内で入力してください</p> -->
-          </div>
+            <div class="detail-form__item u-center">
+              <label for="title" class="detail-form__label">
+                タイトル<span class="search-form__required">必須</span>
+              </label>
+              <textarea id="title" class="detail-form__input"></textarea>
+              <div
+                id="errTitle"
+                class="search-form__error-text is-error-text"
+              ></div>
+            </div>
 
-          <div class="detail-form__item u-center">
-            <label for="body" class="detail-form__label">本文<span class="search-form__required">必須</span></label>
-            <textarea
-              id="body"
-              class="detail-form__textarea"
-              rows="6"
-            ></textarea>
-            <div id="errBody" class="search-form__error-msg is-error-text"></div>
-              <!-- <p class="search-form__msg">※50文字以内で入力してください</p> -->
-          </div>
+            <div class="detail-form__item u-center">
+              <label for="body" class="detail-form__label">
+                本文<span class="search-form__required">必須</span>
+              </label>
+              <textarea
+                id="body"
+                class="detail-form__textarea"
+                rows="6"
+              ></textarea>
+              <div
+                id="errBody"
+                class="search-form__error-text is-error-text"
+              ></div>
+            </div>
 
-          <div class="detail__buttons">
-            <button
-              type="button"
-              id="updateBtn"
-              class="c-button c-button--primary c-button--submit"
-            >
-              更新
-            </button>
-            <button
-              type="button"
-              id="deleteBtn"
-              class="c-button c-button--delete"
-            >
-              削除
-            </button>
-          </div>
+            <div class="detail__buttons">
+              <button
+                type="button"
+                id="updateBtn"
+                class="c-button c-button--primary c-button--submit"
+              >
+                更新
+              </button>
+              <button
+                type="button"
+                id="deleteBtn"
+                class="c-button c-button--delete"
+              >
+                削除
+              </button>
+            </div>
 
-          <a href="index.html" class="detail__back-link">一覧画面へ戻る</a>
-        </form>
+            <a href="index.html" class="detail__back-link">一覧画面へ戻る</a>
+          </form>
+        </div>
       </section>
     </main>
 
