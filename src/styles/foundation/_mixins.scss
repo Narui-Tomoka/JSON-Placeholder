@@ -72,6 +72,7 @@
   width: $width;
   height: $height;
   margin-top: func.sp(4);
+  font-size: func.fs(16);
   border: 1px solid #aaa;
   border-radius: 30px;
   padding-left: func.sp(8);
@@ -83,10 +84,11 @@
 }
 
 // textarea要素
-@mixin textarea($width: 30rem, $height: 15.6rem) {
+@mixin textarea($width: 30rem, $height: 17.2rem) {
   width: $width;
   height: $height;
   margin-top: func.sp(4);
+  font-size: func.fs(16);
   border: 1px solid #aaa;
   border-radius: 30px;
   resize: none;
