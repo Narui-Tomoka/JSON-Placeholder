@@ -273,6 +273,8 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
     .top {
       object-position: 50% 10%;
     }
@@ -280,6 +282,9 @@
       width: 100%;
       height: 100%;
       border-radius: 12px;
+    }
+    &.is-show {
+      opacity: 1;
     }
 
     // 大サイズの設定 (縦横2マス分占有)

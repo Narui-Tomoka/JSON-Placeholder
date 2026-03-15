@@ -462,3 +462,29 @@ if (import.meta.env.DEV) {
   currentPage = 1;
   renderPage();
 }
+
+// =========================
+// IntersectionObserver
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
+  const targets = document.querySelectorAll(".gallery__item");
+
+  if (targets.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-show");
+          observer.unobserve(entry.target); // 一度処理したら監視不要にする
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    },
+  );
+
+  targets.forEach((el) => observer.observe(el));
+});
+// IntersectionObserverここまで
