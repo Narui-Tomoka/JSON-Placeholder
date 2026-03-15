@@ -3,7 +3,7 @@
 .header {
   background-color: f.$main-color-1;
   position: sticky;
-  z-index: 1000;
+  z-index: f.zi("header");
   width: 100%;
   top: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -44,7 +44,7 @@
 
 .header__nav {
   position: absolute;
-  z-index: 1200; // ハンバーガーメニューがいるので一番上に配置
+  z-index: f.zi("header__nav"); // ハンバーガーメニューがいるので一番上に配置
   top: f.sp(8); // 新規登録・ログインのボタン配置
   right: f.sp(16);
   display: flex;

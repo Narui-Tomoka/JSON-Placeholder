@@ -138,3 +138,13 @@ $breakpoints: (
   "md": "screen and (max-width: 768px)",
   "lg": "screen and (max-width: 1024px)",
 );
+
+// z-index管理用
+$z-index: (
+  "header__nav": 1300,
+  "page-top": 1200,
+  "drawer__menu": 1100,
+  "header": 1000,
+  "overlay__bg": 999,
+  "post-card__id": 1,
+);

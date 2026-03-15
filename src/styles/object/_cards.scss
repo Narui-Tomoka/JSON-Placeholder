@@ -59,7 +59,7 @@
   font-weight: bold;
   font-size: f.fs(14);
   border: 2px solid f.$text-color-2;
-  z-index: 1;
+  z-index: f.zi("post-card__id");
 }
 
 // カードの活字部分をまとめる親要素

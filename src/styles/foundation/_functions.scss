@@ -1,5 +1,6 @@
 // フォントサイズと余白だけなら@use は必要ないが必要になった時のために念のため書いている↓
 @use "variables" as v;
+@use "sass:map";
 
 // フォントサイズ用
 @function fs($size) {
@@ -10,4 +11,13 @@
 @function sp($size) {
   @return var(--sp-#{$size});
   // rootにある余白の書き出しとつながる
+}
+
+// z-index取得用
+@function zi($key) {
+  @if map.has-key(v.$z-index, $key) {
+    @return map.get(v.$z-index, $key);
+  }
+
+  @error "z-index '#{$key}' は定義されていません。";
 }
