@@ -107,11 +107,11 @@ function validateDetailForm() {
   // =========================
   if (errors.length > 0) {
     errSummary.innerHTML = `
-      <p class="detail-form__error-text is-error-text">
+      <p class="search-form__error-text is-error-text">
         入力に不備があります（${errors.length}件）
       </p>
       <ul class="detail-form__error-list">
-        ${errors.map((e) => `<li class="is-error-text">${e}</li>`).join("")}
+        ${errors.map((e) => `<li class="search-form__error-text is-error-text">${e}</li>`).join("")}
       </ul>
     `;
 

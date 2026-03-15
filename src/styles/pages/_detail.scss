@@ -47,9 +47,6 @@
   .detail-form__textarea {
     @include f.textarea($width: 33rem);
   }
-  .is-error-text {
-    margin-top: f.sp(8);
-  }
 
   .detail__buttons {
     margin-top: f.sp(24);
