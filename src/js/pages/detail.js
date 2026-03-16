@@ -40,6 +40,8 @@ const errBody = document.getElementById("errBody");
 init();
 
 function init() {
+  setFormDisabled(true); // 初期表示でdisabled→投稿取得成功時のみ操作可能
+
   if (!postId || !Number.isInteger(Number(postId))) {
     showSummaryError(
       "不正な投稿IDです。一覧画面から正しい投稿を選択してください。",
@@ -204,7 +206,7 @@ async function fetchJson(url, options = {}) {
 async function fetchPost() {
   clearSummaryMessage();
   clearFieldErrors();
-  setFormDisabled(true);
+  setFormDisabled(true); // 取得成功するまではdisabled
 
   try {
     const data = await fetchJson(
@@ -217,11 +219,11 @@ async function fetchPost() {
 
     console.log("取得した投稿：", data);
     renderPost(data);
-    setFormDisabled(false);
+    setFormDisabled(false); // 投稿取得に成功したので操作可能にする
   } catch (error) {
     showSummaryError("詳細の取得に失敗しました。");
     console.error("詳細取得失敗：", error);
-    setFormDisabled(true);
+    setFormDisabled(true); // 取得失敗→disabled
   }
 }
 

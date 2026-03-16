@@ -73,4 +73,20 @@
   .detail-form__success-text {
     margin-top: f.sp(8);
   }
+
+  // フォームがdisabledの時の専用スタイル
+  // 各種入力フォーム
+  .detail-form__select:disabled,
+  .detail-form__input:disabled,
+  .detail-form__textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed; // 操作できないことを明確に
+  }
+
+  // ボタン
+  .detail__buttons .c-button:disabled {
+    opacity: 0.6;
+    background-color: #aaa;
+    cursor: not-allowed; // 操作できないことを明確に
+  }
 }
