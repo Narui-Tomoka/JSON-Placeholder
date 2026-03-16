@@ -33,6 +33,28 @@ const errPostId = document.getElementById("errPostId");
 const errTitle = document.getElementById("errTitle");
 const errBody = document.getElementById("errBody");
 
+// =====================
+// 初期処理
+// =====================
+
+init();
+
+function init() {
+  if (!postId || !Number.isInteger(Number(postId))) {
+    showSummaryError(
+      "不正な投稿IDです。一覧画面から正しい投稿を選択してください。",
+    );
+    errPostId.textContent = "投稿IDが不正です。";
+    console.error("IDが不正です:", postId);
+    return;
+  }
+
+  fetchPost();
+
+  updateBtn.addEventListener("click", updatePost);
+  deleteBtn.addEventListener("click", deletePost);
+}
+
 // =========================
 // メッセージ表示
 // =========================
@@ -64,6 +86,15 @@ function clearFieldErrors() {
   userIdEl.classList.remove("is-error");
   titleEl.classList.remove("is-error");
   bodyEl.classList.remove("is-error");
+}
+
+// フォーム部品と更新・削除ボタンをdisabledにする関数
+function setFormDisabled(disabled) {
+  userIdEl.disabled = disabled;
+  titleEl.disabled = disabled;
+  bodyEl.disabled = disabled;
+  updateBtn.disabled = disabled;
+  deleteBtn.disabled = disabled;
 }
 
 // =========================
@@ -144,29 +175,6 @@ function validateDetailForm() {
 }
 
 // =====================
-// 初期処理
-// =====================
-init();
-
-function init() {
-  if (!postId || !Number.isInteger(Number(postId))) {
-    showSummaryError(
-      "不正な投稿IDです。一覧画面から正しい投稿を選択してください。",
-    );
-    errPostId.textContent = "投稿IDが不正です。";
-    updateBtn.disabled = true;
-    deleteBtn.disabled = true;
-    console.error("IDが不正です:", postId);
-    return;
-  }
-
-  fetchPost();
-
-  updateBtn.addEventListener("click", updatePost);
-  deleteBtn.addEventListener("click", deletePost);
-}
-
-// =====================
 // fetch共通
 // =====================
 async function fetchJson(url, options = {}) {
@@ -196,17 +204,24 @@ async function fetchJson(url, options = {}) {
 async function fetchPost() {
   clearSummaryMessage();
   clearFieldErrors();
+  setFormDisabled(true);
 
   try {
     const data = await fetchJson(
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
     );
 
+    if (!data || !data.id) {
+      throw new Error("投稿データが取得できませんでした。");
+    }
+
     console.log("取得した投稿：", data);
     renderPost(data);
+    setFormDisabled(false);
   } catch (error) {
     showSummaryError("詳細の取得に失敗しました。");
     console.error("詳細取得失敗：", error);
+    setFormDisabled(true);
   }
 }
 
