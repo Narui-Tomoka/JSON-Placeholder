@@ -42,8 +42,8 @@
 #userId.is-error,
 #title.is-error,
 #body.is-error {
-  border: 2px solid #e76f51;
-  background-color: #f4a261;
+  border: 2px solid #e76f51 !important;
+  background-color: #f4a261 !important;
 }
 
 .is-error-text,
@@ -51,7 +51,7 @@
 #errUserId.is-error-text,
 #errTitle.is-error-text,
 #errBody.is-error-text {
-  color: #e76f51;
+  color: #e76f51 !important;
 }
 
 // $breakpoints: (
