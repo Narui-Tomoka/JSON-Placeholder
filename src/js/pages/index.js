@@ -386,15 +386,15 @@ nextBtn.addEventListener("click", () => {
 // =========================
 const dummyData = [
   {
-    id: 101,
+    id: 1,
     title: "開発用ダミー投稿",
-    body: "スタイル調整のためのテキストです。",
+    body: "このカードは投稿内容が取得できます",
     userId: 1,
   },
   {
     id: 102,
-    title: "保存しても消えない",
-    body: "これでカードのデザインが書きやすくなります。",
+    title: "取得失敗",
+    body: "これ以降のカードは情報取得に失敗します",
     userId: 2,
   },
   {
@@ -411,8 +411,8 @@ const dummyData = [
   },
   {
     id: 105,
-    title: "一連の処理をひとつの関数にするのではなく",
-    body: "分離しておくとわかりやすくメンテしやすいです",
+    title: "関数を分離して書こう",
+    body: "役割でわけるのがプロのコード",
     userId: 5,
   },
   {
@@ -429,26 +429,26 @@ const dummyData = [
   },
   {
     id: 108,
-    title: "周りを大切にするために",
-    body: "まずは自分の心を満タンにしよう",
+    title: "スタイル調整用で",
+    body: "作ってみました",
     userId: 8,
   },
   {
     id: 109,
     title: "通勤の必需品",
-    body: "耳栓があるとストレスが減るのでおすすめです",
+    body: "耳栓が手放せない",
     userId: 9,
   },
   {
     id: 110,
     title: "新しいキーボード",
-    body: "入力が楽で光るのが楽しいです",
+    body: "超レインボーで無駄にかっこいい",
     userId: 10,
   },
   {
     id: 111,
     title: "2ページ目",
-    body: "ちゃんと動いた！",
+    body: "ページネーション動いた～！",
     userId: 10,
   },
 ];
@@ -487,4 +487,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   targets.forEach((el) => observer.observe(el));
 });
-// IntersectionObserverここまで
