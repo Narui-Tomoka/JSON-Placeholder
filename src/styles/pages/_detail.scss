@@ -40,9 +40,9 @@
     @include f.select($width: 33rem);
   }
   .detail-form__input {
-    @include f.textarea($width: 33rem, $height: 8.4rem);
+    @include f.textarea($width: 33rem, $height: 7.6rem);
     // 中の要素の大きさに応じて変化
-    // タイトル部分。見切れ防止でtextarea要素に変更
+    // タイトル部分。見切れ防止でinput要素からtextarea要素に変更
   }
   .detail-form__textarea {
     @include f.textarea($width: 33rem);
