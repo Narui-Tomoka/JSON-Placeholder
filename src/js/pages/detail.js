@@ -190,14 +190,7 @@ async function fetchJson(url, options = {}) {
   if (response.status === 204) {
     return null;
   }
-
-  const contentType = response.headers.get("content-type");
-
-  if (contentType && contentType.includes("application/json")) {
-    return response.json();
-  }
-
-  return null;
+  return response.json();
 }
 
 // =====================
@@ -211,6 +204,12 @@ async function fetchPost() {
   try {
     const data = await fetchJson(
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      },
     );
 
     if (!data || !data.id) {
@@ -264,6 +263,7 @@ async function updatePost() {
       {
         method: "PUT",
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
@@ -293,6 +293,10 @@ async function deletePost() {
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
       {
         method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       },
     );
 
