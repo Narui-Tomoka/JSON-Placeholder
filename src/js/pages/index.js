@@ -165,7 +165,11 @@ function validateForm() {
   return true;
 }
 
-function renderPage() {
+function renderPage({ shouldScroll = false } = {}) {
+  // オプション引数と呼ばれる書き方。引数なし → 空オブジェクト{}
+  // 引数はあってもshouldScroll がなければ false
+  // デフォルトではスクロールせず、必要に応じてスクロールするための書き方
+  // 今回は「検索」「prev」「next」押下時にtrueを渡す
   const totalPosts = allPosts.length;
   const totalPages = Math.ceil(totalPosts / LIMIT); // 小数点以下切り上げ
 
@@ -179,6 +183,15 @@ function renderPage() {
     prevBtn.disabled = true;
     nextBtn.disabled = true;
 
+    if (shouldScroll) {
+      // スクロールの指定があれば
+      requestAnimationFrame(() => {
+        scrollToResultSection();
+        // 次の画面描画タイミング（リフレッシュレート。通常、1秒に60回ある）でscrollToResultSectionを実行する
+        // この関数を使うことで滑らかでタブが非表示の間は実行されないのでCPUやバッテリーに優しい
+      });
+    }
+
     return;
   }
 
@@ -191,6 +204,7 @@ function renderPage() {
   const paginatedData = allPosts.slice(start, end);
 
   renderPosts(paginatedData);
+  // 画面に投稿カードを描画する
 
   // =========================
   // ページ情報更新
@@ -201,7 +215,15 @@ function renderPage() {
   // ボタンの制御
   // =========================
   prevBtn.disabled = currentPage === 1;
+  // 1ページ目なら押せない
   nextBtn.disabled = currentPage === totalPages;
+  // 現在のページ = 合計ページ → 最後のページ
+
+  if (shouldScroll) {
+    requestAnimationFrame(() => {
+      scrollToResultSection();
+    });
+  }
 }
 
 // =========================
@@ -217,21 +239,6 @@ function renderEmpty() {
 
   resultSection.hidden = false;
 }
-
-// =========================
-// renderPageのイメージ図
-// =========================
-// renderPage()
-//    ↓
-// renderPosts(data)
-
-// renderPosts()
-//   ├ data.length === 0 → renderEmpty()
-//   └ それ以外 → 通常描画
-
-// catch内
-//   └ renderError()
-// ＜＜イメージ図ここまで＞＞
 
 function renderPosts(data) {
   // 前回の検索結果をクリア
@@ -298,6 +305,31 @@ function renderError() {
   pageInfo.textContent = "- / -";
 }
 
+// =========================
+// スクロール制御関数（ページネーション押したときのスクロール場所を決めてスクロールする）
+// 検索結果の表示位置が崩れないように、結果セクションの上までスクロールさせる関数
+// =========================
+function scrollToResultSection() {
+  const header = document.getElementById("header"); // headerを取得
+  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+  // ヘッダーの高さを取得。万が一ヘッダーがなくてもエラーにならないための保険が右側の「0」
+  // 現在の高さを取得できるのでPC/SPで高さが変化しても対応できる
+  const extraSpace = 16; // 窮屈に見えないように余白をつける
+  const targetTop =
+    window.scrollY +
+    resultSection.getBoundingClientRect().top -
+    headerHeight -
+    extraSpace;
+  // resultSection.getBoundingClientRect().topは「resultSectionの上端が画面の上端から何px下にあるか」を表す
+  // window.scrollY と足すことで「resultSectionのページ全体での絶対位置」
+  // そこからヘッダー分の高さと余白分を引いている
+  window.scrollTo({
+    top: Math.max(targetTop, 0), // スクロール位置をマイナスにしないための保険
+    behavior: "smooth",
+  });
+  // ちょうど上の式で求めた高さまでスクロールする
+}
+
 form.addEventListener("submit", async (e) => {
   // =========================
   // HTMLに元々ついている機能を無効化
@@ -355,7 +387,7 @@ form.addEventListener("submit", async (e) => {
     allPosts = data;
     currentPage = 1;
 
-    renderPage();
+    renderPage({ shouldScroll: true });
   } catch (error) {
     renderError();
     console.error("一覧取得エラー", error);
@@ -369,7 +401,7 @@ form.addEventListener("submit", async (e) => {
 prevBtn.addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
-    renderPage();
+    renderPage({ shouldScroll: true });
   }
 });
 
@@ -377,7 +409,7 @@ nextBtn.addEventListener("click", () => {
   const totalPages = Math.ceil(allPosts.length / LIMIT);
   if (currentPage < totalPages) {
     currentPage++;
-    renderPage();
+    renderPage({ shouldScroll: true });
   }
 });
 
