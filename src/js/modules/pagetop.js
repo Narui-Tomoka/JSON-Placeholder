@@ -14,7 +14,7 @@ export function initPageTop() {
           // fvが見えてる＝トップ付近 → 非表示
           pageTopBtn.classList.add("is-hidden");
         } else {
-          // fvが見えなくなった＝about以降 → 表示
+          // fvが見えなくなった → 表示
           pageTopBtn.classList.remove("is-hidden");
         }
       });

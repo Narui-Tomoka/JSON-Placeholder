@@ -13,17 +13,6 @@ const form = document.getElementById("searchForm");
 initHamburger();
 initPageTop();
 initAccordion();
-// =========================
-// 処理の流れ
-// =========================
-//submitイベント
-// ├ e.preventDefault()
-// ├ validateForm()
-// ├ クエリパラメータ生成
-// ├ fetch → 条件に合うものを全件取得
-// ├ currentPage を管理
-// ├ 配列を slice して10件だけ渡す
-// └ renderPosts(現在のページ分)
 
 // 今回実装するのは「APIページネーションではなくクライアント側でのページネーション」
 // 「状態管理型ページネーション」というらしい

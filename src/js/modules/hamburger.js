@@ -1,7 +1,7 @@
 export function initHamburger() {
   const hamburger = document.getElementById("js-hamburger");
   const header = document.getElementById("header");
-  const overlay = document.getElementById("js-drawer-overlay"); // 追加
+  const overlay = document.getElementById("js-drawer-overlay");
 
   // 必要な要素がなければ処理しない
   if (!hamburger || !header || !overlay) {

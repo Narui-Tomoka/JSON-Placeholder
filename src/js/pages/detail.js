@@ -282,7 +282,7 @@ async function updatePost() {
 // 削除処理
 // =====================
 async function deletePost() {
-  if (!confirm("この大切な記憶を、地図から消してしまっても大丈夫ですか？")) {
+  if (!confirm("この大切な記憶を、地図から消してしまってよろしいですか？")) {
     return;
   }
 
