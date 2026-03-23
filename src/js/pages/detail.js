@@ -15,7 +15,6 @@ initPageTop();
 // =====================
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
-console.log("取得したID：", postId);
 
 // =====================
 // DOM取得
@@ -186,10 +185,6 @@ async function fetchJson(url, options = {}) {
     throw new Error(`HTTPエラー：${response.status}`);
   }
 
-  // DELETE のように空レスポンスの可能性がある時の保険
-  if (response.status === 204) {
-    return null;
-  }
   return response.json();
 }
 
@@ -216,7 +211,6 @@ async function fetchPost() {
       throw new Error("投稿データが取得できませんでした。");
     }
 
-    console.log("取得した投稿：", data);
     renderPost(data);
     setFormDisabled(false); // 投稿取得に成功したので操作可能にする
   } catch (error) {
@@ -271,7 +265,6 @@ async function updatePost() {
     );
 
     showSummarySuccess("更新に成功しました。");
-    console.log("更新結果：", data);
   } catch (error) {
     showSummaryError("更新に失敗しました。");
     console.error("更新失敗：", error);
@@ -289,20 +282,15 @@ async function deletePost() {
   clearSummaryMessage();
 
   try {
-    const data = await fetchJson(
-      `https://jsonplaceholder.typicode.com/posts/${postId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+    await fetchJson(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-    );
+    });
 
     showSummarySuccess("削除に成功しました。");
-    console.log("削除結果：", data);
-
     window.location.href = "index.html";
   } catch (error) {
     showSummaryError("削除に失敗しました。");

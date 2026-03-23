@@ -357,8 +357,6 @@ form.addEventListener("submit", async (e) => {
 
   const queryString = params.toString();
 
-  console.log("生成されたクエリ", queryString);
-
   // =========================
   // ⑤ APIにリクエスト
   // =========================

@@ -54,6 +54,16 @@
   }
 }
 
+.header__nav__item {
+  @include f.mq(md) {
+    display: none; // ハンバーガーメニューに切り替えるため
+  }
+  a {
+    color: f.$base-color-1;
+    margin-right: f.sp(24);
+  }
+}
+
 .header__buttons--wrap {
   display: flex;
   @include f.mq(md) {
