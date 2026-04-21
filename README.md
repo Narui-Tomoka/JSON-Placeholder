@@ -2,7 +2,7 @@
 
 ## このファイルの目的
 
-- 先生の添削時にコードの意図や実装時の工夫を伝えやすくするため
+- メンター添削時にコードの意図や実装時の工夫を伝えやすくするため
 - 自分自身の振り返り・備忘録として
 
 ## 課題URL
@@ -28,6 +28,56 @@
 - Autoprefixer（VS Code 拡張機能）
 - markdownlint（VS Code 拡張機能）
 - Figma
+
+### ディレクトリ構成
+
+root  
+├── README.md  
+├── detail.html  
+├── index.html  
+├── package-lock.json  
+├── package.json  
+├── postcss.config.js  
+├── src  
+│ ├── js  
+│ │ ├── modules  
+│ │ │ ├── accordion.js  
+│ │ │ ├── hamburger.js  
+│ │ │ └── pagetop.js  
+│ │ └── pages  
+│ │ ├── detail.js  
+│ │ └── index.js  
+│ └── styles  
+│ ├── foundation  
+│ │ ├── \_base.scss  
+│ │ ├── \_functions.scss  
+│ │ ├── \_helpers.scss  
+│ │ ├── \_index.scss  
+│ │ ├── \_mixins.scss  
+│ │ ├── \_reset.scss  
+│ │ ├── \_root.scss  
+│ │ └── \_variables.scss  
+│ ├── layout  
+│ │ ├── \_footer.scss  
+│ │ ├── \_hamburger.scss  
+│ │ ├── \_header.scss  
+│ │ ├── \_index.scss  
+│ │ └── \_layout.scss  
+│ ├── object  
+│ │ ├── \_buttons.scss  
+│ │ ├── \_cards.scss  
+│ │ ├── \_form.scss  
+│ │ ├── \_headings.scss  
+│ │ ├── \_index.scss  
+│ │ ├── \_menu.scss  
+│ │ ├── \_pagetop.scss  
+│ │ └── \_utility.scss  
+│ ├── pages  
+│ │ ├── \_detail.scss  
+│ │ ├── \_home.scss  
+│ │ └── \_index.scss  
+│ └── style.scss  
+└── vite.config.js
 
 ### 使用AI
 
@@ -56,7 +106,7 @@
 
 ## 参考サイト
 
-- ハンバーガーメニュー参考：奥養老ヴィレッジ  
+- ハンバーガーメニューデザイン参考：奥養老ヴィレッジ  
   https://okuyorovillage.com/
 
 ## 制作の流れ
@@ -129,7 +179,7 @@
 
 ユーザーの声や投稿内容を載せることで利用イメージを明確に伝えてアプリの良さをアピールする。  
 アプリの機能説明+αの部分を重視しました。  
-「日常のせわしなさから離れられる世界観」が伝わるよう、できるだけ「検索」「記録」といった無機質な表現はできるだけ避け、あたたかみのある言葉を選びました。
+「日常のせわしなさから離れられる情緒的世界観」が伝わるよう、できるだけ「検索」「記録」といった無機質な表現はできるだけ避け、あたたかみのある言葉を選びました。
 
 ## 前回の課題「WDC」の反省点
 
@@ -349,56 +399,6 @@ CSSの重なり順がうまくできなかったり、内容の整合性がと�
 今回はHero画像を元画像よりも暗く表示するために、疑似要素をposition: absolute;で重ねるとスタッキングコンテキストを生成するが、background: linear-gradientでrgba()を用いた半透明の背景を背景画像に重ねることでスタッキングコンテキストを生成せずに同じ見た目を作ることができる。
 
 同じ理由でopacityに関しても、スタッキングコンテキストを生成しないほうが良い場合は、rgba()で対応するなどの工夫ができると感じた。
-
-### ディレクトリ構成
-
-root  
-├── README.md  
-├── detail.html  
-├── index.html  
-├── package-lock.json  
-├── package.json  
-├── postcss.config.js  
-├── src  
-│ ├── js  
-│ │ ├── modules  
-│ │ │ ├── accordion.js  
-│ │ │ ├── hamburger.js  
-│ │ │ └── pagetop.js  
-│ │ └── pages  
-│ │ ├── detail.js  
-│ │ └── index.js  
-│ └── styles  
-│ ├── foundation  
-│ │ ├── \_base.scss  
-│ │ ├── \_functions.scss  
-│ │ ├── \_helpers.scss  
-│ │ ├── \_index.scss  
-│ │ ├── \_mixins.scss  
-│ │ ├── \_reset.scss  
-│ │ ├── \_root.scss  
-│ │ └── \_variables.scss  
-│ ├── layout  
-│ │ ├── \_footer.scss  
-│ │ ├── \_hamburger.scss  
-│ │ ├── \_header.scss  
-│ │ ├── \_index.scss  
-│ │ └── \_layout.scss  
-│ ├── object  
-│ │ ├── \_buttons.scss  
-│ │ ├── \_cards.scss  
-│ │ ├── \_form.scss  
-│ │ ├── \_headings.scss  
-│ │ ├── \_index.scss  
-│ │ ├── \_menu.scss  
-│ │ ├── \_pagetop.scss  
-│ │ └── \_utility.scss  
-│ ├── pages  
-│ │ ├── \_detail.scss  
-│ │ ├── \_home.scss  
-│ │ └── \_index.scss  
-│ └── style.scss  
-└── vite.config.js
 
 #### ツリー構造表示時に複数のディレクトリを表示対象外にする方法
 
